@@ -1,0 +1,6 @@
+{
+  "DataBase": {
+    "ConnectionStrings": "Server=localhost;Port=3306;Database=nccTest;Uid=root;Pwd=root;ConnectionTimeout=30;Charset=utf8mb4;",
+    "DbType": "MySql"
+  }
+}

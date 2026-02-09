@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.CommonResources/NavigationGeometry.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.CommonResources/CommonBrush.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.CommonResources/CommonGeometry.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/NavigationButtonStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/NavigationBar.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CirclButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/JumpButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/Dashboard.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/GroupHeaderLabel.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonCheckBox.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/SettingOperateButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TooltipStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/IconLabel.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonProcessBar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

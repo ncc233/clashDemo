@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Clash.UI.Suppot.UI.Componentes.ShadowDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clash.UI.Suppot.UI.Componentes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Storyboard x:Key="FadeinAnimation" >
+            <DoubleAnimation Duration="0:0:0.3"
+                             Storyboard.TargetName="borderBackground"
+                                 Storyboard.TargetProperty="Opacity"
+                                 To="0.5"/>
+        </Storyboard>
+
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource FadeinAnimation}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <Border x:Name="borderBackground" Background="Black" Opacity="0" />
+        <ContentControl x:Name="ContentDialog"/>
+    </Grid>
+</UserControl>

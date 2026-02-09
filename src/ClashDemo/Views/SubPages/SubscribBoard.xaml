@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ClashDemo.Views.SubPages.SubscribBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClashDemo.Views.SubPages"
+             xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="330">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <!--头部-->
+        <Border CornerRadius="10 10 0 0" Background="{DynamicResource commonSubPageBackgroundBrush}" Margin="0 0 0 1">
+            <Canvas>
+                <Label Style="{StaticResource headerLabel}" 
+                       Width="120" HorizontalAlignment="Left" 
+                       Canvas.Top="11" Content="魔法喵" 
+                       Tag="{StaticResource subscribeGeometry}"/>
+                <Button Style="{StaticResource jumpButtonStyle}"
+                                         Height="30"
+                                         Width="75"
+                                         Content="订 阅"
+                                         Canvas.Top="15"
+                                         Canvas.Right="10"
+                                         Tag="{StaticResource subscribeGeometry}"/>
+            </Canvas>
+        </Border>
+        <!--内容-->
+        <Border Grid.Row="1" CornerRadius="0 0 10 10" Background="{DynamicResource commonSubPageBackgroundBrush}" >
+            <StackPanel>
+                <Label Style="{StaticResource iconLabelStyle}"
+                       Content="11111111" 
+                       Tag="{StaticResource remoteHostGeometry}"/>
+                <Label Style="{StaticResource iconLabelStyle}"
+                       Content="11111111" 
+                       Tag="{StaticResource updateTimeGeometry}"/>
+                <Label Style="{StaticResource iconLabelStyle}"
+                       Content="11111111" 
+                       Tag="{StaticResource commonCapacityGeometry}"/>
+                <Label Style="{StaticResource iconLabelStyle}"
+                       Content="11111111" 
+                       Tag="{StaticResource finishTimeGeometry}"/>
+                <TextBlock Text="{Binding ElementName=progressBar,Path=Value,StringFormat={}{0}%}" FontSize="10" Margin="12 9 0 0" Foreground="{DynamicResource commonSubPageForegroundBrush}"/>
+                <ProgressBar Name="progressBar" Style="{DynamicResource ProgressBarStyle1}" Value="100" Maximum="100" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

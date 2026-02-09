@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="iconLabelStyle" TargetType="Label">
+        <Setter Property="Foreground" Value="{DynamicResource commonSubPageForegroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource commonSubPagePathfillBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="12 9 0 0"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Fill="{TemplateBinding Background}" 
+                              Height="15"
+                              Width="{Binding RelativeSource={RelativeSource Mode=Self},Path=Height}"
+                              Stretch="Uniform"
+                              Margin="0"
+                              Data="{TemplateBinding Tag}"/>
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Left"
+                                   TextAlignment="Center"
+                                   Margin="5 0 0 0"
+                                   Foreground="{TemplateBinding Foreground}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

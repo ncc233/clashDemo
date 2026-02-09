@@ -1,0 +1,30 @@
+﻿<Page x:Class="ClashDemo.Views.SubscribePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClashDemo.Views"
+      mc:Ignorable="d" 
+      Name="订阅"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SubscribePage">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Canvas  Background="{DynamicResource commonBarBrush}">
+            <Canvas.Effect>
+                <DropShadowEffect Direction="0" ShadowDepth="2" Opacity="0.6"/>
+            </Canvas.Effect>
+            <TextBlock Canvas.Top="18" Canvas.Left="20" FontSize="20" Text="订 阅" FontWeight="Bold" VerticalAlignment="Center"/>
+        </Canvas>
+
+
+        <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
+
+
+        </Grid>
+    </Grid>
+</Page>

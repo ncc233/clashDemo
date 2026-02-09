@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Clash.UI.Suppot/Clash.UI.Suppot.csproj" />
+  <Project Path="src/ClashDemo/ClashDemo.csproj" />
+</Solution>

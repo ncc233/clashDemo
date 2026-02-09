@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.CommonResources/CommonGeometry.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Storyboard x:Key="circlAnimation" >
+        <DoubleAnimation 
+           Storyboard.TargetName="mouseOperationborder"
+           Storyboard.TargetProperty="Width"
+           From="0"
+           Duration="0:0:0.25" To="40" />
+        <DoubleAnimation 
+           Storyboard.TargetName="mouseOperationborder"
+           Storyboard.TargetProperty="Height"
+           From="0"
+           Duration="0:0:0.25" To="40" />
+        <DoubleAnimation 
+            Storyboard.TargetName="mouseOperationborder"
+            Storyboard.TargetProperty="Opacity"
+            From="0"
+            Duration="0:0:0.25" To="0.1"/>
+    </Storyboard>
+    <Storyboard x:Key="circlAnimationReverce" >
+        <DoubleAnimation
+            Storyboard.TargetName="mouseOperationborder"
+            Storyboard.TargetProperty="Opacity"
+            BeginTime="0:0:0.3"
+            Duration="0:0:0.2" To="0"/>
+    </Storyboard>
+    <Style x:Key="CheckBoxSelectIcon" TargetType="Path">
+        <Setter Property="Fill" Value="#ffffff"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="Data" Value="{StaticResource checkGeometry}"/>
+    </Style>
+    <Style x:Key="CheckBoxElementStyle" TargetType="Border">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource commonCheckBoxBorderBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Opacity" Value="1"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+    </Style>
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="Background" Value="{DynamicResource contentBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource commonForegroundDarkBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource contentBackgroundBrush}"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="IsChecked" Value="True"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="9 0 0 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Border>
+                        <Grid x:Name="commonCheckBoxGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid Height="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=ActualHeight}"
+                                  Width="{Binding RelativeSource={RelativeSource Mode=Self},Path=Height}"
+                                  HorizontalAlignment="Left">
+                                <Ellipse Name="mousoverBackground" Fill="{DynamicResource jumpButtonForegroundBrush}"
+                                         Height="40" 
+                                         Width="40"  
+                                         Opacity="0"
+                                         HorizontalAlignment="Center"/>
+                                <Ellipse Name="mouseOperationborder" Fill="#000000" Opacity="0"
+                                         HorizontalAlignment="Center"/>
+                                <Border x:Name="bottomBorder" Opacity="0"
+                                        Height="20"
+                                        Width="20"
+                                        Background="{DynamicResource jumpButtonForegroundBrush}" 
+                                        CornerRadius="4"
+                                        Margin="10">
+                                    <Path x:Name="IconElement"  Style="{StaticResource CheckBoxSelectIcon}"/>
+                                </Border>
+                                <Border x:Name="CheckBoxElement"  Style="{StaticResource CheckBoxElementStyle}">
+                                </Border>
+                            </Grid>
+                            <TextBlock Grid.Column="1"
+                                       Text="{TemplateBinding Content}"
+                                       Padding="0 0 0 1"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="mousoverBackground" Property="Opacity" Value="0.05"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="IconElement" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="bottomBorder" Property="Opacity" Value="1"/>
+                            <Setter TargetName="CheckBoxElement" Property="Opacity" Value="0"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Storyboard="{StaticResource circlAnimation}"/>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Storyboard="{StaticResource circlAnimationReverce}"/>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
