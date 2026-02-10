@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ClashDemo.ViewModels.SubPageViewModels
 {
     [INotifyPropertyChanged]
-    public partial class SubscrubBoaedViewModel
+    public partial class SubscrubBoardViewModel
     {
         public string OriginAddress { get; set; }
         public string UpdateTime { get; set; }
@@ -21,13 +21,13 @@ namespace ClashDemo.ViewModels.SubPageViewModels
 
         public double UsedCapacity { get; set; }
 
-        public SubscrubBoaedViewModel() 
+        public SubscrubBoardViewModel() 
         {
             OriginAddress = "来自:www.bilibili.com";
             UpdateTime = "更新时间:"+DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             CurrentCapacity = @"已使用 / 总量: 18.8GB / 768GB";
             FinishTime = DateTime.Now.AddMonths(6).ToString("yyyy-MM-dd");
-            MaxCapacity = 768;
+            MaxCapacity = 100;
             MinCapacity = 0;
             UsedCapacity=18.8;
         }

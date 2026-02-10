@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,10 +31,16 @@ namespace Clash.UI.Suppot.UI.Adorners
             AddVisualChild(_container);
         }
 
+
         /// <summary>
         /// 添加动画
         /// </summary>
-        public void AddAnimation(FrameworkElement element,Brush brush,double radius=4,double time=0.4)
+        /// <param name="element"></param>
+        /// <param name="brush"></param>
+        /// <param name="radius"></param>
+        /// <param name="time"></param>
+        /// <param name="isCenter"></param>
+        public void AddAnimation(FrameworkElement element,Brush brush,double radius=4,double time=0.4,bool isCenter=false)
         {
             var rect = new Rect(0,0,element.ActualWidth,ActualHeight);
             _container.Clip = new RectangleGeometry() 
@@ -42,11 +49,10 @@ namespace Clash.UI.Suppot.UI.Adorners
                 RadiusX=radius,
                 RadiusY=radius
             };
-            var center=Mouse.GetPosition(element);
+            var center= isCenter? new Point(_container.ActualWidth / 2, _container.ActualHeight / 2) : Mouse.GetPosition(element);
             var storyboard = new Storyboard();
             var animationSize = Math.Max(element.ActualWidth,element.ActualHeight);
             var ellipse = new Path();
-
             ellipse.Data = new EllipseGeometry 
             {
                 Center= center,
@@ -103,7 +109,7 @@ namespace Clash.UI.Suppot.UI.Adorners
             var grid =_container;
             foreach (var chiled in grid.Children)
             {
-                if (chiled is System.Windows.Shapes.Path path &&path.Opacity!=0)
+                if (chiled is System.Windows.Shapes.Path path )
                 {
                     path.BeginAnimation(System.Windows.Shapes.Path.OpacityProperty, new DoubleAnimation
                     {

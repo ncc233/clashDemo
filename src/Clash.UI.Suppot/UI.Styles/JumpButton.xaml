@@ -34,6 +34,7 @@
         <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
         <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="5"/>
         <Setter Property="helpers:RippleAnimationHelper.RippleBrush" Value="{DynamicResource jumpButtonForegroundBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Height" Value="33"/>
         <Setter Property="Width" Value="80" />
         <Setter Property="Template">

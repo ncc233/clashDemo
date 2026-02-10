@@ -18,6 +18,22 @@ namespace Clash.UI.Suppot.UI.Helpers
 
 
 
+        public static bool GetIsControlCenter(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsControlCenterProperty);
+        }
+
+        public static void SetIsControlCenter(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsControlCenterProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for IsControlCenter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsControlCenterProperty =
+            DependencyProperty.RegisterAttached("IsControlCenter", typeof(bool), typeof(RippleAnimationHelper), new PropertyMetadata(false));
+
+
+
         public static bool GetIsEnable(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsEnableProperty);
@@ -126,7 +142,7 @@ namespace Clash.UI.Suppot.UI.Helpers
             RippleAnimationAdorner adorner = null;
             adorner = GetRippleAnimationAdorner(element);
             SetRippleAnimationAdorner(element, adorner);
-            adorner.AddAnimation(element, GetRippleBrush(element),GetRippleParentRadius(element), GetRippleTime(element));
+            adorner.AddAnimation(element, GetRippleBrush(element),GetRippleParentRadius(element), GetRippleTime(element),GetIsControlCenter(element));
         }
         private static void RemovePulseAdorner(UIElement element)
         {

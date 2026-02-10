@@ -3,6 +3,7 @@ using Clash.UI.Suppot.UI.Componentes;
 using Clash.UI.Suppot.UI.Helpers;
 using ClashDemo.Args;
 using ClashDemo.Models;
+using ClashDemo.ViewModels.SubPageViewModels;
 using ClashDemo.Views.Dialogs;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -24,7 +25,9 @@ namespace ClashDemo.ViewModels
     {
         private ShadowDialog _shadowDialog;
         public List<HomePageDaskBoardModelBase> DaskBoardItems { get; set; }
-        public HomePageViewModel() 
+
+        public SubscrubBoardViewModel SubscrubBoardViewModel { get; set; }
+        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel) 
         {
             DaskBoardItems = 
                 [
@@ -37,7 +40,7 @@ namespace ClashDemo.ViewModels
                 new(){Name="Clash 信息卡" },
                 new(){Name="系统信息卡" },
                 ];
-
+            SubscrubBoardViewModel = subscrubBoardViewModel;
 
         }
 

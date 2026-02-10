@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autofac;
+using ClashDemo.ViewModels.SubPageViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

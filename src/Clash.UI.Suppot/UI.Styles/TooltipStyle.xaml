@@ -1,9 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="ArrowToolTip" TargetType="ToolTip">
-        <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
-        <Setter Property="ToolTipService.HorizontalOffset" Value="-25"/>
-        <Setter Property="ToolTipService.BetweenShowDelay" Value="0"/>
+        <Setter Property="VerticalOffset" Value="40"/>
+        <Setter Property="Placement" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToolTip">
@@ -11,7 +10,25 @@
                         <Path Data="M 6 0 L 0 6 L 12 6 Z" Fill="#E6333333"
                          HorizontalAlignment="Center" />
                         <Border CornerRadius="2" Background="#E6333333" MinHeight="20" MinWidth="50">
-                            <TextBlock Text="{TemplateBinding Content}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{TemplateBinding Content}" Foreground="White" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="RectToolTip" TargetType="ToolTip">
+        <Setter Property="VerticalOffset" Value="40"/>
+        <Setter Property="Placement" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <StackPanel>
+                        <!--<Path Data="M 6 0 L 0 6 L 12 6 Z" Fill="#E6333333"
+                         HorizontalAlignment="Center" />-->
+                        <Border CornerRadius="2" Background="#E6333333" MinHeight="20" MinWidth="50">
+                            <TextBlock Text="{TemplateBinding Content}" Foreground="White" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </StackPanel>
                 </ControlTemplate>
