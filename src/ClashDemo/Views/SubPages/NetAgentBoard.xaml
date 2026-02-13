@@ -89,11 +89,11 @@
                                Foreground="#FFFFFF"/>
                     </Grid>
                 </Border>
-                <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="节点" >
+                <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="代理组" >
                     <ComboBoxItem Content="魔法喵"/>
                 </controls:HeaderComboBox>
                 <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="节点" >
-                    <ComboBoxItem Content="魔法喵"/>
+                    <ComboBoxItem Content="自动选择"/>
                 </controls:HeaderComboBox>
             </StackPanel>
         </Border>

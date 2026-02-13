@@ -2,6 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls"
                      xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomScrollViewStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
     <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
@@ -118,8 +121,8 @@
                         <Border x:Name="dropDownBorder"
                             Background="{DynamicResource popupBorderBackground}"
                             BorderThickness="0"
-                            CornerRadius="2">
-                            <ScrollViewer x:Name="DropDownScrollViewer">
+                            CornerRadius="4">
+                            <ScrollViewer x:Name="DropDownScrollViewer" Style="{DynamicResource customScrollViewer1}">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
                                         <Rectangle x:Name="opaqueRect" 

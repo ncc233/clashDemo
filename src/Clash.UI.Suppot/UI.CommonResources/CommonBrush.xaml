@@ -20,5 +20,5 @@
     <SolidColorBrush x:Key="commonSubPagePathfillBrush" Color="#757575"/>
     <SolidColorBrush x:Key="hComboxBoxBorderBrush" Color="#757575"/>
     <SolidColorBrush x:Key="hComboxBoxMouseOverBorderBrush" Color="#000000"/>
-    <SolidColorBrush x:Key="popupBorderBackground" Color="#f5f5f5"/>
+
 </ResourceDictionary>

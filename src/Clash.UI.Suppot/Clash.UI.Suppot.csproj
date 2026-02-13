@@ -11,8 +11,4 @@
     <Folder Include="UI.Adorners\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Include="UI.Styles\ScrollBarStylexaml" />
-  </ItemGroup>
-
 </Project>

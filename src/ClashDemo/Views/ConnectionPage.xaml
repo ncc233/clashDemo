@@ -12,45 +12,62 @@
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Page.Resources>
 
-        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
-        <Style x:Key="GroupBoxStyle1" TargetType="{x:Type GroupBox}">
-            <Setter Property="BorderBrush" Value="#D5DFE5"/>
+        <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="#FFF3F9FF"/>
+        <SolidColorBrush x:Key="RadioButton.MouseOver.Border" Color="#FF5593FF"/>
+        <SolidColorBrush x:Key="RadioButton.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="#FFD9ECFF"/>
+        <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="#FF3C77DD"/>
+        <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="#FFBCBCBC"/>
+        <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="#FF707070"/>
+        <Style x:Key="RadioButtonStyle1" TargetType="{x:Type RadioButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource RadioButton.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource RadioButton.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Header" Value="Red" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type GroupBox}">
-                        <Grid SnapsToDevicePixels="true">
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6"/>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="6"/>
                             </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="6"/>
-                            </Grid.RowDefinitions>
-                            <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="1"/>
-                            <Border BorderBrush="Red" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="1">
-                                <Border.OpacityMask>
-                                    <MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
-                                        <Binding ElementName="Header" Path="ActualWidth"/>
-                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Mode=Self}"/>
-                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Mode=Self}"/>
-                                    </MultiBinding>
-                                </Border.OpacityMask>
-                                <Border BorderBrush="Blue" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
-                                    <Border BorderBrush="MistyRose" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2"/>
-                                </Border>
+                            <Border x:Name="radioButtonBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="100" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,1,2,1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid x:Name="markGrid" Margin="2">
+                                    <Ellipse x:Name="optionMark" Fill="{StaticResource RadioButton.Static.Glyph}" MinWidth="6" MinHeight="6" Opacity="0"/>
+                                </Grid>
                             </Border>
-                            <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Background="Green" Grid.RowSpan="2" Grid.Row="0">
-                                <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Border>
-                            <ContentPresenter Grid.Column="1" Grid.ColumnSpan="2" Margin="{TemplateBinding Padding}" Grid.Row="2" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.MouseOver.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.MouseOver.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Disabled.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Disabled.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource RadioButton.Pressed.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RadioButton.Pressed.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="0.56"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -72,47 +89,19 @@
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
 
-            <controls:HeaderComboBox   VerticalAlignment="Center" Header="节点" >
-                <ComboBoxItem Content="1111111"/>
-                <ComboBoxItem Content="2222222"/>
-                <ComboBoxItem Content="3333333"/>
-                <ComboBoxItem Content="444444"/>
-                <ComboBoxItem Content="5555555"/>
-                <ComboBoxItem Content="6666666"/>
-                <ComboBoxItem Content="7777777"/>
-            </controls:HeaderComboBox>
-
-
-            <GroupBox Style="{DynamicResource GroupBoxStyle1}" Height="40" Width="40" Margin="0 200 0 0" />
-
-            <Grid SnapsToDevicePixels="true" Margin="0 0 0 0" Background="Transparent" VerticalAlignment="Top" Height="80" Width="80" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="6"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="6"/>
-                </Grid.RowDefinitions>
-                <Border BorderBrush="Red" BorderThickness="2" CornerRadius="4" Grid.ColumnSpan="4" Grid.RowSpan="3" Grid.Row="1">
-                    <Border.OpacityMask>
-                        <MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
-                            <Binding ElementName="Header" Path="ActualWidth"/>
-                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource Mode=Self}"/>
-                            <Binding Path="ActualWidth" RelativeSource="{RelativeSource Mode=Self}"/>
-                        </MultiBinding>
-                    </Border.OpacityMask>
-                    <Border Background="Beige"/>
-                </Border>
-                <Border x:Name="Header" Grid.Column="1" Padding="3,1,3,0" Background="Transparent" Grid.RowSpan="2" Grid.Row="0">
-                    <TextBlock Text="12" FontSize="10" SnapsToDevicePixels="True"/>
-                </Border>
-                <Border Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Background="Red" ></Border>
-            </Grid>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <RadioButton Foreground="Blue" Style="{DynamicResource RadioButtonStyle1}" >
+                    <RadioButton.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=RadioButton},Path=Foreground}" Height="10" Width="10"/>
+                            <TextBlock Text="1111111110"/>
+                            <Image Source="/Icons/icon.ico" Height="10" Width="10"/>
+                        </StackPanel>
+                    </RadioButton.Content>
+                </RadioButton>
+                <RadioButton Style="{DynamicResource RadioButtonStyle1}" Content="22222"/>
+                <RadioButton Style="{DynamicResource RadioButtonStyle1}" Content="33333"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>
