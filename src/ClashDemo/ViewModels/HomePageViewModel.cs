@@ -27,7 +27,9 @@ namespace ClashDemo.ViewModels
         public List<HomePageDaskBoardModelBase> DaskBoardItems { get; set; }
 
         public SubscrubBoardViewModel SubscrubBoardViewModel { get; set; }
-        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel) 
+
+        public NetAgentBoardViewModel NetAgentBoardViewModel { get; set; }
+        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel,NetAgentBoardViewModel netAgentBoardViewModel) 
         {
             DaskBoardItems = 
                 [
@@ -41,6 +43,7 @@ namespace ClashDemo.ViewModels
                 new(){Name="系统信息卡" },
                 ];
             SubscrubBoardViewModel = subscrubBoardViewModel;
+            NetAgentBoardViewModel = netAgentBoardViewModel;
 
         }
 

@@ -64,7 +64,7 @@
         <ScrollViewer Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}" VerticalScrollBarVisibility="Hidden">
             <UniformGrid Columns="2" Rows="2" VerticalAlignment="Top">
                 <subview:SubscribBoard Margin="10 12 5 5" DataContext="{Binding SubscrubBoardViewModel}" />
-                <subview:NetAgentBoard Margin="5 12 10 5"/>
+                <subview:NetAgentBoard Margin="5 12 10 5" DataContext="{Binding NetAgentBoardViewModel}"/>
             </UniformGrid>
         </ScrollViewer>
         <!--<Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">

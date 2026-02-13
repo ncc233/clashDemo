@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -9,6 +9,10 @@
 
   <ItemGroup>
     <Folder Include="UI.Adorners\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="UI.Styles\ScrollBarStylexaml" />
   </ItemGroup>
 
 </Project>

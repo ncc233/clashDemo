@@ -15,5 +15,7 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TooltipStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/IconLabel.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonProcessBar.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ComboBoxStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/customLabel.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

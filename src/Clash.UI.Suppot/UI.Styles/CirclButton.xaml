@@ -9,6 +9,7 @@
         <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=Width}"/>
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="ToolTipService.InitialShowDelay" Value="200"/>
+        <Setter Property="ToolTipService.BetweenShowDelay" Value="10"/>
         <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
         <Setter Property="helpers:RippleAnimationHelper.IsControlCenter" Value="True"/>
         <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="20"/>
@@ -30,7 +31,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="orderButton"  TargetType="{x:Type controls:OrderButton}" BasedOn="{StaticResource circlButton}">
-        <Setter Property="Content" Value="{StaticResource alphabeticalOrder}"/>
+    <Style   TargetType="{x:Type controls:OrderButton}" BasedOn="{StaticResource circlButton}">
     </Style>
 </ResourceDictionary>

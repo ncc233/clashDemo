@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Clash.UI.Suppot.UI.CommonResources.DefaultDefinition;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +13,18 @@ namespace Clash.UI.Suppot.UI.Controls
 {
     public class OrderButton : Button
     {
-        private Geometry[] geometries = new Geometry[3];
+        [Description]
+        private Dictionary<EnumOrderUnit, (Geometry geometry,string description)> geometries = new Dictionary<EnumOrderUnit, (Geometry,string)>();
 
-        public int CurrentStatu
+        public  EnumOrderUnit CurrentStatu
         {
-            get { return (int)GetValue(CurrentStatuProperty); }
-            set { SetValue(CurrentStatuProperty, value); }
+            get { return (EnumOrderUnit)GetValue(CurrentStatuProperty); }
+            private set { SetValue(CurrentStatuProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for CurrentStatu.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentStatuProperty =
-            DependencyProperty.Register(nameof(CurrentStatu), typeof(int), typeof(OrderButton), new PropertyMetadata(0));
+            DependencyProperty.Register(nameof(CurrentStatu), typeof(EnumOrderUnit), typeof(OrderButton), new PropertyMetadata(EnumOrderUnit.ASC));
         public OrderButton()
         {
             ResourceDictionary rsd=new ResourceDictionary();
@@ -33,21 +36,25 @@ namespace Clash.UI.Suppot.UI.Controls
             var data1=rsd["alphabeticalOrder"];
             var data2=rsd["delayOrder"];
 
-            geometries[0] = (GeometryGroup)data1;
-            geometries[1] = (GeometryGroup)data;
-            geometries[2] = (Geometry)data2;
+
+            geometries[EnumOrderUnit.ASC] = ((GeometryGroup)data1, "按名称升序");
+            geometries[EnumOrderUnit.DESC] = ((GeometryGroup)data, "按名称降序");
+            geometries[EnumOrderUnit.Delay] = ((Geometry)data2,"按延迟排序");
             var style=(Style)rsd2["RectToolTip"];
             var tooltip = new ToolTip();
             tooltip.Style = style;
-            tooltip.Content = "11111";
+            tooltip.Content = geometries[EnumOrderUnit.ASC].description;
             this.ToolTip = tooltip;
+            Content = data1;
         }
 
         protected override void OnClick()
         {
             base.OnClick();
-            CurrentStatu = CurrentStatu == 0 ? 1 : CurrentStatu == 1 ? 2 : 0 ;
-            Content=geometries[CurrentStatu];
+            CurrentStatu = CurrentStatu == 0 ? (EnumOrderUnit)1 : CurrentStatu == (EnumOrderUnit)1 ? (EnumOrderUnit)2 : 0 ;
+            Content=geometries[CurrentStatu].geometry;
+            var tooltip = (ToolTip)this.ToolTip;
+            tooltip.Content= geometries[CurrentStatu].description;
 
 
         }
