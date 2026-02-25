@@ -1,5 +1,8 @@
 ﻿using Clash.UI.Suppot.UI.Models;
+using ClashDemo.Args;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,5 +26,15 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         };
 
         public NetAgentComboBoxItemModel SelectedItem { get; set; }
+
+        public NetAgentBoardViewModel() 
+        {
+
+        }
+        [RelayCommand]
+        private void TargetPageNavigation(string name) 
+        {
+            WeakReferenceMessenger.Default.Send(new NavigationInfo { PageName=name});
+        }
     }
 }

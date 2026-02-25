@@ -22,7 +22,13 @@
     <SolidColorBrush x:Key="hComboxBoxMouseOverBorderBrush" Color="#000000"/>
     <Color x:Key="customRadioButtonCommonBackgroundColor">#f5f5f5</Color>
     <Color x:Key="customRadioButtonCheckBackgroundColor">#007aff</Color>
-    <SolidColorBrush x:Key="customRadioButtonCommonBackground" Color="{DynamicResource customRadioButtonCommonBackgroundColor }"/>
-    <SolidColorBrush x:Key="customRadioButtonCheckBackground" Color="{DynamicResource customRadioButtonCheckBackgroundColor}"/>
+    <SolidColorBrush x:Key="customRadioButtonCommonBackground" Color="{StaticResource customRadioButtonCommonBackgroundColor }"/>
+    <SolidColorBrush x:Key="customRadioButtonCheckBackground" Color="{StaticResource customRadioButtonCheckBackgroundColor}"/>
+
+    <Color x:Key="thumbButtonCommonBackground">#bbbbbb</Color>
+    <Color x:Key="thumbButtonCheckBackground">#007aff</Color>
+
+    <SolidColorBrush x:Key="thumbButtonCommonBackgroundBrush" Color="{StaticResource thumbButtonCommonBackground}"/>
+    
 
 </ResourceDictionary>

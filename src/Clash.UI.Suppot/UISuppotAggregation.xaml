@@ -17,5 +17,7 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonProcessBar.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ComboBoxStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomLabel.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomRadioButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ThumbButtonStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -13,6 +13,7 @@
         d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
         Icon="/Icons/icon.ico"
         Title="Clash Verge" Height="736" Width="953.6"
+        MinWidth="953.6"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Window.Resources>
 

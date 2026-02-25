@@ -194,8 +194,7 @@
         <Setter Property="Foreground" Value="#000000"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height" Value="47"/>
-        <Setter Property="Width" Value="310" />
-        <Setter Property="Margin" Value="0 2 0 5" />
+        <Setter Property="Margin" Value="10 2 10 5" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Padding" Value="6,3,5,3"/>

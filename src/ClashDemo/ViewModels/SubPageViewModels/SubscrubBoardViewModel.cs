@@ -1,4 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ClashDemo.Args;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,12 @@ namespace ClashDemo.ViewModels.SubPageViewModels
             MaxCapacity = 100;
             MinCapacity = 0;
             UsedCapacity=18.8;
+        }
+
+        [RelayCommand]
+        private void TargetPageNavigation(string name)
+        {
+            WeakReferenceMessenger.Default.Send(new NavigationInfo { PageName = name });
         }
 
 

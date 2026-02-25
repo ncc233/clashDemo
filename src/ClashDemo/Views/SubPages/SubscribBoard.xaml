@@ -27,6 +27,8 @@
                                          Height="30"
                                          Width="75"
                         Margin="0 0 20 0"
+                        Command="{Binding TargetPageNavigationCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=Content}"
                                          Content="订 阅"
                                          HorizontalAlignment="Right"
                                          Tag="{StaticResource subscribeGeometry}"/>
