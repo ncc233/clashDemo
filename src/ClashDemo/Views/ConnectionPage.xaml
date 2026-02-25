@@ -10,9 +10,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConnectionPage"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
-    <Page.Resources>
-
-    </Page.Resources>
 
     <Grid >
         <Grid.RowDefinitions>
@@ -28,10 +25,9 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                <CheckBox Style="{StaticResource ToggleSwitchCheckBoxStyle}"/>
-            </StackPanel>
+            <controls:CustomLabel 
+                                  Icon="{StaticResource downloadCapacity}"
+                                  Header="下载量" Value="12.01" Unit="MB"/>
         </Grid>
     </Grid>
 </Page>

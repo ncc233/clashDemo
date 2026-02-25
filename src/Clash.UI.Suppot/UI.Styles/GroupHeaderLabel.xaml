@@ -1,16 +1,16 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="headerlablePathStyle" TargetType="Path">
-        <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Foreground}"/>
+        <Setter Property="Fill" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},Path=Background}"/>
         <Setter Property="Stretch" Value="Uniform"/>
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="8 0 0 0"/>
         <Setter Property="Height" Value="22" />
         <Setter Property="Width" Value="22" />
     </Style>
     <Style x:Key="headerLabel" TargetType="Label">
-        <Setter Property="Background" Value="{DynamicResource groupHeaderBorderBackgroundBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource jumpButtonForegroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource jumpButtonForegroundBrush}" />
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -22,11 +22,12 @@
                         </Grid.ColumnDefinitions>
                         <Border Background="{TemplateBinding Background}"
                                 Height="38"
+                                Opacity="0.1"
                                 Width="38"
                                 Margin="8 0 0 0"
                                 CornerRadius="5">
-                            <Path Style="{StaticResource headerlablePathStyle}" Data="{TemplateBinding Tag}"/>
                         </Border>
+                        <Path Style="{StaticResource headerlablePathStyle}" Data="{TemplateBinding Tag}"/>
                         <TextBlock Grid.Column="1" 
                                    Foreground="#000000"
                                    Text="{TemplateBinding Content}"

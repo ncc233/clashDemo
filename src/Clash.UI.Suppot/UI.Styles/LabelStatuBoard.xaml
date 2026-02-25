@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.CommonResources/CommonBrush.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style  TargetType="{x:Type controls:CustomLabel}">
+        <Setter Property="Height" Value="65" />
+        <Setter Property="Width" Value="223"/>
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Background" Value="#007aff" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:CustomLabel}">
+                    <Grid>
+                        <Border Name="bottomBorder"
+                                    CornerRadius="8"
+                                    BorderBrush="{StaticResource labelBordrBrush}"
+                                    BorderThickness="1"/>
+                        <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="{Binding ElementName=bottomBorder,Path=CornerRadius}"
+                                    Opacity="0.1"
+                                    BorderThickness="0"/>
+                        <Grid>
+                            <Ellipse Name="circlBorder"
+                                    Fill="{TemplateBinding Background}"
+                                         Margin="10 15 10 15"
+                                         HorizontalAlignment="Left"
+                                         Width="{Binding RelativeSource={RelativeSource Mode=Self},Path=ActualHeight}"
+                                         Opacity="0.12"/>
+                            <Path Fill="{TemplateBinding Background}"
+                                         Margin="20 15 10 15"
+                                         HorizontalAlignment="Left"
+                                      Height="15"
+                                      Width="15"
+                                      Data="{TemplateBinding Icon}"
+                                      Stretch="Uniform"/>
+                            <StackPanel Margin="55 15 10 12">
+                                <TextBlock Text="{TemplateBinding Header}" Foreground="#85878e" FontSize="10"/>
+                                <StackPanel Margin="0 6 0 0" Orientation="Horizontal">
+                                    <TextBlock Text="{TemplateBinding Value}" FontSize="14" FontWeight="Bold"/>
+                                    <TextBlock Margin="4 0 0 0" FontSize="10"
+                                   VerticalAlignment="Bottom"
+                                   Text="{TemplateBinding Unit}"
+                                   Foreground="#85878e"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

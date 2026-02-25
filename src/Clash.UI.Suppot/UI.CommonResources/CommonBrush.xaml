@@ -29,6 +29,7 @@
     <Color x:Key="thumbButtonCheckBackground">#007aff</Color>
 
     <SolidColorBrush x:Key="thumbButtonCommonBackgroundBrush" Color="{StaticResource thumbButtonCommonBackground}"/>
-    
+    <SolidColorBrush x:Key="labelBordrBrush" Color="#cccccc"/>
+    <SolidColorBrush x:Key="trafficStatisticsHeaderBrush" Color="#fc9b76"/>
 
 </ResourceDictionary>

@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="ClashDemo.Views.SubPages.TrafficStatisticsBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClashDemo.Views.SubPages"
+             xmlns:vm="clr-namespace:ClashDemo.ViewModels.SubPageViewModels"
+             mc:Ignorable="d"
+             xmlns:components="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
+             xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             Height="370"
+             d:DesignHeight="370" d:DesignWidth="660">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5.4*"/>
+        </Grid.RowDefinitions>
+
+        <!--头部-->
+        <Border CornerRadius="10 10 0 0" Background="#ffffff" Margin="0 0 0 1">
+            <Grid>
+                <Label Style="{StaticResource headerLabel}" 
+                       Width="120"
+                       Background="{StaticResource trafficStatisticsHeaderBrush}"
+                       HorizontalAlignment="Left" 
+                       Content="流量统计" 
+                       Tag="{StaticResource statisticsGeometry}"/>
+            </Grid>
+        </Border>
+        <!--内容-->
+        <Border Grid.Row="1" CornerRadius="0 0 10 10" Background="#ffffff" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Border Margin="15 12 15 2" Background="#ebebeb" CornerRadius="8" BorderThickness="1" BorderBrush="#cccccc">
+                    <lvc:CartesianChart LegendLocation="Right" Margin="10" Background="Transparent">
+                    </lvc:CartesianChart>
+                </Border>
+                <UniformGrid Rows="2" Margin="12 2 12 12" Columns="3" Grid.Row="1">
+                    <controls:CustomLabel Background="#fc9b76"
+                                          Icon="{StaticResource uploadGeometry}"
+                                          Header="上传速度"
+                                          Value="0.00"
+                                          Unit="B/s"/>
+                    <controls:CustomLabel 
+                        Icon="{StaticResource downloadGeometry}"
+                        Header="下载速度"
+                        Value="0.00"
+                        Unit="B/s"/>
+                    <controls:CustomLabel 
+                        Icon="{StaticResource uploadCapacity}"
+                        Header="活跃链接"
+                        Background="#06943d"
+                        />
+                    <controls:CustomLabel 
+                        Icon="{StaticResource uploadCapacity}"
+                        Header="上传量"
+                        Background="#fc9b76"
+                        Value="4.67"
+Unit="MB"/>
+                    <controls:CustomLabel 
+                        Icon="{StaticResource downloadCapacity}"
+                        Header="下载量"
+                        Value="26.4"
+                        Unit="MB"/>
+                    <controls:CustomLabel 
+                        Header="内核占用"
+                        Icon="{StaticResource coreGeometry}"
+                        Value="43.9"
+                        Unit="MB"
+                        Background="#ff3b30"/>
+                </UniformGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

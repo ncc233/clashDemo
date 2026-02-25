@@ -60,7 +60,9 @@
         </Canvas>
 
 
-        <ScrollViewer Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}"  VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}"  
+                      SnapsToDevicePixels="True"
+                      VerticalScrollBarVisibility="Hidden">
             <Grid Margin="5" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -77,6 +79,7 @@
                 <subview:NetAgentBoard Grid.Row="1" Grid.Column="1" Margin="5" DataContext="{Binding NetAgentBoardViewModel}"/>
                 <subview:NetSettingBoard Grid.Row="2"  Margin="5"/>
                 <subview:AgentModeConfigBoard  Grid.Row="2" Grid.Column="1"   Margin="5"/>
+                <subview:TrafficStatisticsBoard Grid.Row="3" Grid.ColumnSpan="2" Margin="5"/>
             </Grid>
         </ScrollViewer>
     </Grid>
