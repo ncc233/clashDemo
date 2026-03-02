@@ -71,7 +71,7 @@ namespace Clash.UI.Suppot.UI.Controls
                 var padding = minWidth / 0.8209;
                 var margin = new Thickness(0, 0, padding, 0);
                 //CreateAnimation(margin, 12, -20, padding/2 * 0.112).Begin();
-                CreateAnimation(margin, 12, -20, padding * 0.112 / 2 - 1 * 0.112).Begin();
+                CreateAnimation(margin, 12, -20, (padding - minWidth) / 2 - 2 / 0.8209).Begin();
             }
         }
 

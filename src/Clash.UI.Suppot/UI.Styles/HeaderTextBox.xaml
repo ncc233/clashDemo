@@ -45,7 +45,7 @@
                             <!--<TextBlock Text="{Binding ElementName=cText,Path=Text}"/>-->
                         </Border>
                         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="3">
-                            <TextBlock Name="moveText" Text="{TemplateBinding Header}" Foreground="{TemplateBinding BorderBrush}" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" RenderTransformOrigin="0 0">
+                            <TextBlock Name="moveText" Text="{TemplateBinding Header}" Foreground=" #c4c4c4" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" RenderTransformOrigin="0 0">
                                 <TextBlock.RenderTransform>
                                     <TranslateTransform/>
                                 </TextBlock.RenderTransform>
@@ -65,6 +65,7 @@
                                 <BeginStoryboard Storyboard="{StaticResource Storyboard2}"/>
                             </Trigger.ExitActions>-->
                             <Setter Property="BorderBrush" Value="{DynamicResource jumpButtonForegroundBrush}"/>
+                            <Setter TargetName="moveText" Property="Foreground" Value="{DynamicResource jumpButtonForegroundBrush}"/>
                             <Setter Property="BorderThickness" Value="1.2 1.2 1.2 1.2"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

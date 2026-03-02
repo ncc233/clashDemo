@@ -75,7 +75,8 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <subview:SubscribBoard Grid.Row="1" Margin="5" DataContext="{Binding SubscrubBoardViewModel}" />
+                <subview:SubscribBoard Grid.Row="1" Margin="5" DataContext="{Binding SubscrubBoardViewModel}" 
+                                       />
                 <subview:NetAgentBoard Grid.Row="1" Grid.Column="1" Margin="5" DataContext="{Binding NetAgentBoardViewModel}"/>
                 <subview:NetSettingBoard Grid.Row="2"  Margin="5"/>
                 <subview:AgentModeConfigBoard  Grid.Row="2" Grid.Column="1"   Margin="5"/>
