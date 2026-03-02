@@ -29,7 +29,10 @@ namespace ClashDemo.ViewModels
         public SubscrubBoardViewModel SubscrubBoardViewModel { get; set; }
 
         public NetAgentBoardViewModel NetAgentBoardViewModel { get; set; }
-        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel,NetAgentBoardViewModel netAgentBoardViewModel) 
+
+        public IPMessagBoardViewModel IPMessagBoardViewModel { get; set; }
+        public NetTestBoardViewModel NetTestBoardViewModel { get; set; }
+        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel,NetAgentBoardViewModel netAgentBoardViewModel,IPMessagBoardViewModel iPMessagBoard,NetTestBoardViewModel netTestBoardViewModel) 
         {
             DaskBoardItems = 
                 [
@@ -44,6 +47,8 @@ namespace ClashDemo.ViewModels
                 ];
             SubscrubBoardViewModel = subscrubBoardViewModel;
             NetAgentBoardViewModel = netAgentBoardViewModel;
+            IPMessagBoardViewModel = iPMessagBoard;
+            NetTestBoardViewModel = netTestBoardViewModel;
 
         }
 

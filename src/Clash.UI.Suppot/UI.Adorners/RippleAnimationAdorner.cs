@@ -63,7 +63,6 @@ namespace Clash.UI.Suppot.UI.Adorners
             ellipse.Fill = brush;
             _container.Children.Add(ellipse);
             // x动画
-            var radiusX = new DoubleAnimation();
             var kfRadiusX=new DoubleAnimationUsingKeyFrames();
             kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
             kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize*0.5, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time*0.5))));

@@ -18,7 +18,7 @@
     <SolidColorBrush x:Key="commonSubPageBackgroundBrush" Color="#ffffff"/>
     <SolidColorBrush x:Key="commonSubPageForegroundBrush" Color="#8a8a8e"/>
     <SolidColorBrush x:Key="commonSubPagePathfillBrush" Color="#757575"/>
-    <SolidColorBrush x:Key="hComboxBoxBorderBrush" Color="#757575"/>
+    <SolidColorBrush x:Key="hComboxBoxBorderBrush" Color="#c4c4c4"/>
     <SolidColorBrush x:Key="hComboxBoxMouseOverBorderBrush" Color="#000000"/>
     <Color x:Key="customRadioButtonCommonBackgroundColor">#f5f5f5</Color>
     <Color x:Key="customRadioButtonCheckBackgroundColor">#007aff</Color>

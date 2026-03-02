@@ -25,6 +25,10 @@ namespace ClashDemo
             var vm = new MainWindowViewModel();
             this.DataContext = vm;
             navigationBar.SelectedIndex = 0;
+            var data=30 % 100*3.6;
+            var data3 = 30 % 100;
+            var data2 = 30 % 360;
+            Math.Cos(30);
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)

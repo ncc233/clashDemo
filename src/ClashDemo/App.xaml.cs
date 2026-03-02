@@ -34,6 +34,7 @@ namespace ClashDemo
             serviceCollection.RegisterModule(cfgModel);
             serviceCollection.RegisterType<MainWindow>().SingleInstance();
             serviceCollection.RegisterType<CommonSettingDialog>();
+            serviceCollection.RegisterType<AddTestingDialog>();
             var assembly = Assembly.GetExecutingAssembly();
             serviceCollection.RegisterAssemblyTypes(assembly)
                 .Where(x => x.Name.EndsWith("Page"))

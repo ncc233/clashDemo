@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +9,21 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClashDemo.Views
+namespace ClashDemo.Views.SubPages
 {
     /// <summary>
-    /// ConnectionPage.xaml 的交互逻辑
+    /// NetTestBoard.xaml 的交互逻辑
     /// </summary>
-    public partial class ConnectionPage : Page
+    public partial class NetTestBoard : UserControl
     {
-        public ConnectionPage()
+        public NetTestBoard()
         {
             InitializeComponent();
+
         }
     }
 }

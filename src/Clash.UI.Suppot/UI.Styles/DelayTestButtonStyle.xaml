@@ -1,0 +1,110 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls">
+    <Storyboard x:Key="enlargedNarrow" RepeatBehavior="Forever">
+        <ThicknessAnimationUsingKeyFrames 
+                            Storyboard.TargetName="circl1"
+                            Storyboard.TargetProperty="Margin"
+                            >
+            <LinearThicknessKeyFrame KeyTime="0:0:0" Value="1"/>
+            <LinearThicknessKeyFrame KeyTime="0:0:0.6" Value="3"/>
+            <LinearThicknessKeyFrame KeyTime="0:0:1.2" Value="1"/>
+        </ThicknessAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames
+                         Storyboard.TargetName="circl1"
+                         Storyboard.TargetProperty="Opacity"
+                         >
+            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0.4"/>
+            <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+            <LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="0.4"/>
+        </DoubleAnimationUsingKeyFrames>
+        
+        
+        <ThicknessAnimationUsingKeyFrames 
+                            Storyboard.TargetName="circl3"
+                            Storyboard.TargetProperty="Margin"
+                            >
+            <LinearThicknessKeyFrame KeyTime="0:0:0" Value="1"/>
+            <LinearThicknessKeyFrame KeyTime="0:0:0.6" Value="3"/>
+            <LinearThicknessKeyFrame KeyTime="0:0:1.2" Value="1"/>
+        </ThicknessAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames
+                         Storyboard.TargetName="circl3"
+                         Storyboard.TargetProperty="Opacity"
+                         >
+            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0.4"/>
+            <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+            <LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="0.4"/>
+        </DoubleAnimationUsingKeyFrames>
+        
+
+        <ThicknessAnimationUsingKeyFrames 
+                            Storyboard.TargetName="circl2"
+                            Storyboard.TargetProperty="Margin"
+                            >
+            <LinearThicknessKeyFrame KeyTime="0:0:0" Value="3"/>
+            <LinearThicknessKeyFrame KeyTime="0:0:0.6" Value="1"/>
+            <LinearThicknessKeyFrame KeyTime="0:0:1.2" Value="3"/>
+        </ThicknessAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames
+                         Storyboard.TargetName="circl2"
+                         Storyboard.TargetProperty="Opacity"
+                         >
+            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+            <LinearDoubleKeyFrame KeyTime="0:0:0.6" Value="0.4"/>
+            <LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Style x:Key="delayCirclGroup" TargetType="Control">
+        <Setter Property="Visibility" Value="Hidden"/>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Control">
+                    <UniformGrid Columns="3" VerticalAlignment="Center" MinHeight="18" MinWidth="30">
+                        <Ellipse Name="circl1" Fill="{TemplateBinding Background}" Margin="3" Stretch="Uniform"/>
+                        <Ellipse Name="circl2" Fill="{TemplateBinding Background}" Margin="1" Stretch="Uniform" Opacity="0.1"/>
+                        <Ellipse Name="circl3" Fill="{TemplateBinding Background}" Margin="3" Stretch="Uniform"/>
+                    </UniformGrid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Name="enlargedNarrowAnimation" Storyboard="{StaticResource enlargedNarrow}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="enlargedNarrowAnimation"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style  TargetType="{x:Type controls:DelayTestButton}">
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:DelayTestButton}">
+                    <Grid>
+                        <Border Name="border" CornerRadius="2" Background="#007aff" Opacity="0.1" Visibility="Hidden"/>
+                        <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Center" /> 
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsTesting" Value="True">
+                            <Setter Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

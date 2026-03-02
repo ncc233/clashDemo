@@ -7,9 +7,58 @@
       mc:Ignorable="d" 
       Name="连接"
       xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+      xmlns:component="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConnectionPage"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    <Page.Resources>
+        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Page.Resources>
 
     <Grid >
         <Grid.RowDefinitions>
@@ -25,9 +74,23 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-            <controls:CustomLabel 
+            <!--<controls:CustomLabel 
                                   Icon="{StaticResource downloadCapacity}"
-                                  Header="下载量" Value="12.01" Unit="MB"/>
+                                  Header="下载量" Value="12.01" Unit="MB"/>-->
+            <!--<Viewbox Height="100" Width="100" >
+                <component:NetTestBlock Height="65" Width="40" />
+            </Viewbox>-->
+
+            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 -100 0 0" Text="" Header="名称"  />
+            
+            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}"   Header="图标"  />
+
+            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 100 0 0" Text="" Header="测试地址"  />
+            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 200 0 0" Text="" Header="测试地址11"  />
+            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 300 0 0" Text="" Header="测试地址222"  />
+            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 400 0 0" Text="" Header="测"  />
+
+
         </Grid>
     </Grid>
 </Page>
