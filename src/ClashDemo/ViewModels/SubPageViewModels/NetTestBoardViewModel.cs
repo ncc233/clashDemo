@@ -25,7 +25,7 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         {
             TestItems = new ObservableCollection<NetTestBlockModel>();
 
-            for (int i = 0; i < 10; i++) 
+            for (int i = 0; i < 4; i++) 
             {
                 TestItems.Add(new NetTestBlockModel() 
                 {
@@ -40,7 +40,9 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         {
             var window = App.Current.Container.Resolve<MainWindow>();
             UserControl common = App.Current.Container.Resolve<AddTestingDialog>();
-            common.DataContext = this;
+            var dataContext= App.Current.Container.Resolve<AddTestingDialogViewModel>();
+            dataContext.Ini("新建测试",TestItems);
+            common.DataContext = dataContext;
             _shadowDialog = new ShadowDialog();
             ShadowdialogHelper.RunDialog(window.gridMain.Children, _shadowDialog, common);
 
@@ -58,15 +60,22 @@ namespace ClashDemo.ViewModels.SubPageViewModels
             TestItems.Select(x => x.IsTesting = false).ToList();
         }
 
+
         [RelayCommand]
-        private void CancelDashBoardSetting()
+        private void EditNetTestBoard(NetTestBlockModel netTestBlock)
         {
-            ShadowdialogHelper.CloseDialog();
+            var window = App.Current.Container.Resolve<MainWindow>();
+            UserControl common = App.Current.Container.Resolve<AddTestingDialog>();
+            var dataContext = App.Current.Container.Resolve<AddTestingDialogViewModel>();
+            dataContext.Ini("编辑测试", TestItems,netTestBlock);
+            common.DataContext= dataContext;
+            _shadowDialog = new ShadowDialog();
+            ShadowdialogHelper.RunDialog(window.gridMain.Children, _shadowDialog, common);
         }
         [RelayCommand]
-        private void SaveDaskBoardSetting()
+        private void DeleteNetTestBoard(NetTestBlockModel netTestBlock)
         {
-            ShadowdialogHelper.CloseDialog();
+            TestItems.Remove(netTestBlock);
         }
     }
 }

@@ -12,6 +12,8 @@ namespace ClashDemo.Models
     {
         public string BlockName { get; set; }
 
+        public string BlockURL { get; set; }
+
         public int NetDelay { get; set; }
 
         public bool IsTesting { get; set; } = false;

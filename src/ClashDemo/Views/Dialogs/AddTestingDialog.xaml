@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ClashDemo.Views.Dialogs"
              xmlns:model="clr-namespace:ClashDemo.Models"
              xmlns:vm="clr-namespace:ClashDemo.ViewModels.SubPageViewModels"
-             d:DataContext="{d:DesignInstance Type=vm:NetTestBoardViewModel}"
+             d:DataContext="{d:DesignInstance Type=vm:AddTestingDialogViewModel}"
              xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
              mc:Ignorable="d" 
              Height="350" Width="445">
@@ -17,13 +17,13 @@
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="1.3*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="新建测试" 
+            <TextBlock Text="{Binding BoardName}" 
                        VerticalAlignment="Center"   
                        FontSize="25"
                        Margin="20"/>
-            <controls:HeaderTextBox Grid.Row="1" Style="{StaticResource headerTextBoxStyle}" Margin="0 -120 0 0" Header="名称"/>
-            <controls:HeaderTextBox Grid.Row="1" Style="{StaticResource headerTextBoxStyle}"  Header="图标"/>
-            <controls:HeaderTextBox Grid.Row="1" Style="{StaticResource headerTextBoxStyle}" Margin="0 120 0 0" Header="测试地址"/>
+            <controls:HeaderTextBox Grid.Row="1" x:Name="testName" Style="{StaticResource headerTextBoxStyle}" Margin="0 -120 0 0" Header="名称" Text="{Binding CurrentModel.BlockName}" />
+            <controls:HeaderTextBox Grid.Row="1" x:Name="testIcon" Style="{StaticResource headerTextBoxStyle}"  Header="图标"/>
+            <controls:HeaderTextBox Grid.Row="1" x:Name="testAddress" Style="{StaticResource headerTextBoxStyle}" Margin="0 120 0 0" Header="测试地址" Text="{Binding CurrentModel.BlockURL}"/>
             <Canvas Grid.Row="2">
                 <Button Canvas.Right="110" 
                                                Style="{StaticResource settingOperateButtonStyle}" 

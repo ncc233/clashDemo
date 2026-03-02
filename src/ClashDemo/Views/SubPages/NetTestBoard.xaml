@@ -8,6 +8,7 @@
              xmlns:vm="clr-namespace:ClashDemo.ViewModels.SubPageViewModels"
              xmlns:components="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
              xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+             xmlns:fhelpers="clr-namespace:ClashDemo.Helpers"
              d:DataContext="{d:DesignInstance Type=vm:NetTestBoardViewModel}"
              Height="225"
              d:DesignHeight="225" d:DesignWidth="330">
@@ -53,7 +54,10 @@
         </Border>
         <!--内容-->
         <Border Grid.Row="1" CornerRadius="0 0 10 10" Background="#ffffff"  >
-            <ScrollViewer Margin="0 10 0 0" HorizontalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+            <Border.Resources>
+                <fhelpers:MenuBindingHelper x:Key="vmContext" Data="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Grid},Path=DataContext}"/>
+            </Border.Resources>
+            <ScrollViewer  Margin="0 10 0 0" HorizontalAlignment="Center" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
                 <ItemsControl ItemsSource="{Binding TestItems}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -66,9 +70,19 @@
                                 IsCurrentTest="{Binding IsTesting}"
                                 TestName="{Binding BlockName}"
                                 DelayMessage="{Binding NetDelay}"
-                                Margin="4"/>
-                                 <!--Height="140" Width="75"
-                                Margin="4"/>-->
+                                Margin="4">
+                                <components:NetTestBlock.Resources>
+                                    <fhelpers:MenuBindingHelper x:Key="itemContext" Data="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=components:NetTestBlock},Path=DataContext}"/>
+                                </components:NetTestBlock.Resources>
+                                <components:NetTestBlock.ContextMenu>
+                                    <ContextMenu Background="{StaticResource commonContextMenuBackgroundBrush}">
+                                        <MenuItem Header="Edit" CommandParameter="{Binding Source={StaticResource itemContext},Path=Data}" 
+                                                  Command="{Binding Source={StaticResource vmContext},Path=Data.EditNetTestBoardCommand}"/>
+                                        <MenuItem Header="Delete" CommandParameter="{Binding Source={StaticResource itemContext},Path=Data}" 
+                                                  Command="{Binding Source={StaticResource vmContext},Path=Data.DeleteNetTestBoardCommand}"/>
+                                    </ContextMenu>
+                                </components:NetTestBlock.ContextMenu>
+                            </components:NetTestBlock>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>

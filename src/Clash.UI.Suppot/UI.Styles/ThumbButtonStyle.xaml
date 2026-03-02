@@ -23,6 +23,9 @@
                              Fill="White"
                              Margin="1.4 0 0 0.2"
                              HorizontalAlignment="Left">
+                            <Ellipse.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.2" ShadowDepth="0"/>
+                            </Ellipse.Effect>
                         </Ellipse>
                         <ContentPresenter Margin="50,0,0,0" VerticalAlignment="Center"/>
                     </Grid>

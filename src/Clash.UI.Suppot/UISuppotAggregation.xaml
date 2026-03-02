@@ -22,5 +22,6 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/LabelStatuBoard.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/HeaderTextBox.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonContextMenuStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
