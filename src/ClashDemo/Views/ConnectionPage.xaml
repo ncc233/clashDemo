@@ -8,6 +8,7 @@
       Name="连接"
       xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
       xmlns:component="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
+      xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
       xmlns:vm="clr-namespace:ClashDemo.ViewModels"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConnectionPage"
@@ -77,77 +78,62 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-            <!--<controls:CustomLabel 
-                                  Icon="{StaticResource downloadCapacity}"
-                                  Header="下载量" Value="12.01" Unit="MB"/>-->
-            <!--<Viewbox Height="100" Width="100" >
-                <component:NetTestBlock Height="65" Width="40" />
-            </Viewbox>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Height="300" >
+                <Button Background="White" 
+                        Height="80"
+                        Width="80"
+                        IsEnabled="True"
+                        helpers:RotationBehaviorHelper.IsRotationEnabled="True">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="RenderTransformOrigin" Value="0.5 0.5"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="Transparent">
+                                            <Border CornerRadius="2"/>
+                                            <Path Data="{StaticResource flashBoardGeometry}"
+                                                  Fill="Black" Stretch="Uniform"
+                                                  RenderTransformOrigin="0.5 0.5">
+                                                <!--<Path.RenderTransform>
+                                                    <RotateTransform x:Name="ncctest" Angle="0"/>
+                                                </Path.RenderTransform>-->
+                                            </Path>
+                                        </Grid>
+                                        <!--<ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard x:Name="rotateAnimation" >
+                                                        <Storyboard RepeatBehavior="Forever">
+                                                            <DoubleAnimation 
+                                                                Storyboard.TargetName="ncctest"
+                                                                 Storyboard.TargetProperty="Angle"
+                                                                 Duration="0:0:1"
+                                                                 To="360">
 
+                                                            </DoubleAnimation>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Trigger.EnterActions>
+                                                    <StopStoryboard BeginStoryboardName="rotateAnimation"/>
+                                                </Trigger.EnterActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>-->
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
-
-            <!--<ListBox Style="{StaticResource agentNetListBoxStyle}" VerticalAlignment="Center" Margin="4">
-                <ListBoxItem />
-                <ListBoxItem />
-                <ListBoxItem />
-                <ListBoxItem />
-                <ListBoxItem />
-                <ListBoxItem />
-                <ListBoxItem />
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <component:AgentListBoxItem Height="54"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>-->
-            <ListBox ItemsSource="{Binding TestItems}"
-                     Background="Transparent" 
-                     VerticalAlignment="Top"
-                     ItemContainerStyle="{StaticResource agentNetItem}">
-                <!--<ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Grid Margin="4">
-                                        <Border CornerRadius="8" Background="#ffffff"/>
-                                        <ContentPresenter/>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListBox.ItemContainerStyle>-->
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="2" VerticalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <ItemContainerTemplate>
-                        <component:AgentListBoxItem Height="54" />
-                    </ItemContainerTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <!--<ItemsControl>
-                <component:AgentListBoxItem Height="54" />
-                <component:AgentListBoxItem Height="54" />
-                <component:AgentListBoxItem Height="54" />
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid VerticalAlignment="Top" Columns="2"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>-->
-
-            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Text="{Binding ElementName=textName,Path=Text,Mode=OneWay}"   Header="图标"  />
-
-            <controls:HeaderTextBox Name="textName" Style="{StaticResource headerTextBoxStyle}" Margin="0 100 0 0" Text="" Header="测试地址"  />
-            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 200 0 0" Text="" Header="测试地址11"  />
-            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 300 0 0" Text="" Header="测试地址222"  />
-            <controls:HeaderTextBox Style="{StaticResource headerTextBoxStyle}" Margin="0 400 0 0" Text="" Header="测"  />
-
-
+            </Border>
         </Grid>
     </Grid>
 </Page>

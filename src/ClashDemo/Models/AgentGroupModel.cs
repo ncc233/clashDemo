@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,5 +21,11 @@ namespace ClashDemo.Models
         public string SelectModeDetial { get; set; }
 
         public ObservableCollection<AgentGroupItemModel> GroupItems { get; set; }
+        [RelayCommand]
+        private async Task FlashStatus() 
+        {
+            await Task.Delay(1000 * 3);
+
+        }
     }
 }
