@@ -76,6 +76,19 @@
                                 </components:NetTestBlock.Resources>
                                 <components:NetTestBlock.ContextMenu>
                                     <ContextMenu Background="{StaticResource commonContextMenuBackgroundBrush}">
+                                        <ContextMenu.Resources>
+                                            <Style TargetType="ContextMenu">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ContextMenu">
+                                                            <Border Background="{TemplateBinding Background}" CornerRadius="4" BorderThickness="0" >
+                                                                <ItemsPresenter Margin="0 4" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ContextMenu.Resources>
                                         <MenuItem Header="Edit" CommandParameter="{Binding Source={StaticResource itemContext},Path=Data}" 
                                                   Command="{Binding Source={StaticResource vmContext},Path=Data.EditNetTestBoardCommand}"/>
                                         <MenuItem Header="Delete" CommandParameter="{Binding Source={StaticResource itemContext},Path=Data}" 

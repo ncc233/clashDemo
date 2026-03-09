@@ -37,6 +37,7 @@ namespace Clash.UI.Suppot.UI.Controls
                 txt = this.Template.FindName("moveText", this) as TextBlock;
                 border = this.Template.FindName("Header", this) as Border;
                 IniTextBox(s);
+                TextChanged += HeaderTextBox_TextChanged;
             };
             this.GotFocus += (sender, e) =>
             {
@@ -45,11 +46,11 @@ namespace Clash.UI.Suppot.UI.Controls
                 var hei = txt.ActualHeight;
                 var wid = txt.ActualWidth;
                 var minWidth = wid * 0.67;
-                var padding = minWidth / 0.8209 ;
+                var padding = minWidth / 0.8209;
                 var margin = new Thickness(0, 0, padding, 0);
                 //CreateAnimation(margin, 12, -20, padding/2 * 0.112).Begin();
-                CreateAnimation(margin, 12, -20, (padding-minWidth)/2-2/0.8209).Begin();
-               
+                CreateAnimation(margin, 12, -20, (padding - minWidth) / 2 - 2 / 0.8209).Begin();
+
 
             };
             this.LostFocus += (sender, e) =>
@@ -61,7 +62,28 @@ namespace Clash.UI.Suppot.UI.Controls
 
         }
 
-        public void IniTextBox(object sender) 
+        private void HeaderTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.IsFocused == true) return;
+            var trasn=txt.RenderTransform as TranslateTransform;
+            if (!string.IsNullOrWhiteSpace(this.Text)&&trasn.Y==0)
+            {
+                var hei = txt.ActualHeight;
+                var wid = txt.ActualWidth;
+                var minWidth = wid * 0.67;
+                var padding = minWidth / 0.8209;
+                var margin = new Thickness(0, 0, padding, 0);
+                CreateAnimation(margin, 12, -20, (padding - minWidth) / 2 - 2 / 0.8209).Begin();
+            }
+            else 
+            {
+                if (!string.IsNullOrWhiteSpace(this.Text)) return;
+                var margin = new Thickness(0, 0, 0, 0);
+                CreateAnimation(margin, 18, 0, 0).Begin();
+            }
+        }
+
+        public void IniTextBox(object sender)
         {
             if (!string.IsNullOrWhiteSpace(this.Text))
             {

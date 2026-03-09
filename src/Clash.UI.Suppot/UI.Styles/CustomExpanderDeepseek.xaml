@@ -1,0 +1,169 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers"
+                    xmlns:local="clr-namespace:Clash.UI.Suppot.UI.Controls">
+
+
+    <Style x:Key="CustomExpanderDeepseek" TargetType="{x:Type local:CustomExpander}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:CustomExpander}">
+                    <DockPanel>
+                        <!-- 头部 ToggleButton -->
+                        <ToggleButton x:Name="HeaderToggleButton"
+                                      DockPanel.Dock="Top"
+                                      Height="65"
+                                          IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Background="Transparent"
+                                          BorderThickness="0"
+                                      SnapsToDevicePixels="True"
+                                          HorizontalContentAlignment="Stretch">
+                            <ToggleButton.Style>
+                                <Style TargetType="ToggleButton">
+                                    <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
+                                    <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="10"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <ContentPresenter/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ToggleButton.Style>
+                            <ToggleButton.Content>
+                                <!-- 白色背景、圆角边框 -->
+                                <Border Background="White"
+                                        BorderBrush="LightGray"
+                                        BorderThickness="1"
+                                        CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect
+                                            Color="#000000"
+                                            Opacity="0.05"
+                                            BlurRadius="8"
+                                            ShadowDepth="2"
+                                            Direction="270"/>
+                                    </Border.Effect>
+                                    <!-- 布局：标题 | 计数 | 箭头 -->
+                                    <Grid Margin="20,5" Background="Transparent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <!-- 标题+细节 -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- 计数 -->
+                                            <ColumnDefinition Width="Auto" />
+                                            <!-- 箭头 -->
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- 标题和细节区域 -->
+                                        <StackPanel Grid.Column="0"
+                                                    Orientation="Vertical"
+                                                    VerticalAlignment="Center">
+                                            <!-- Title -->
+                                            <TextBlock
+                                     Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}, FallbackValue='魔法喵'}"
+                                     FontSize="15"
+                                     FontWeight="SemiBold"
+                                     Foreground="#000000"
+                                     TextTrimming="CharacterEllipsis"
+                                     Margin="0,0,0,4"/>
+
+                                            <!-- Sub-row: "Selector" badge + label -->
+                                            <StackPanel Orientation="Horizontal" Margin="0 4 0 0">
+
+                                                <!-- Selector pill -->
+                                                <Border Background="Transparent"
+                                             BorderBrush="#007aff"
+                                             BorderThickness="1"
+                                             CornerRadius="4"
+                                             Padding="5,1"
+                                             Margin="0,0,6,0">
+                                                    <TextBlock
+                                             Text="{TemplateBinding ModeDescraption}"
+                                             FontSize="11"
+                                             FontWeight="Medium"
+                                             Foreground="#007aff"/>
+                                                </Border>
+
+                                                <!-- Sub-label -->
+                                                <TextBlock
+                                         Text="{TemplateBinding Detail}"
+                                         FontSize="13"
+                                         Foreground="#797f8b"
+                                         VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <!-- 计数徽章 -->
+                                        <Border Grid.Column="1"
+                                                Background="#e5f1ff"
+                                                CornerRadius="10"
+                                                Height="20"
+                                                MinWidth="30"
+                                                Margin="0,0,8,0"
+                                                HorizontalAlignment="Right">
+                                            <TextBlock Text="{Binding Count, RelativeSource={RelativeSource TemplatedParent}}"
+                                                       Grid.Column="1"
+                                                       Foreground="#007aff"
+                                                       FontSize="11"
+                                                       Margin="5,0,4,0"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
+                                        </Border>
+
+                                        <!-- 箭头（默认指向下，展开时指向上） -->
+                                        <Path x:Name="Arrow"
+                                              Grid.Column="2"
+                                              Data="M2,4 L8,10 L14,4"
+                                              Stroke="{TemplateBinding Foreground}"
+                                              StrokeLineJoin="Round"
+                                              StrokeStartLineCap="Round"
+                                              StrokeEndLineCap="Round"
+                                              StrokeThickness="1"
+                                              Width="10"
+                                              Height="10"
+                                              Stretch="Uniform"
+                                              Fill="Transparent"
+                                              RenderTransformOrigin="0.5,0.5"
+                                              Margin="2,0,0,0">
+                                            <Path.RenderTransform>
+                                                <RotateTransform x:Name="ArrowRotation" Angle="0"/>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                            </ToggleButton.Content>
+                        </ToggleButton>
+
+                        <!-- 展开内容区域 -->
+                        <Border x:Name="ContentSite"
+                                    DockPanel.Dock="Top"
+                                    Visibility="Collapsed"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    >
+                            <ContentPresenter
+                                    Margin="16,12"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </DockPanel>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 展开时：箭头向上旋转180°，并显示内容 -->
+                        <Trigger SourceName="HeaderToggleButton" Property="IsChecked" Value="True">
+                            <Setter TargetName="Arrow" Property="RenderTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="180"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

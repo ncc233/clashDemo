@@ -23,5 +23,10 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/HeaderTextBox.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonContextMenuStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ButtonGroupItemStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ButtonGroupStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomExpander.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomExpanderDeepseek.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/AgentNetListBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

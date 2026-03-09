@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClashDemo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -22,9 +23,10 @@ namespace ClashDemo.Views
     /// </summary>
     public partial class ConnectionPage : Page
     {
-        public ConnectionPage()
+        public ConnectionPage(ConnectionPageViewModel vm)
         {
             InitializeComponent();
+            this.DataContext=vm;
         }
     }
 }

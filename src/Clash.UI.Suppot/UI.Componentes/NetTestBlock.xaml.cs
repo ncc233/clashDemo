@@ -88,7 +88,6 @@ namespace Clash.UI.Suppot.UI.Componentes
         public NetTestBlock()
         {
             InitializeComponent();
-
             icon.Data = Icon;
         }
     }

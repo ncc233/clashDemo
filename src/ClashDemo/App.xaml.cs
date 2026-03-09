@@ -37,13 +37,21 @@ namespace ClashDemo
             serviceCollection.RegisterType<AddTestingDialog>();
             var assembly = Assembly.GetExecutingAssembly();
             serviceCollection.RegisterAssemblyTypes(assembly)
-                .Where(x => x.Name.EndsWith("Page"))
+                .Where(x => x.Name.EndsWith("Page") &&! x.Name.Contains("AgentPage"))
+                .PublicOnly()
+                .Where(xx => xx.IsClass).As<Page>();
+            serviceCollection.RegisterAssemblyTypes(assembly)
+                .Where(x => x.Name.EndsWith("Page")&&x.Name.Contains("AgentPage"))
                 .PublicOnly()
                 .Where(xx => xx.IsClass).As<Page>().SingleInstance();
             serviceCollection.RegisterAssemblyTypes(assembly)
-                .Where(x => x.Name.EndsWith("ViewModel"))
+                .Where(x => x.Name.EndsWith("ViewModel")&&!x.Name.Contains("SubPageViewModels"))
                 .PublicOnly()
                 .Where(xx => xx.IsClass).SingleInstance();
+            serviceCollection.RegisterAssemblyTypes(assembly)
+                .Where(x => x.Name.EndsWith("ViewModel")&&x.Name.Contains("SubPageViewModels"))
+                .PublicOnly()
+                .Where(xx => xx.IsClass);
 
             Container = serviceCollection.Build();
         }

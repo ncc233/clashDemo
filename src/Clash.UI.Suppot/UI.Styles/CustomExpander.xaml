@@ -1,0 +1,276 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ═══════════════════════════════════════════════
+         BRUSH RESOURCES
+    ═══════════════════════════════════════════════ -->
+
+    <!-- Card / Container -->
+    <SolidColorBrush x:Key="Expander.Card.Background"          Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="Expander.Card.BorderBrush"         Color="#E5E7EB"/>
+    <SolidColorBrush x:Key="Expander.Card.HoverBorderBrush"    Color="#D1D5DB"/>
+
+    <!-- Header text -->
+    <SolidColorBrush x:Key="Expander.Title.Foreground"         Color="#111827"/>
+    <SolidColorBrush x:Key="Expander.SubText.Foreground"       Color="#6B7280"/>
+
+    <!-- "Selector" tag badge -->
+    <SolidColorBrush x:Key="Expander.Tag.Background"           Color="#EFF6FF"/>
+    <SolidColorBrush x:Key="Expander.Tag.BorderBrush"          Color="#BFDBFE"/>
+    <SolidColorBrush x:Key="Expander.Tag.Foreground"           Color="#2563EB"/>
+
+    <!-- Blue count badge -->
+    <SolidColorBrush x:Key="Expander.Badge.Background"         Color="#DBEAFE"/>
+    <SolidColorBrush x:Key="Expander.Badge.Foreground"         Color="#1D4ED8"/>
+
+    <!-- Toggle arrow button -->
+    <SolidColorBrush x:Key="Expander.Toggle.Background"        Color="Transparent"/>
+    <SolidColorBrush x:Key="Expander.Toggle.HoverBackground"   Color="#F3F4F6"/>
+    <SolidColorBrush x:Key="Expander.Toggle.ArrowBrush"        Color="#6B7280"/>
+
+    <!-- Content area -->
+    <SolidColorBrush x:Key="Expander.Content.Background"       Color="#FAFAFA"/>
+    <SolidColorBrush x:Key="Expander.Separator.BorderBrush"    Color="#F3F4F6"/>
+
+
+    <!-- ═══════════════════════════════════════════════
+         TOGGLE BUTTON STYLE  (the chevron arrow button)
+    ═══════════════════════════════════════════════ -->
+    <Style x:Key="ExpanderToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable"            Value="False"/>
+        <Setter Property="Background"           Value="{StaticResource Expander.Toggle.Background}"/>
+        <Setter Property="Width"                Value="32"/>
+        <Setter Property="Height"               Value="32"/>
+        <Setter Property="Cursor"               Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="ToggleBorder"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="6"
+                            Width="32" Height="32">
+                        <Path x:Name="Arrow"
+                              Data="M2,4 L8,10 L14,4"
+                              Stroke="{StaticResource Expander.Toggle.ArrowBrush}"
+                              StrokeThickness="2"
+                              StrokeLineJoin="Round"
+                              StrokeStartLineCap="Round"
+                              StrokeEndLineCap="Round"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="16" Height="14"
+                              Stretch="Uniform"
+                              RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <RotateTransform x:Name="ArrowRotation" Angle="0"/>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ToggleBorder"
+                                    Property="Background"
+                                    Value="{StaticResource Expander.Toggle.HoverBackground}"/>
+                        </Trigger>
+
+                        <!-- Expanded: rotate arrow 180 degrees -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ArrowRotation"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="180" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ArrowRotation"
+                                            Storyboard.TargetProperty="Angle"
+                                            To="0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- ═══════════════════════════════════════════════
+         EXPANDER STYLE  (main control)
+
+         Usage:
+           Style="{StaticResource CustomExpanderStyle}"
+           Tag="魔法喵"     ← title text  (bound via Tag property)
+           Header="37"      ← count badge number  (bound via Header property)
+    ═══════════════════════════════════════════════ -->
+    <Style x:Key="CustomExpanderStyle" TargetType="{x:Type Expander}">
+        <Setter Property="Background"                 Value="{StaticResource Expander.Card.Background}"/>
+        <Setter Property="BorderBrush"                Value="{StaticResource Expander.Card.BorderBrush}"/>
+        <Setter Property="BorderThickness"            Value="1"/>
+        <Setter Property="Padding"                    Value="0"/>
+        <Setter Property="HorizontalAlignment"        Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="SnapsToDevicePixels"        Value="True"/>
+        <Setter Property="FocusVisualStyle"           Value="{x:Null}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+
+
+                    <DockPanel>
+                        <!-- Outer card border -->
+                        <Border x:Name="CardBorder"
+                                DockPanel.Dock="Top"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10"
+                            SnapsToDevicePixels="True">
+
+                            <Border.Effect>
+                                <DropShadowEffect
+                                Color="#000000"
+                                Opacity="0.05"
+                                BlurRadius="8"
+                                ShadowDepth="2"
+                                Direction="270"/>
+                            </Border.Effect>
+
+                            <!-- HEADER ROW -->
+                            <Border 
+                                    Padding="16,12,12,12"
+                                    Background="Transparent">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="6"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Left: Title + tag sub-row -->
+                                    <StackPanel Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                Orientation="Vertical">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="StackPanel"/>
+                                        </StackPanel.Resources>
+
+                                        <!-- Title -->
+                                        <TextBlock
+                                            Text="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}, FallbackValue='魔法喵'}"
+                                            FontSize="15"
+                                            FontWeight="SemiBold"
+                                            Foreground="{StaticResource Expander.Title.Foreground}"
+                                            TextTrimming="CharacterEllipsis"
+                                            Margin="0,0,0,4"/>
+
+                                        <!-- Sub-row: "Selector" badge + label -->
+                                        <StackPanel Orientation="Horizontal">
+
+                                            <!-- Selector pill -->
+                                            <Border Background="{StaticResource Expander.Tag.Background}"
+                                                    BorderBrush="{StaticResource Expander.Tag.BorderBrush}"
+                                                    BorderThickness="1"
+                                                    CornerRadius="4"
+                                                    Padding="5,1"
+                                                    Margin="0,0,6,0">
+                                                <TextBlock
+                                                    Text="Selector"
+                                                    FontSize="11"
+                                                    FontWeight="Medium"
+                                                    Foreground="{StaticResource Expander.Tag.Foreground}"/>
+                                            </Border>
+
+                                            <!-- Sub-label -->
+                                            <TextBlock
+                                                Text="自动选择"
+                                                FontSize="13"
+                                                Foreground="{StaticResource Expander.SubText.Foreground}"
+                                                VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!-- Count badge -->
+                                    <Border Grid.Column="1"
+                                            Background="{StaticResource Expander.Badge.Background}"
+                                            CornerRadius="12"
+                                            MinWidth="28"
+                                            Height="26"
+                                            Padding="8,0"
+                                            VerticalAlignment="Center">
+                                        <TextBlock
+                                            Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}, FallbackValue='37'}"
+                                            FontSize="13"
+                                            FontWeight="SemiBold"
+                                            Foreground="{StaticResource Expander.Badge.Foreground}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                                    </Border>
+
+                                    <!-- Chevron toggle -->
+                                    <ToggleButton
+                                        Grid.Column="3"
+                                        x:Name="HeaderSite"
+                                        IsChecked="{Binding IsExpanded,
+                                                    Mode=TwoWay,
+                                                    RelativeSource={RelativeSource TemplatedParent}}"
+                                        Style="{StaticResource ExpanderToggleButtonStyle}"
+                                        VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </Border>
+
+                        <!-- CONTENT AREA (collapsible) -->
+                        <Border x:Name="ContentSite"
+                                    DockPanel.Dock="Top"
+                                    Visibility="Collapsed"
+                                    Background="Transparent"
+                                    BorderBrush="{StaticResource Expander.Separator.BorderBrush}"
+                                    >
+                            <ContentPresenter
+                                    Margin="16,12"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+
+                    </DockPanel>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Show content when expanded -->
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+
+                        <!-- Hover: slightly darker card border -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CardBorder"
+                                    Property="BorderBrush"
+                                    Value="{StaticResource Expander.Card.HoverBorderBrush}"/>
+                        </Trigger>
+
+                        <!-- Disabled: fade out -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="CardBorder" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

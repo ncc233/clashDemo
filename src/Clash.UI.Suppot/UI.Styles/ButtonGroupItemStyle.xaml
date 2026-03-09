@@ -1,0 +1,203 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers">
+
+
+
+
+
+    <Storyboard x:Key="mouseEnterUnselected">
+        <DoubleAnimation Storyboard.TargetName="middleBorder"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0.1"
+                         Duration="0:0:0.2"/>
+    </Storyboard>
+    <Storyboard x:Key="mouseEnterSelected">
+        <DoubleAnimation Storyboard.TargetName="topBorder"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0.1"
+                         Duration="0:0:0.2"/>
+    </Storyboard>
+
+    <Storyboard x:Key="mouseLeaveUnselected">
+        <DoubleAnimation Storyboard.TargetName="middleBorder"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0"
+                         Duration="0:0:0.2"/>
+    </Storyboard>
+    <Storyboard x:Key="mouseLeaveSelected">
+        <DoubleAnimation Storyboard.TargetName="topBorder"
+                         Storyboard.TargetProperty="Opacity"
+                         To="0"
+                         Duration="0:0:0.2"/>
+    </Storyboard>
+    <Storyboard x:Key="selected">
+        <ColorAnimation 
+            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                        To="#007aff"
+                        Duration="0:0:0.2"/>
+    </Storyboard>
+    <Storyboard x:Key="unselected">
+        <ColorAnimation 
+            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                        To="Transparent"
+                        Duration="0:0:0.2"/>
+    </Storyboard>
+
+
+    <Style x:Key="groupItemDefalut" TargetType="{x:Type ButtonBase}">
+        <Setter Property="BorderBrush" Value="#007aff" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#007aff"/>
+        <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
+        <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="4"/>
+        <Setter Property="helpers:RippleAnimationHelper.RippleBrush" Value="#007aff"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}">
+                        </Border>
+                        <Border Name="middleBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#007aff" Opacity="0" BorderThickness="0"/>
+                        <Border Name="topBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#000000" Opacity="0" BorderThickness="0"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderThickness" Value="1.2"/>
+                        </Trigger>
+                        <MultiTrigger >
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseEnterSelected}"/>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseLeaveSelected}"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        <MultiTrigger >
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsChecked" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseEnterUnselected}"/>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseLeaveUnselected}"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="#ffffff"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource selected}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource unselected}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="groupItemToggleDefalut" TargetType="{x:Type ButtonBase}">
+        <Setter Property="BorderBrush" Value="#007aff" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#007aff"/>
+        <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
+        <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="4"/>
+        <Setter Property="helpers:RippleAnimationHelper.RippleBrush" Value="#007aff"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}">
+                        </Border>
+                        <Border Name="middleBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#007aff" Opacity="0" BorderThickness="0"/>
+                        <Border Name="topBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#000000" Opacity="0" BorderThickness="0"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderThickness" Value="1.2"/>
+                        </Trigger>
+                        <MultiTrigger >
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseEnterSelected}"/>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseLeaveSelected}"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        <MultiTrigger >
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsChecked" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseEnterUnselected}"/>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource mouseLeaveUnselected}"/>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="#ffffff"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource selected}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource unselected}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="RadioGroupItemSingle" BasedOn="{StaticResource groupItemDefalut}" TargetType="RadioButton">
+        <Setter Property="BorderThickness" Value="0.35 0.7 0.35 0.7" />
+        <Setter Property="helpers:AttachPropertyHelper.CornerRadius" Value="0"/>
+    </Style>
+    <Style x:Key="RadioGroupItemHorizontalFirst" BasedOn="{StaticResource groupItemDefalut}" TargetType="RadioButton">
+        <Setter Property="BorderThickness" Value="0.7 0.7 0.35 0.7" />
+        <Setter Property="helpers:AttachPropertyHelper.CornerRadius" Value="4 0 0 4"/>
+    </Style>
+    <Style x:Key="RadioGroupItemHorizontalLast" BasedOn="{StaticResource groupItemDefalut}" TargetType="RadioButton">
+        <Setter Property="BorderThickness" Value="0.35 0.7 0.7 0.7" />
+        <Setter Property="helpers:AttachPropertyHelper.CornerRadius" Value="0 4 4 0"/>
+    </Style>
+    <Style x:Key="RadioGroupItemDefault" TargetType="RadioButton" BasedOn="{StaticResource RadioGroupItemSingle}">
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style x:Key="toggleButtonGroupItemSingle" BasedOn="{StaticResource groupItemToggleDefalut}" TargetType="ToggleButton">
+        <Setter Property="BorderThickness" Value="0.7" />
+        <Setter Property="helpers:AttachPropertyHelper.CornerRadius" Value="4"/>
+    </Style>
+    <Style x:Key="ButtonGroupItemSingle" TargetType="Button">
+
+    </Style>
+    <Style x:Key="ButtonGroupItemHorizontalFirs" TargetType="Button">
+
+    </Style>
+    <Style x:Key="ButtonGroupItemHorizontalLast" TargetType="Button">
+
+    </Style>
+    <Style x:Key="ButtonGroupItemDefault" TargetType="Button">
+
+    </Style>
+</ResourceDictionary>

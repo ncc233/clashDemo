@@ -112,17 +112,19 @@
                            Margin="1" 
                            VerticalOffset="14"
                            MaxHeight="300"
-                           Placement="Bottom" 
+                           Placement="Bottom"
                            PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                    <theme:SystemDropShadowChrome x:Name="shadow"
+                    <!--<theme:SystemDropShadowChrome x:Name="shadow"
                                               Color="Transparent" 
                                               MinWidth="{Binding ActualWidth, ElementName=templateRoot}" 
-                                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                        <Border x:Name="dropDownBorder"
+                                              MaxHeight="{TemplateBinding MaxDropDownHeight}">-->
+                    <Border x:Name="dropDownBorder"
+                            Width="{Binding ActualWidth, ElementName=templateRoot}" 
+                            Height="{TemplateBinding MaxDropDownHeight}"
                             Background="{DynamicResource popupBorderBackground}"
                             BorderThickness="0"
                             CornerRadius="4">
-                            <ScrollViewer x:Name="DropDownScrollViewer" Style="{DynamicResource customScrollViewer1}">
+                        <ScrollViewer x:Name="DropDownScrollViewer" Style="{DynamicResource customScrollViewer1}">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
                                         <Rectangle x:Name="opaqueRect" 
@@ -136,7 +138,7 @@
                                 </Grid>
                             </ScrollViewer>
                         </Border>
-                    </theme:SystemDropShadowChrome>
+                    <!--</theme:SystemDropShadowChrome>-->
                 </Popup>
                 <ToggleButton x:Name="toggleButton"
                           Background="{TemplateBinding Background}"
@@ -160,10 +162,10 @@
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
+            <!--<Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
                 <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5"/>
                 <Setter Property="Color" TargetName="shadow" Value="#71000000"/>
-            </Trigger>
+            </Trigger>-->
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource hComboxBoxMouseOverBorderBrush}"/>
             </Trigger>

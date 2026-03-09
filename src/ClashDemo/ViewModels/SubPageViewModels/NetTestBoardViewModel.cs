@@ -51,10 +51,6 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         [RelayCommand]
         private async Task TestNets() 
         {
-            //foreach (var item in TestItems)
-            //{
-            //    item.IsTesting=true;
-            //}
             TestItems.Select(x => x.IsTesting = true).ToList();
             await Task.Delay(2000);
             TestItems.Select(x => x.IsTesting = false).ToList();

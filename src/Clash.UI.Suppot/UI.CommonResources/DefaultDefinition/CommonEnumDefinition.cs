@@ -13,4 +13,11 @@ namespace Clash.UI.Suppot.UI.CommonResources.DefaultDefinition
         DESC,
         Delay
     }
+
+    public enum LinearLayout 
+    {
+        Stack,
+
+        Uniform
+    }
 }

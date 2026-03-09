@@ -32,7 +32,10 @@ namespace ClashDemo.ViewModels
 
         public IPMessagBoardViewModel IPMessagBoardViewModel { get; set; }
         public NetTestBoardViewModel NetTestBoardViewModel { get; set; }
-        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel,NetAgentBoardViewModel netAgentBoardViewModel,IPMessagBoardViewModel iPMessagBoard,NetTestBoardViewModel netTestBoardViewModel) 
+        public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel,
+            NetAgentBoardViewModel netAgentBoardViewModel,
+            IPMessagBoardViewModel iPMessagBoard,
+            NetTestBoardViewModel netTestBoardViewModel) 
         {
             DaskBoardItems = 
                 [

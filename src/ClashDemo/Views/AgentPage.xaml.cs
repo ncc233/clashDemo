@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClashDemo.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace ClashDemo.Views
     /// </summary>
     public partial class AgentPage : Page
     {
-        public AgentPage()
+        public AgentPage(AgentPageViewModel vm)
         {
             InitializeComponent();
+            this.DataContext = vm;
         }
     }
 }
