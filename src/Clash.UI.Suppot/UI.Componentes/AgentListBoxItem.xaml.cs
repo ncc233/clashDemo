@@ -103,6 +103,22 @@ namespace Clash.UI.Suppot.UI.Componentes
         public static readonly DependencyProperty DelayProperty =
             DependencyProperty.Register(nameof(Delay), typeof(object), typeof(AgentListBoxItem), new PropertyMetadata("Check", OnDelayChanged));
 
+
+
+
+        public ICommand SingleDelayTest
+        {
+            get { return (ICommand)GetValue(SingleDelayTestProperty); }
+            set { SetValue(SingleDelayTestProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SingleDelayTest.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SingleDelayTestProperty =
+            DependencyProperty.Register(nameof(SingleDelayTest), typeof(ICommand), typeof(AgentListBoxItem), new PropertyMetadata(null));
+
+
+
+
         private static void OnDelayChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is AgentListBoxItem agentListBoxItem)
@@ -150,10 +166,10 @@ namespace Clash.UI.Suppot.UI.Componentes
             subHeader.Text = SubHeader;
             delayButton.Content = Delay;
             delayButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#007aff"));//蓝
-            delayButton.Click += DelayButton_Click;
             delayButton.MouseEnter += DelayButton_MouseEnter;
             delayButton.MouseLeave += DelayButton_MouseLeave;
             Loaded += AgentListBoxItem_Loaded;
+            delayButton.Command = SingleDelayTest;
         }
 
         private void DelayButton_MouseLeave(object sender, MouseEventArgs e)
@@ -167,14 +183,6 @@ namespace Clash.UI.Suppot.UI.Componentes
                 this.delayBorder.Visibility = Visibility.Visible;
         }
 
-
-        private async void DelayButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.IsTesting = true;
-            await Task.Delay(2000);
-            Delay = "33";
-            this.IsTesting = false;
-        }
 
 
 

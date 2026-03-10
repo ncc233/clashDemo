@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,12 +21,24 @@ namespace ClashDemo.Models
 
         public string SelectModeDetial { get; set; }
 
-        public ObservableCollection<AgentGroupItemModel> GroupItems { get; set; }
-        [RelayCommand]
-        private async Task FlashStatus() 
-        {
-            await Task.Delay(1000 * 3);
+        public AgentGroupItemModel SelectedItem { set; get; }
 
+        public ObservableCollection<AgentGroupItemModel> GroupItems { get; set; }
+
+        [RelayCommand]
+        private async Task FlashAllPoint() 
+        {
+            foreach (var item in GroupItems)
+            {
+                item.IsTesting=true;
+            }
+            await Task.Delay(1000 * 4);
+            foreach (var item in GroupItems)
+            {
+                var random = new Random();
+                item.IsTesting = false;
+                item.Delay = random.Next(0,1000).ToString();
+            }
         }
     }
 }

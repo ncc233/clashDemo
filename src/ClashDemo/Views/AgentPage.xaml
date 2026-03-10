@@ -75,7 +75,7 @@
                                         <Button Style="{StaticResource circlButton}"
                                     Margin="4 0"
                                     Content="{StaticResource flashBoardGeometry}"
-                                                Command="{Binding FlashStatusCommand}"
+                                                Command="{Binding FlashAllPointCommand}"
                                                 RenderTransformOrigin="0.5 0.5"
                                                 helpers:RotationBehaviorHelper.IsRotationEnabled="True"/>
                                         <Button Style="{StaticResource circlButton}"
@@ -89,6 +89,7 @@
                                            ItemContainerStyle="{StaticResource agentNetItem}"
                                              helpers:ScrollViewerAutoScrollHelper.IsEnabled="True"
                                            ItemsSource="{Binding GroupItems}"
+                                             SelectedItem="{Binding SelectedItem}"
                                            Style="{StaticResource agentNetListBoxStyle}"
                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type controls:CustomExpander}},Path=ActualWidth}"
                                            Margin="-17 0 -15 0">
@@ -98,7 +99,8 @@
                                                              Delay="{Binding Delay}"
                                                              Margin="3 0 3 0"
                                                              Height="54"
-                                                             IsTesting="False"
+                                                             IsTesting="{Binding IsTesting}"
+                                                             SingleDelayTest="{Binding FlashDelayCommand}"
                                                              AgentSource="{Binding ItemMessages}"/>
                                             </ItemContainerTemplate>
                                         </ListBox.ItemTemplate>
