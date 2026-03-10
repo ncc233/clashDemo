@@ -36,6 +36,9 @@
             </StackPanel>
         </StackPanel>
 
+        <Viewbox  Grid.Column="1" Height="10" Width="40"  HorizontalAlignment="Right"  Margin="0 0 11 0">
+            <Control x:Name="delayAnimationControl" Style="{StaticResource delayCirclGroup}" IsEnabled="False" Background="#8e949f"  Height="18" Width="60" Grid.Row="3"  />
+        </Viewbox>
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 13 0">
             <Grid>
                 <Border x:Name="delayBorder" Background="#007aff" 
@@ -60,8 +63,5 @@
                 </Button>
             </Grid>
         </StackPanel>
-        <Viewbox  Grid.Column="1" Height="10" Width="40"  HorizontalAlignment="Right"  Margin="0 0 11 0">
-            <Control x:Name="delayAnimationControl" Style="{StaticResource delayCirclGroup}" IsEnabled="False" Background="#8e949f"  Height="18" Width="60" Grid.Row="3"  />
-        </Viewbox>
     </Grid>
 </UserControl>

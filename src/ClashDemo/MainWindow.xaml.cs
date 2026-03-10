@@ -1,4 +1,5 @@
 ﻿using Clash.UI.Suppot.UI.Controls;
+using Clash.UI.Suppot.UI.Helpers;
 using ClashDemo.ViewModels;
 using System.Diagnostics;
 using System.Text;
@@ -22,13 +23,10 @@ namespace ClashDemo
         public MainWindow()
         {
             InitializeComponent();
+            this.Closed += (s, e) => NotificationManager.CloseAllNotifications();
             var vm = new MainWindowViewModel();
             this.DataContext = vm;
             navigationBar.SelectedIndex = 0;
-            var data=30 % 100*3.6;
-            var data3 = 30 % 100;
-            var data2 = 30 % 360;
-            Math.Cos(30);
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)

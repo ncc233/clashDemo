@@ -44,7 +44,7 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-            <ScrollViewer >
+            <ScrollViewer Style="{StaticResource customScrollViewer1}" VerticalScrollBarVisibility="Auto">
 
                 <ItemsControl ItemsSource="{Binding AgentGroups}" VerticalAlignment="Top" Margin="4">
 

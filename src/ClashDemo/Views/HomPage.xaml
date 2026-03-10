@@ -26,6 +26,7 @@
             <Button Style="{StaticResource circlButton}" 
                     Content="{StaticResource slimGeometry}"
                     helpers:ControlSuspensionHelper.IEnable="True"
+                    Command="{Binding ShowInfoWindowCommand}"
                     Canvas.Right="100"  
                     Canvas.Top="16">
                 <Button.ToolTip>
@@ -61,8 +62,9 @@
 
 
         <ScrollViewer Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}"  
+                      Style="{StaticResource customScrollViewer1}"
                       SnapsToDevicePixels="True"
-                      VerticalScrollBarVisibility="Hidden">
+                      VerticalScrollBarVisibility="Auto">
             <Grid Margin="5" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>

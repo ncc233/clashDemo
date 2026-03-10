@@ -37,6 +37,7 @@
                                 <Border Background="White"
                                         BorderBrush="LightGray"
                                         BorderThickness="1"
+                                        SnapsToDevicePixels="True"
                                         CornerRadius="10">
                                     <Border.Effect>
                                         <DropShadowEffect
@@ -47,7 +48,7 @@
                                             Direction="270"/>
                                     </Border.Effect>
                                     <!-- 布局：标题 | 计数 | 箭头 -->
-                                    <Grid Margin="20,5" Background="Transparent">
+                                    <Grid Margin="20,5" Background="Transparent" SnapsToDevicePixels="True">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <!-- 标题+细节 -->
@@ -63,6 +64,7 @@
                                                     VerticalAlignment="Center">
                                             <!-- Title -->
                                             <TextBlock
+                                                SnapsToDevicePixels="True"
                                      Text="{Binding Header, RelativeSource={RelativeSource TemplatedParent}, FallbackValue='魔法喵'}"
                                      FontSize="15"
                                      FontWeight="SemiBold"

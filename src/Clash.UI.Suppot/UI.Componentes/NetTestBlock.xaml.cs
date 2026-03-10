@@ -47,7 +47,9 @@ namespace Clash.UI.Suppot.UI.Componentes
         private static void OnTestNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as NetTestBlock;
-            control.testName.Text=e.NewValue.ToString();
+            string res = e.NewValue?.ToString();
+            if (string.IsNullOrWhiteSpace(res)) return;
+            control.testName.Text= res;
         }
 
         public bool IsCurrentTest

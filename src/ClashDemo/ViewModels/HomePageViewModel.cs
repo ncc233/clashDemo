@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using Clash.UI.Suppot.UI.CommonResources.DefaultDefinition;
 
 namespace ClashDemo.ViewModels
 {
@@ -92,7 +93,15 @@ namespace ClashDemo.ViewModels
         {
             WeakReferenceMessenger.Default.Send(new NavigationInfo() { PageName= name });
         }
+        [RelayCommand]
+        private async Task ShowInfoWindow() 
+        {
 
-        
+            //NotificationHelper.ShowDesktopNotification("可视化元素（包括图片、线等，继承自UIElement）可以实现2D变换，包括平移、旋转、缩放等，通过设置其两个属性来实现，可以设置的属性包括变换类型及变换的原点坐标设置。");
+            //NotificationHelper.ShowDesktopNotification("你好2",NotificationLevel.Urgent);
+            //NotificationHelper.ShowDesktopNotification("你好3", NotificationLevel.Warning);
+            NotificationHelper.ShowDesktopNotification("你好4");
+            //NotificationHelper.ShowDesktopNotification("你好5", NotificationLevel.Urgent);
+        }
     }
 }

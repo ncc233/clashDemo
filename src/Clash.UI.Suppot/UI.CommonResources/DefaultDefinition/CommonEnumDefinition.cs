@@ -20,4 +20,11 @@ namespace Clash.UI.Suppot.UI.CommonResources.DefaultDefinition
 
         Uniform
     }
+
+    public enum NotificationLevel
+    {
+        Info,
+        Warning,
+        Urgent
+    }
 }

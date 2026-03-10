@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Configuration;
 using Clash.UI.Suppot.UI.Componentes;
+using Clash.UI.Suppot.UI.Helpers;
 using ClashDemo.Views.Dialogs;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
@@ -74,6 +75,11 @@ namespace ClashDemo
             bool isRun = false;
             _mutex = new Mutex(true, @"FullDemoApp", out isRun);
             return !isRun;
+        }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            NotificationManager.CloseAllNotifications();
+            base.OnExit(e);
         }
     }
 

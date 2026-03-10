@@ -151,21 +151,23 @@ namespace Clash.UI.Suppot.UI.Componentes
             delayButton.Content = Delay;
             delayButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#007aff"));//蓝
             delayButton.Click += DelayButton_Click;
+            delayButton.MouseEnter += DelayButton_MouseEnter;
+            delayButton.MouseLeave += DelayButton_MouseLeave;
             Loaded += AgentListBoxItem_Loaded;
         }
 
-
-        protected override void OnMouseEnter(MouseEventArgs e)
+        private void DelayButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            base.OnMouseEnter(e);
-            if (!IsTesting)
-                this.delayBorder.Visibility = Visibility.Visible;
-        }
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            base.OnMouseLeave(e);
             this.delayBorder.Visibility = Visibility.Hidden;
         }
+
+        private void DelayButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!IsTesting )
+                this.delayBorder.Visibility = Visibility.Visible;
+        }
+
+
         private async void DelayButton_Click(object sender, RoutedEventArgs e)
         {
             this.IsTesting = true;
