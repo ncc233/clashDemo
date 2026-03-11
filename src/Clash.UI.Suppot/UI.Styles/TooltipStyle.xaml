@@ -17,6 +17,30 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="ArrowToolTipLeft" TargetType="ToolTip">
+        <Setter Property="HorizontalOffset" Value="4"/>
+        <Setter Property="PlacementRectangle" Value="-10 0 5 5"/>
+        <Setter Property="Placement" Value="Left" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border CornerRadius="2" Background="#E6333333" MinHeight="20" MinWidth="50">
+                            <TextBlock Text="{TemplateBinding Content}" Foreground="White" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Path Data="M 6 0 L 0 6 L 12 6 Z" Fill="#E6333333"
+                              Stretch="Uniform"
+                              Margin="-3 0 0 0"
+                              RenderTransformOrigin="0.5 0.5">
+                            <Path.RenderTransform>
+                                <RotateTransform Angle="90" />
+                            </Path.RenderTransform>
+                        </Path>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
     <Style x:Key="RectToolTip" TargetType="ToolTip">
         <Setter Property="VerticalOffset" Value="40"/>
@@ -25,8 +49,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToolTip">
                     <StackPanel>
-                        <!--<Path Data="M 6 0 L 0 6 L 12 6 Z" Fill="#E6333333"
-                         HorizontalAlignment="Center" />-->
                         <Border CornerRadius="2" Background="#E6333333" MinHeight="20" MinWidth="50">
                             <TextBlock Text="{TemplateBinding Content}" Foreground="White" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>

@@ -56,6 +56,21 @@ namespace Clash.UI.Suppot.UI.Helpers
                 control.MouseEnter += Control_MouseEnter;
                 control.MouseLeave += Control_MouseLeave;
                 control.Loaded += Control_Loaded;
+                control.Unloaded += Control_Unloaded;
+            }
+        }
+
+        private static void Control_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var control = sender as FrameworkElement;
+            if (control != null)
+            {
+                control.PreviewMouseDown -= Control_MouseDown;
+                control.PreviewMouseUp -= Control_MouseUp;
+                control.MouseEnter -= Control_MouseEnter;
+                control.MouseLeave -= Control_MouseLeave;
+                control.Loaded -= Control_Loaded;
+                control.Unloaded -= Control_Unloaded;
             }
         }
 

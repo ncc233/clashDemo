@@ -25,6 +25,8 @@ namespace ClashDemo.Views
         {
             InitializeComponent();
             this.DataContext = vm;
+
         }
+
     }
 }

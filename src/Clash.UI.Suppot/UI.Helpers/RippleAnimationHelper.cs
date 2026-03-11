@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -106,6 +107,20 @@ namespace Clash.UI.Suppot.UI.Helpers
                 control.PreviewMouseUp += Control_MouseUp;
                 control.MouseLeave += Control_MouseLeave;
                 control.Loaded += Control_Loaded;
+                control.Unloaded += Control_Unloaded;
+            }
+        }
+
+        private static void Control_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var control = sender as FrameworkElement;
+            if (control != null)
+            {
+                control.PreviewMouseDown -= Control_MouseDown;
+                control.PreviewMouseUp -= Control_MouseUp;
+                control.MouseLeave -= Control_MouseLeave;
+                control.Loaded -= Control_Loaded;
+                control.Unloaded -= Control_Unloaded;
             }
         }
 

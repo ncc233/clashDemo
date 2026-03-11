@@ -39,6 +39,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         public static void CloseDialog() 
         {
+            _curentDialog.MouseLeftButtonUp -= UserControl_MouseLeftButtonUp;
             UserControl_MouseLeftButtonUp(null,null);
         }
     }

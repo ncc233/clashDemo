@@ -28,5 +28,6 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomExpander.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomExpanderDeepseek.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/AgentNetListBox.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ScrollViewerNavigationButton.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
