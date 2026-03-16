@@ -34,4 +34,8 @@
 
     <SolidColorBrush x:Key="commonContextMenuBackgroundBrush" Color="#f5f5f5"/>
 
+    <SolidColorBrush x:Key="subscribBoardItemForegroundBrush" Color="#8a8a8e"/>
+    <SolidColorBrush x:Key="commonButtonBackground" Color="#007aff"/>
+    <SolidColorBrush x:Key="commonButtonDisenableBackground" Color="#cfcfcf"/>
+
 </ResourceDictionary>

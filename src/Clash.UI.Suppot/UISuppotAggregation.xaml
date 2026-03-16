@@ -29,5 +29,8 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomExpanderDeepseek.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/AgentNetListBox.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ScrollViewerNavigationButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TextUnderLine.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TooltipTextBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

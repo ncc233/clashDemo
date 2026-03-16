@@ -13,13 +13,14 @@
         <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
         <Setter Property="helpers:RippleAnimationHelper.IsControlCenter" Value="True"/>
         <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="20"/>
+        <Setter Property="helpers:AttachPropertyHelper.InnerMargin" Value="5"/>
         <Setter Property="Foreground" Value="{DynamicResource commonForegroundDarkBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
                         <Ellipse Name="mousoverBackground" Fill="#000000" Opacity="0"/>
-                        <Path  Margin="7" Data="{TemplateBinding Content}" Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
+                        <Path  Margin="{TemplateBinding helpers:AttachPropertyHelper.InnerMargin}" Data="{TemplateBinding Content}" Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -37,34 +38,4 @@
     <Style   TargetType="{x:Type controls:OrderButton}" BasedOn="{StaticResource circlButton}">
     </Style>
 
-    <Style TargetType="Button">
-        <Setter Property="Width" Value="33" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=Width}"/>
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="ToolTipService.InitialShowDelay" Value="200"/>
-        <Setter Property="ToolTipService.BetweenShowDelay" Value="10"/>
-        <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
-        <Setter Property="helpers:RippleAnimationHelper.IsControlCenter" Value="True"/>
-        <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="20"/>
-        <Setter Property="Foreground" Value="{DynamicResource commonForegroundDarkBrush}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid>
-                        <Ellipse Name="mousoverBackground" Fill="#000000" Opacity="0.1"/>
-                        <Path  Margin="7" Data="{TemplateBinding Content}" Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="mousoverBackground" Property="Opacity" Value="0.3"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.4"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>

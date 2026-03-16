@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClashDemo.Views"
+      xmlns:components="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
+      xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
       mc:Ignorable="d" 
       Name="订阅"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -23,8 +25,16 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="100" Margin="10">
+                <components:SubscribeBoardItem Height="150" Width="350" />
+            </Viewbox>
+            <controls:TooltipTextBox Margin="10 0 185 0" BottomTipText="订阅文件链接"/>
+            <Button Style="{StaticResource commonButtonStyle}" HorizontalAlignment="Right" Content="新建" Margin="0 0 5 0" />
+            <Button Style="{StaticResource commonButtonStyle}" HorizontalAlignment="Right" Content="导入" IsEnabled="False" Margin="0 0 95 0"/>
         </Grid>
     </Grid>
 </Page>

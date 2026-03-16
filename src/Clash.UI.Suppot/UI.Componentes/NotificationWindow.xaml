@@ -33,12 +33,12 @@
         </Style>
     </Window.Resources>
 
-    <Border x:Name="MainBorder" CornerRadius="4" Background="{Binding BackgroundColor}">
+    <Border x:Name="MainBorder"   CornerRadius="4" Background="{Binding BackgroundColor}" RenderTransformOrigin="0.5 0.5">
         <!-- 在 Border 上定义变换组 -->
         <Border.RenderTransform>
             <TransformGroup>
                 <ScaleTransform x:Name="BorderScale" ScaleX="1" ScaleY="1" CenterX="0.5" CenterY="0.5"/>
-                <TranslateTransform x:Name="BorderTranslate"/>
+                <TranslateTransform x:Name="BorderTranslate" />
             </TransformGroup>
         </Border.RenderTransform>
 

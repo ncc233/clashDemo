@@ -54,7 +54,10 @@
                            FontFamily="Bahnschrift" 
                            FontWeight="Bold"/>
             </StackPanel>
-            <ListBox Grid.Row="1" x:Name="navigationBar" Style="{StaticResource navigationBar}"  ItemsSource="{Binding NavigationItems}">
+            <ListBox Grid.Row="1" x:Name="navigationBar"
+                     Style="{StaticResource navigationBar}"  
+                     ItemsSource="{Binding NavigationItems}"
+                     >
             </ListBox>
             <Grid Grid.Row="2">
                 <!--<controls:PageJumpButton Style="{StaticResource jumpButtonStyle}" Content="订 阅" Tag="{StaticResource subscribeGeometry}"/>-->

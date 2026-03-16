@@ -69,4 +69,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="subscribProcessStyle" TargetType="ProgressBar" BasedOn="{StaticResource ProgressBarStyle1}">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
 </ResourceDictionary>

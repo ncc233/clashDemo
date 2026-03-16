@@ -1,0 +1,102 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- ── 核心样式：基于 TextBlock ── --><!--
+    <Style x:Key="UnderlineTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Background"   Value="Transparent"/>
+        <Setter Property="Foreground"   Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Cursor"       Value="Hand"/>
+        --><!--<Setter Property="Template">
+            -->
+        <!-- TextBlock 本身不支持 ControlTemplate，
+                 因此用 Control 承载，见下方 UnderlineTextStyle -->
+        <!--
+        </Setter>-->
+        <!-- 通过触发器控制虚线 Underline --><!--
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="TextDecorations">
+                    <Setter.Value>
+                        --><!-- WPF 内置 Underline 为实线；此处替换为自定义虚线画笔 --><!--
+                        <TextDecorationCollection>
+                            <TextDecoration
+                                Location="Underline"
+                                PenOffset="2"
+                                PenOffsetUnit="Pixel">
+                                <TextDecoration.Pen>
+                                    <Pen Thickness="1.5" Brush="{StaticResource jumpButtonForegroundBrush}" DashCap="Round">
+                                        <Pen.DashStyle>
+                                            --><!-- Dashes=4 Gaps=3 px，形成明显虚线 --><!--
+                                            <DashStyle Dashes="2,4" Offset="0"/>
+                                        </Pen.DashStyle>
+                                        --><!--<Pen.DashCap>Flat</Pen.DashCap>--><!--
+                                    </Pen>
+                                </TextDecoration.Pen>
+                            </TextDecoration>
+                        </TextDecorationCollection>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{StaticResource jumpButtonForegroundBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>-->
+
+    <Style x:Key="underlineTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#8a8a8e"/>
+        <Setter Property="Cursor"     Value="Hand"/>
+        <!-- 预置一条透明虚线 Underline，动画只改变其 Brush 的 Opacity -->
+        <Setter Property="TextDecorations">
+            <Setter.Value>
+                <TextDecorationCollection>
+                    <TextDecoration Location="Underline" PenOffset="2" PenOffsetUnit="Pixel">
+                        <TextDecoration.Pen>
+                            <Pen Thickness="1.5" DashCap="Flat">
+                                <Pen.Brush>
+                                    <!-- Opacity=0 作为初始状态 -->
+                                    <SolidColorBrush x:Name="UnderlineBrush"
+                                        Color="#007aff"
+                                        Opacity="0"/>
+                                </Pen.Brush>
+                                <Pen.DashStyle>
+                                    <DashStyle Dashes="4,3" Offset="0"/>
+                                </Pen.DashStyle>
+                            </Pen>
+                        </TextDecoration.Pen>
+                    </TextDecoration>
+                </TextDecorationCollection>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="TextDecorations[0].Pen.Brush.Opacity"
+                            To="1" Duration="0:0:0.25"
+                            EasingFunction="{x:Null}"/>
+                        <ColorAnimation 
+                            Storyboard.TargetProperty="Foreground.Color"
+                            To="#007aff"
+                            Duration="0:0:0.25"/>
+
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="TextDecorations[0].Pen.Brush.Opacity"
+                            To="0" Duration="0:0:0.2"
+                            EasingFunction="{x:Null}"/>
+                        <ColorAnimation 
+                         Storyboard.TargetProperty="Foreground.Color"
+                         To="#8a8a8e"
+                         Duration="0:0:0.25"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

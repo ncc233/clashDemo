@@ -81,5 +81,21 @@ namespace Clash.UI.Suppot.UI.Helpers
 
 
 
+        public static Thickness GetInnerMargin(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(InnerMarginProperty);
+        }
+
+        public static void SetInnerMargin(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(InnerMarginProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for InnerMargin.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InnerMarginProperty =
+            DependencyProperty.RegisterAttached("InnerMargin", typeof(Thickness), typeof(AttachPropertyHelper), new PropertyMetadata(new Thickness(0)));
+
+
+
     }
 }

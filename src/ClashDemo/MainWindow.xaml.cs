@@ -31,11 +31,11 @@ namespace ClashDemo
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
-            var page=e.Content as Page;
-            if (page != null) 
+            var page = e.Content as Page;
+            if (page != null)
             {
-                var datas=navigationBar.ItemsSource.Cast<NavigationButton>();
-                var item=datas.First(x=>x.Content.ToString().Replace(" ","")==page.Name);
+                var datas = navigationBar.ItemsSource.Cast<NavigationButton>();
+                var item = datas.First(x => x.Content.ToString().Replace(" ", "") == page.Name);
                 item.IsSelected = true;
             }
         }

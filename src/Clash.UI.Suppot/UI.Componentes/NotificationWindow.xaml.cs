@@ -77,24 +77,26 @@ namespace Clash.UI.Suppot.UI.Componentes
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //// 初始缩放为0（窗口刚显示时不可见）
-            //BorderScale.ScaleX = 1;
-            //BorderScale.ScaleY =1;
+            // 初始缩放为0（窗口刚显示时不可见）
+            BorderScale.ScaleX = 0.5;
+            BorderScale.ScaleY = 0.5;
 
-            //// 动画到正常大小（150ms）
-            //var scaleXAnim = new DoubleAnimation(1, TimeSpan.FromMilliseconds(50));
-            //var scaleYAnim = new DoubleAnimation(1, TimeSpan.FromMilliseconds(50));
-            //BorderScale.BeginAnimation(ScaleTransform.ScaleXProperty, scaleXAnim);
-            //BorderScale.BeginAnimation(ScaleTransform.ScaleYProperty, scaleYAnim);
+            // 动画到正常大小（150ms）
+            var scaleXAnim = new DoubleAnimation(1, TimeSpan.FromSeconds(0.1));
+            var scaleYAnim = new DoubleAnimation(1, TimeSpan.FromSeconds(0.1));
+            BorderScale.BeginAnimation(ScaleTransform.ScaleXProperty, scaleXAnim);
+            BorderScale.BeginAnimation(ScaleTransform.ScaleYProperty, scaleYAnim);
 
 
-            //平移动画
+            ////平移动画
+            //MainBorder.Margin = new(120, 0, 0, 0);
+            //var thicknessAnimation = new ThicknessAnimation(new Thickness(0),TimeSpan.FromSeconds(0.2));
+            //MainBorder.BeginAnimation(Window.MarginProperty,thicknessAnimation);
+
+            //透明度动画
             this.Opacity = 0.2;
-            MainBorder.Margin = new(120, 0, 0, 0);
-            var thicknessAnimation = new ThicknessAnimation(new Thickness(0),TimeSpan.FromSeconds(0.2));
-            MainBorder.BeginAnimation(Window.MarginProperty,thicknessAnimation);
-            var opacityAnimation = new DoubleAnimation(1,TimeSpan.FromSeconds(0.2));
-            this.BeginAnimation(Window.OpacityProperty,opacityAnimation);
+            var opacityAnimation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.05));
+            this.BeginAnimation(Window.OpacityProperty, opacityAnimation);
 
             _autoCloseTimer.Start();
         }
