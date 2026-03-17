@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClashDemo.Views"
+      xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+      xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
       mc:Ignorable="d" 
       Name="日志"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -18,11 +20,48 @@
                 <DropShadowEffect Direction="0" ShadowDepth="2" Opacity="0.6"/>
             </Canvas.Effect>
             <TextBlock Canvas.Top="18" Canvas.Left="20" FontSize="20" Text="日 志" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Style="{StaticResource circlButton}"
+                    Content="{StaticResource suspendedGeometry}"
+                    Canvas.Right="180" 
+                    Canvas.Top="16">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource RectToolTip}" Content="暂停"/>
+                </Button.ToolTip>
+            </Button>
+            <controls:OrderButton 
+                               Foreground="Black"
+                               Canvas.Right="120" 
+                               Canvas.Top="16"
+                               HorizontalAlignment="Right"/>
+            <Button Style="{StaticResource commonButtonStyle}"
+                    Height="29"
+                    Content="清除"
+                    FontSize="13"
+                    Canvas.Right="20" 
+                    Canvas.Top="16" 
+                   />
         </Canvas>
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Style="{StaticResource commonComboBoxStyle}" Width="110" MaxDropDownHeight="130" SelectedIndex="0">
+                    <ComboBoxItem Content="ALL"/>
+                    <ComboBoxItem Content="DEBUGE"/>
+                    <ComboBoxItem Content="INFO"/>
+                    <ComboBoxItem Content="WARN"/>
+                    <ComboBoxItem Content="ERROR"/>
+                </ComboBox>
+                <controls:TooltipTextBoxWithFilter Grid.Column="1"  Margin="10 0 0 0" BottomTipText="过滤条件"  />
+            </Grid>
 
         </Grid>
     </Grid>

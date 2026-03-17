@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       Name="设置"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingPage">
+      Title="SettingPage"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 
     <Grid >
         <Grid.RowDefinitions>
@@ -23,7 +24,23 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-
+            <ComboBox Style="{DynamicResource commonComboBoxStyle}" Height="40" Width="90">
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+                <ComboBoxItem Content="All"/>
+            </ComboBox>
 
         </Grid>
     </Grid>

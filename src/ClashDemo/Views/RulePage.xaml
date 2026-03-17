@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClashDemo.Views"
+      xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
       mc:Ignorable="d" 
       Name="规则"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -23,7 +24,11 @@
 
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <controls:TooltipTextBoxWithFilter Grid.Column="2" Margin="10 10 10 0" BottomTipText="过滤条件" />
 
         </Grid>
     </Grid>
