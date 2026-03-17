@@ -47,6 +47,7 @@ namespace Clash.UI.Suppot.UI.Controls
             {
                 var item = (ButtonBase)Items[i];
                 item.Style = ItemContainerStyleSelector?.SelectStyle(item, this);
+
             }
         }
     }

@@ -6,10 +6,17 @@
       xmlns:local="clr-namespace:ClashDemo.Views"
       xmlns:components="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
       xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+      xmlns:vm="clr-namespace:ClashDemo.ViewModels"
+      d:DataContext="{d:DesignInstance Type=vm:SubscribPageViewModel}"
+      xmlns:converters="clr-namespace:ClashDemo.Converters"
+      xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
       mc:Ignorable="d" 
       Name="订阅"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SubscribePage">
+    <Page.Resources>
+        <converters:StringEmptyToBoolConverter x:Key="str2Bool"/>
+    </Page.Resources>
 
     <Grid >
         <Grid.RowDefinitions>
@@ -21,6 +28,42 @@
                 <DropShadowEffect Direction="0" ShadowDepth="2" Opacity="0.6"/>
             </Canvas.Effect>
             <TextBlock Canvas.Top="18" Canvas.Left="20" FontSize="20" Text="订 阅" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Button Style="{StaticResource circlButton}" 
+                    Content="{StaticResource slimGeometry}"
+                    helpers:ControlSuspensionHelper.IEnable="True"
+                    Command="{Binding ShowInfoWindowCommand}"
+                    Canvas.Right="100"  
+                    Canvas.Top="16">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource ArrowToolTip}"
+                             Content="轻量模式">
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button Style="{StaticResource circlButton}" 
+                    Content="{StaticResource circlHelperGeometry}"
+                    Canvas.Right="60"
+                    Canvas.Top="16"
+                    Command="{Binding ShowOperatingInstructionsCommand}">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource ArrowToolTip}"
+                             Content="说明">
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
+            <Button Style="{StaticResource circlButton}"
+                    Content="{StaticResource fireGeometry}" 
+                    Foreground="{StaticResource jumpButtonForegroundBrush}"
+                    Canvas.Right="20" 
+                    Canvas.Top="16" 
+                   
+                    >
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource ArrowToolTip}"
+                             Content="fire">
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
         </Canvas>
 
 
@@ -32,9 +75,9 @@
             <Viewbox Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="100" Margin="10">
                 <components:SubscribeBoardItem Height="150" Width="350" />
             </Viewbox>
-            <controls:TooltipTextBox Margin="10 0 185 0" BottomTipText="订阅文件链接"/>
+            <controls:TooltipTextBox Margin="10 0 185 0" Name="link" Text="{Binding LinkUrl}" BottomTipText="订阅文件链接"/>
             <Button Style="{StaticResource commonButtonStyle}" HorizontalAlignment="Right" Content="新建" Margin="0 0 5 0" />
-            <Button Style="{StaticResource commonButtonStyle}" HorizontalAlignment="Right" Content="导入" IsEnabled="False" Margin="0 0 95 0"/>
+            <Button Style="{StaticResource commonButtonStyle}" HorizontalAlignment="Right" Content="导入" IsEnabled="{Binding ElementName=link,Path=Text,Converter={StaticResource str2Bool}}" Margin="0 0 95 0"/>
         </Grid>
     </Grid>
 </Page>

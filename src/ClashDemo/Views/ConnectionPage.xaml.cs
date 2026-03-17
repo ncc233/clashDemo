@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,21 @@ namespace ClashDemo.Views
         {
             InitializeComponent();
             this.DataContext=vm;
+
+            var str = new FormattedText
+                ("ab",
+                CultureInfo.GetCultureInfo("en-us"),
+                FlowDirection.LeftToRight,
+                new Typeface(
+                    new FontFamily("Times New Roma"),
+                FontStyles.Normal,
+                FontWeights.Medium,
+                FontStretches.Normal),
+                14,
+                Brushes.Black
+                );
+            var geometry=str.BuildGeometry(new Point(0,0));
+            var strGeometry=PathGeometry.CreateFromGeometry(geometry).ToString();
         }
     }
 }

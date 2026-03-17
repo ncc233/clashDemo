@@ -21,7 +21,7 @@
     <Style x:Key="buttonGroup" TargetType="{x:Type controls:ButtonGroup}">
         <Setter Property="ItemContainerStyleSelector" Value="{StaticResource buttonStyleSelector}"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Layout" Value="Stack"/>
+        <Setter Property="Layout" Value="Uniform"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="ItemsPanel" Value="{StaticResource ButtonGroupHorizontalUniformItemsPanelTemplate}"/>
@@ -35,10 +35,24 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
+                    <Condition Property="Layout" Value="Uniform"/>
+                    <Condition Property="Orientation" Value="Horizontal"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="ItemsPanel" Value="{StaticResource ButtonGroupHorizontalUniformItemsPanelTemplate}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
                     <Condition Property="Layout" Value="Stack"/>
                     <Condition Property="Orientation" Value="Vertical"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="ItemsPanel" Value="{StaticResource ButtonGroupVerticalStackItemsPanelTemplate}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Layout" Value="Stack"/>
+                    <Condition Property="Orientation" Value="Horizontal"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="ItemsPanel" Value="{StaticResource ButtonGroupHorizontalStackItemsPanelTemplate}"/>
             </MultiTrigger>
         </Style.Triggers>
     </Style>

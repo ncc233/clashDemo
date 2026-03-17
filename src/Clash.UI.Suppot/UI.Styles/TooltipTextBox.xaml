@@ -5,6 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.CommonResources/CommonGeometry.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CirclButton.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TooltipStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     <Style  TargetType="{x:Type controls:TooltipTextBox}">
         <Setter Property="Height" Value="35"/>
@@ -49,6 +50,101 @@
                                     Style="{StaticResource circlButton}" 
                                     Width="28"  HorizontalAlignment="Left"
                                     helpers:AttachPropertyHelper.InnerMargin="8"/>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#000000"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#007aff"/>
+                            <Setter TargetName="border" Property="Margin" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
+
+    <Style x:Key="textBoxFilter" TargetType="ToggleButton">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="5 10"/>
+        <Setter Property="ToolTipService.InitialShowDelay" Value="200"/>
+        <Setter Property="ToolTipService.BetweenShowDelay" Value="10"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#c4c4c4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Background="Transparent">
+                        <Path Stretch="Uniform" Data="{TemplateBinding Content}" Fill="{TemplateBinding Foreground}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="#007aff"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <Style  TargetType="{x:Type controls:TooltipTextBoxWithFilter}">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="helpers:AttachPropertyHelper.CornerRadius" Value="4"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TooltipTextBoxWithFilter}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}"/>
+                        <Border Name="border" Background="Transparent" Margin="0 1 0 0" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" BorderThickness="1" BorderBrush="#c4c4c4"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{TemplateBinding BottomTipText}" 
+                                       Foreground="#c4c4c4" 
+                                       TextAlignment="{TemplateBinding TextAlignment}"
+                                       Margin="12.3 0 0 0"
+                                       VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                          Margin="10 0 0 0"
+                                          Focusable="false"
+                                          VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                          HorizontalScrollBarVisibility="Hidden" 
+                                          VerticalScrollBarVisibility="Hidden"
+                                          />
+                            <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" Margin="0 0 4 0">
+                                <ToggleButton Style="{StaticResource textBoxFilter}" Margin="-4 -4 4 -4" Content="{StaticResource caseSensitiveGeometry}">
+                                    <ToggleButton.ToolTip>
+                                        <ToolTip Content="区分大小写" Style="{StaticResource RectToolTip}"/>
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                                <ToggleButton Style="{StaticResource textBoxFilter}"  Content="{StaticResource fullCharacterMatchGeometry}">
+                                    <ToggleButton.ToolTip>
+                                        <ToolTip Content="全字符匹配" Style="{StaticResource RectToolTip}"/>
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                                <ToggleButton Style="{StaticResource textBoxFilter}" Content="{StaticResource regularExpressionGeometry}">
+                                    <ToggleButton.ToolTip>
+                                        <ToolTip Content="使用正则表达式" Style="{StaticResource RectToolTip}"/>
+                                    </ToggleButton.ToolTip>
+                                </ToggleButton>
+                            </StackPanel>
+                            
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>

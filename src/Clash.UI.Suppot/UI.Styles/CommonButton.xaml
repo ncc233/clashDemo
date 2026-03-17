@@ -9,6 +9,9 @@
         <Setter Property="Height" Value="35"/>
         <Setter Property="Width" Value="80"/>
         <Setter Property="FontSize" Value="15"/>
+        <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True"/>
+        <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="4"/>
+        <Setter Property="helpers:RippleAnimationHelper.RippleBrush" Value="#ffffff"/>
         <Setter Property="Background" Value="{StaticResource commonButtonBackground}"/>
         <Setter Property="Foreground" Value="#ffffff"/>
         <Setter Property="Template">

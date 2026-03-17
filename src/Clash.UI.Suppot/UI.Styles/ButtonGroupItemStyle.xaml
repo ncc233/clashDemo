@@ -63,7 +63,7 @@
                         </Border>
                         <Border Name="middleBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#007aff" Opacity="0" BorderThickness="0"/>
                         <Border Name="topBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#000000" Opacity="0" BorderThickness="0"/>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -125,7 +125,7 @@
                         </Border>
                         <Border Name="middleBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#007aff" Opacity="0" BorderThickness="0"/>
                         <Border Name="topBorder" CornerRadius="{TemplateBinding helpers:AttachPropertyHelper.CornerRadius}" Background="#000000" Opacity="0" BorderThickness="0"/>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

@@ -20,7 +20,7 @@
                 <ControlTemplate TargetType="Button">
                     <Grid>
                         <Ellipse Name="mousoverBackground" Fill="#000000" Opacity="0"/>
-                        <Path  Margin="{TemplateBinding helpers:AttachPropertyHelper.InnerMargin}" Data="{TemplateBinding Content}" Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
+                        <Path  Margin="{TemplateBinding helpers:AttachPropertyHelper.InnerMargin}" Data="{TemplateBinding Content}"  Fill="{TemplateBinding Foreground}" Stretch="Uniform"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

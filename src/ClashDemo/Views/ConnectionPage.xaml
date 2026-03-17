@@ -15,98 +15,6 @@
       d:DataContext="{d:DesignInstance Type=vm:ConnectionPageViewModel}"
       xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
-    <Page.Resources>
-        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
-        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
-        <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                        <Condition Property="IsSelectionActive" Value="false"/>
-                    </MultiTrigger.Conditions>
-                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
-                </MultiTrigger>
-            </Style.Triggers>
-        </Style>
-        <SolidColorBrush x:Key="TextBox.Static.Border1" Color="#FFABAdB3"/>
-        <SolidColorBrush x:Key="TextBox.MouseOver.Border1" Color="#FF7EB4EA"/>
-        <SolidColorBrush x:Key="TextBox.Focus.Border1" Color="#FF569DE5"/>
-        <Style x:Key="TextBoxStyle2" TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border1}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border1}"/>
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border1}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                        <Condition Property="IsSelectionActive" Value="false"/>
-                    </MultiTrigger.Conditions>
-                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
-                </MultiTrigger>
-            </Style.Triggers>
-        </Style>
-
-    </Page.Resources>
 
     <Grid >
         <Grid.RowDefinitions>
@@ -118,6 +26,25 @@
                 <DropShadowEffect Direction="0" ShadowDepth="2" Opacity="0.6"/>
             </Canvas.Effect>
             <TextBlock Canvas.Top="18" Canvas.Left="20" FontSize="20" Text="连 接" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBlock FontSize="14" Text="下载量: 97.1MB" Canvas.Top="24" Canvas.Left="300"/>
+            <TextBlock FontSize="14" Text="上传量: 20.9MB" Canvas.Top="24" Canvas.Left="430"/>
+            <Button Style="{StaticResource circlButton}"
+                    Content="{StaticResource menuGeometry}"
+                    helpers:AttachPropertyHelper.InnerMargin="8"
+                    Canvas.Right="120" 
+                    Canvas.Top="16">
+                <Button.ToolTip>
+                    <ToolTip Style="{StaticResource RectToolTip}" Content="Click"/>
+                </Button.ToolTip>
+            </Button>
+
+            <Button Style="{StaticResource commonButtonStyle}"
+                    Height="29"
+                    Content="关闭全部"
+                    FontSize="13"
+                    Canvas.Right="20" 
+                    Canvas.Top="16" 
+                   />
         </Canvas>
 
 
@@ -126,7 +53,34 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBox Style="{DynamicResource TextBoxStyle2}"/>
+            <Grid Margin="10" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <controls:ButtonGroup HorizontalAlignment="Left" 
+                                  Layout="Stack"
+                                  Style="{StaticResource buttonGroup}"  
+                                  Height="30" 
+                                   >
+                    <RadioButton Content="活跃 0" IsChecked="True"/>
+                    <RadioButton Content="已关闭 194"  />
+                </controls:ButtonGroup>
+                <controls:TooltipTextBoxWithFilter Grid.Column="2" Margin="10 0 0 0"  BottomTipText="过滤条件" />
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Path Data="{StaticResource emptyBoxGeometry}" Stretch="Uniform" Height="70" Width="70" Fill="#68686d"/>
+                <TextBlock Text="空空如也" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Margin="0 120 0 0"
+                           FontSize="25"
+                           Foreground="#68686d"
+                           FontFamily="DengXian"
+                           FontWeight="Regular"/>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
