@@ -53,8 +53,10 @@
                             <controls:CustomExpander
                              Style="{StaticResource CustomExpanderDeepseek}"
                               Header="{Binding GroupName}"
+                                IsExpanded="{Binding IsExpanded ,Mode=TwoWay}"
                               ModeDescraption="{Binding AgentSelectMode}"
                               Detail="{Binding SelectModeDetial }"
+                              
                               Count="34"
                               Margin="4">
                                 <Grid Background="Transparent">
@@ -89,7 +91,7 @@
                                            ItemContainerStyle="{StaticResource agentNetItem}"
                                              helpers:ScrollViewerAutoScrollHelper.IsEnabled="True"
                                            ItemsSource="{Binding GroupItems}"
-                                             SelectedItem="{Binding SelectedItem}"
+                                             SelectedItem="{Binding SelectedItem,Mode=TwoWay}"
                                            Style="{StaticResource agentNetListBoxStyle}"
                                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type controls:CustomExpander}},Path=ActualWidth}"
                                            Margin="-17 0 -15 0">

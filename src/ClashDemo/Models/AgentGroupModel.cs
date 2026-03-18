@@ -21,6 +21,8 @@ namespace ClashDemo.Models
 
         public string SelectModeDetial { get; set; }
 
+        public bool IsExpanded { get; set; }
+
         public AgentGroupItemModel SelectedItem { set; get; }
 
         public ObservableCollection<AgentGroupItemModel> GroupItems { get; set; }

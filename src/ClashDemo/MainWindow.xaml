@@ -26,7 +26,8 @@
         </Grid.ColumnDefinitions>
         <!--右侧内容区域-->
 
-        <Frame Grid.Column="1" Background="{DynamicResource contentBackgroundBrush}" 
+        <Frame x:Name="frame" 
+            Grid.Column="1" Background="{DynamicResource contentBackgroundBrush}" 
                helpers:PageNavigationHelper.NavigateTarget="{Binding ElementName=navigationBar,
             Path=SelectedItem,Converter={StaticResource navigateConvert},Mode=TwoWay}"
                Navigated="Frame_Navigated"
