@@ -157,6 +157,14 @@ namespace Clash.UI.Suppot.UI.Componentes
         {
             InitializeComponent();
             this.Loaded += AgentListBoxItem_Loaded;
+            //this.Unloaded += AgentListBoxItem_Unloaded;
+        }
+
+        private void AgentListBoxItem_Unloaded(object sender, RoutedEventArgs e)
+        {
+            delayButton.MouseEnter -= DelayButton_MouseEnter;
+            delayButton.MouseLeave -= DelayButton_MouseLeave;
+            this.Unloaded -= AgentListBoxItem_Unloaded;
         }
 
         private void AgentListBoxItem_Loaded(object sender, RoutedEventArgs e)
@@ -168,7 +176,6 @@ namespace Clash.UI.Suppot.UI.Componentes
             delayButton.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#007aff"));//蓝
             delayButton.MouseEnter += DelayButton_MouseEnter;
             delayButton.MouseLeave += DelayButton_MouseLeave;
-            Loaded += AgentListBoxItem_Loaded;
             delayButton.Command = SingleDelayTest;
         }
 
