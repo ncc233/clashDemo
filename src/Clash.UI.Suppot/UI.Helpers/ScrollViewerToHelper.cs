@@ -15,6 +15,24 @@ namespace Clash.UI.Suppot.UI.Helpers
 
 
 
+
+
+        public static bool GetIsToTop(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsToTopProperty);
+        }
+
+        public static void SetIsToTop(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsToTopProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for IsToTop.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsToTopProperty =
+            DependencyProperty.RegisterAttached("IsToTop", typeof(bool), typeof(ScrollViewerToHelper), new PropertyMetadata(false));
+
+
+
         public static double GetAnimationTime(DependencyObject obj)
         {
             return (double)obj.GetValue(AnimationTimeProperty);
@@ -27,7 +45,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         // Using a DependencyProperty as the backing store for AnimationTime.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.RegisterAttached("AnimationTime", typeof(double), typeof(ScrollViewerToHelper), new PropertyMetadata(0.8d));
+            DependencyProperty.RegisterAttached("AnimationTime", typeof(double), typeof(ScrollViewerToHelper), new PropertyMetadata(1d));
 
 
         public static Orientation GetOrientation(DependencyObject obj)
@@ -64,16 +82,36 @@ namespace Clash.UI.Suppot.UI.Helpers
         {
             if (d is Button btn)
             {
-                btn.Loaded += (s, e) =>
+                if (GetIsToTop(d))
                 {
-                    btn.MouseEnter += Btn_MouseEnter;
+                    btn.Click += Btn_Click;
+                    var scrollViewer=e.NewValue as ScrollViewer;
+                    scrollViewer.ScrollChanged += (s, e) =>
+                    {
+                        var scr=s as ScrollViewer;
+                        btn.IsEnabled = scr.VerticalOffset > 90;
+                    };
 
-                };
-                btn.Unloaded += (s, e) =>
+                }
+                else
                 {
-                    btn.MouseEnter -= Btn_MouseEnter;
-                };
+                    btn.Loaded += (s, e) =>
+                    {
+                        btn.MouseEnter += Btn_MouseEnter;
+
+                    };
+                    btn.Unloaded += (s, e) =>
+                    {
+                        btn.MouseEnter -= Btn_MouseEnter;
+                    };
+                }
             }
+        }
+
+        private static void Btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn)
+                BeginAnimation(GetOriginScrollViewer(btn), new Point(0, 0), Orientation.Vertical, GetAnimationTime(btn));
         }
 
         private static void Btn_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -117,13 +155,13 @@ namespace Clash.UI.Suppot.UI.Helpers
             double targetLoaction = orientation is Orientation.Vertical ? point.Y : point.X;
             DoubleAnimation doubleAnimation = new DoubleAnimation();
             doubleAnimation.Duration = TimeSpan.FromSeconds(time);
-            doubleAnimation.EasingFunction = new QuarticEase 
+            doubleAnimation.EasingFunction = new QuarticEase
             {
                 EasingMode = EasingMode.EaseInOut,
             };
             doubleAnimation.From = orientation is Orientation.Vertical ? scrollViewer.VerticalOffset : scrollViewer.VerticalOffset;
             doubleAnimation.To = targetLoaction;
-            scrollViewer.BeginAnimation(orientation is Orientation.Vertical ? AttachPropertyHelper.VerticalScrollToProperty:AttachPropertyHelper.HorizontalScrollToProperty, doubleAnimation);
+            scrollViewer.BeginAnimation(orientation is Orientation.Vertical ? AttachPropertyHelper.VerticalScrollToProperty : AttachPropertyHelper.HorizontalScrollToProperty, doubleAnimation);
         }
     }
 }
