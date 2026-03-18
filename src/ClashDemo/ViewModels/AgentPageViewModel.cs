@@ -27,7 +27,7 @@ namespace ClashDemo.ViewModels
 
             var collecton = new ObservableCollection<AgentGroupItemModel>();
             var countryRandom = new Random();
-            Enumerable.Range(0, 33).ToList().ForEach(item => 
+            Enumerable.Range(0, 37).ToList().ForEach(item => 
             {
                 var country=countries[countryRandom.Next(0, countries.Count)];
                 listCountries[country] = ++listCountries[country];

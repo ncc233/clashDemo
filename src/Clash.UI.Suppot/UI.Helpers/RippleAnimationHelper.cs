@@ -100,27 +100,19 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         private static void OnIsEnable(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var isenable=(bool)e.NewValue;
+            if (!isenable) return;
             var control = d as FrameworkElement;
-            if (control != null)
-            {
-                control.PreviewMouseDown += Control_MouseDown;
-                control.PreviewMouseUp += Control_MouseUp;
-                control.MouseLeave += Control_MouseLeave;
-                control.Loaded += Control_Loaded;
-                control.Unloaded += Control_Unloaded;
-            }
-        }
-
-        private static void Control_Unloaded(object sender, RoutedEventArgs e)
-        {
-            var control = sender as FrameworkElement;
             if (control != null)
             {
                 control.PreviewMouseDown -= Control_MouseDown;
                 control.PreviewMouseUp -= Control_MouseUp;
                 control.MouseLeave -= Control_MouseLeave;
                 control.Loaded -= Control_Loaded;
-                control.Unloaded -= Control_Unloaded;
+                control.PreviewMouseDown += Control_MouseDown;
+                control.PreviewMouseUp += Control_MouseUp;
+                control.MouseLeave += Control_MouseLeave;
+                control.Loaded += Control_Loaded;
             }
         }
 

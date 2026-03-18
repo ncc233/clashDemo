@@ -51,28 +51,20 @@ namespace Clash.UI.Suppot.UI.Helpers
             var control = d as FrameworkElement;
             if (control != null)
             {
-                control.PreviewMouseDown += Control_MouseDown;
-                control.PreviewMouseUp += Control_MouseUp;
-                control.MouseEnter += Control_MouseEnter;
-                control.MouseLeave += Control_MouseLeave;
-                control.Loaded += Control_Loaded;
-                control.Unloaded += Control_Unloaded;
-            }
-        }
-
-        private static void Control_Unloaded(object sender, RoutedEventArgs e)
-        {
-            var control = sender as FrameworkElement;
-            if (control != null)
-            {
                 control.PreviewMouseDown -= Control_MouseDown;
                 control.PreviewMouseUp -= Control_MouseUp;
                 control.MouseEnter -= Control_MouseEnter;
                 control.MouseLeave -= Control_MouseLeave;
                 control.Loaded -= Control_Loaded;
-                control.Unloaded -= Control_Unloaded;
+                control.PreviewMouseDown += Control_MouseDown;
+                control.PreviewMouseUp += Control_MouseUp;
+                control.MouseEnter += Control_MouseEnter;
+                control.MouseLeave += Control_MouseLeave;
+                control.Loaded += Control_Loaded;
             }
         }
+
+
 
         private static void Control_MouseEnter(object sender, MouseEventArgs e)
         {
