@@ -40,7 +40,7 @@ namespace Clash.UI.Suppot.UI.Adorners
         /// <param name="radius"></param>
         /// <param name="time"></param>
         /// <param name="isCenter"></param>
-        public void AddAnimation(FrameworkElement element, Brush brush, double radius = 4, double time = 0.8, bool isCenter = false)
+        public void AddAnimation(FrameworkElement element, Brush brush, double radius = 4, double time = 0.4, bool isCenter = false)
         {
             var rect = new Rect(0, 0, element.ActualWidth, ActualHeight);
             _container.Clip = new RectangleGeometry()
@@ -64,7 +64,7 @@ namespace Clash.UI.Suppot.UI.Adorners
             _container.Children.Add(ellipse);
 
 
-            var func = new QuadraticEase 
+            var func = new QuarticEase 
             {
                 EasingMode = EasingMode.EaseInOut,
             };
