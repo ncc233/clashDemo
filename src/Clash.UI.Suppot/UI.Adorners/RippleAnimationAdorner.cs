@@ -23,7 +23,7 @@ namespace Clash.UI.Suppot.UI.Adorners
         {
             _container = new Grid
             {
-                ClipToBounds=true,
+                ClipToBounds = true,
                 IsHitTestVisible = false,
             };
 
@@ -40,43 +40,59 @@ namespace Clash.UI.Suppot.UI.Adorners
         /// <param name="radius"></param>
         /// <param name="time"></param>
         /// <param name="isCenter"></param>
-        public void AddAnimation(FrameworkElement element,Brush brush,double radius=4,double time=0.4,bool isCenter=false)
+        public void AddAnimation(FrameworkElement element, Brush brush, double radius = 4, double time = 0.8, bool isCenter = false)
         {
-            var rect = new Rect(0,0,element.ActualWidth,ActualHeight);
-            _container.Clip = new RectangleGeometry() 
+            var rect = new Rect(0, 0, element.ActualWidth, ActualHeight);
+            _container.Clip = new RectangleGeometry()
             {
-                Rect= rect,
-                RadiusX=radius,
-                RadiusY=radius
+                Rect = rect,
+                RadiusX = radius,
+                RadiusY = radius
             };
-            var center= isCenter? new Point(_container.ActualWidth / 2, _container.ActualHeight / 2) : Mouse.GetPosition(element);
+            var center = isCenter ? new Point(_container.ActualWidth / 2, _container.ActualHeight / 2) : Mouse.GetPosition(element);
             var storyboard = new Storyboard();
-            var animationSize = Math.Max(element.ActualWidth,element.ActualHeight);
+            var animationSize = Math.Max(element.ActualWidth, element.ActualHeight);
             var ellipse = new Path();
-            ellipse.Data = new EllipseGeometry 
+            ellipse.Data = new EllipseGeometry
             {
-                Center= center,
+                Center = center,
                 RadiusX = 0,
                 RadiusY = 0,
-                
+
             };
             ellipse.Fill = brush;
             _container.Children.Add(ellipse);
+
+
+            var func = new QuadraticEase 
+            {
+                EasingMode = EasingMode.EaseInOut,
+            };
             // x动画
-            var kfRadiusX=new DoubleAnimationUsingKeyFrames();
-            kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
-            kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize*0.5, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time*0.5))));
-            kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize*0.8, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time*0.8))));
-            kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+            DoubleAnimation aniX = new DoubleAnimation();
+            aniX.Duration = TimeSpan.FromSeconds(time);
+            aniX.From = 0;
+            aniX.To = animationSize;
+            aniX.EasingFunction = func;
+            //var kfRadiusX = new DoubleAnimationUsingKeyFrames();
+            //kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
+            //kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize * 0.5, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
+            //kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize * 0.8, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.8))));
+            //kfRadiusX.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
 
             // y动画
-            var radiusY = new DoubleAnimation();
-            var kfRadiusY = new DoubleAnimationUsingKeyFrames();
-            kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
-            kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize * 0.5, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
-            kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize * 0.8, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.8))));
-            kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+            DoubleAnimation aniY = new DoubleAnimation();
+            aniY.Duration = TimeSpan.FromSeconds(time);
+            aniY.From = 0;
+            aniY.To = animationSize;
+            aniY.EasingFunction = func;
+            //var radiusY = new DoubleAnimation();
+            //var kfRadiusY = new DoubleAnimationUsingKeyFrames();
+            //kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
+            //kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize * 0.5, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
+            //kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize * 0.8, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.8))));
+            //kfRadiusY.KeyFrames.Add(new LinearDoubleKeyFrame(animationSize, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
 
 
@@ -90,25 +106,25 @@ namespace Clash.UI.Suppot.UI.Adorners
 
 
 
-            ellipse.Data.BeginAnimation(EllipseGeometry.RadiusXProperty, kfRadiusX);
-            ellipse.Data.BeginAnimation(EllipseGeometry.RadiusYProperty, kfRadiusY);
+            ellipse.Data.BeginAnimation(EllipseGeometry.RadiusXProperty, aniX);
+            ellipse.Data.BeginAnimation(EllipseGeometry.RadiusYProperty, aniY);
             ellipse.BeginAnimation(Path.OpacityProperty, kfOpacity);
 
 
         }
 
-        private void KeepAnimationCount() 
+        private void KeepAnimationCount()
         {
-            var paths=_container.Children.Cast<UIElement>().ToList();
-            paths.RemoveAll(x=>x.Opacity==0);
+            var paths = _container.Children.Cast<UIElement>().ToList();
+            paths.RemoveAll(x => x.Opacity == 0);
         }
 
-        public void OpacitiesAnimation(double time=0.4) 
+        public void OpacitiesAnimation(double time = 0.4)
         {
-            var grid =_container;
+            var grid = _container;
             foreach (var chiled in grid.Children)
             {
-                if (chiled is System.Windows.Shapes.Path path )
+                if (chiled is System.Windows.Shapes.Path path)
                 {
                     path.BeginAnimation(System.Windows.Shapes.Path.OpacityProperty, new DoubleAnimation
                     {

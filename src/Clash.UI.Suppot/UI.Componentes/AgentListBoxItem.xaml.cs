@@ -157,7 +157,7 @@ namespace Clash.UI.Suppot.UI.Componentes
         {
             InitializeComponent();
             this.Loaded += AgentListBoxItem_Loaded;
-            //this.Unloaded += AgentListBoxItem_Unloaded;
+            this.Unloaded += AgentListBoxItem_Unloaded;
         }
 
         private void AgentListBoxItem_Unloaded(object sender, RoutedEventArgs e)
