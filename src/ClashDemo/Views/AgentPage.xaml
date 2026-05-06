@@ -96,13 +96,20 @@
                                            Margin="-17 0 -15 0">
                                         <ListBox.ItemTemplate>
                                             <ItemContainerTemplate>
-                                                <components:AgentListBoxItem Header="{Binding ItemName}"
+                                                <controls:AgentContentControl Header="{Binding ItemName}"
                                                              Delay="{Binding Delay}"
                                                              Margin="3 0 3 0"
                                                              Height="54"
                                                              IsTesting="{Binding IsTesting}"
                                                              SingleDelayTest="{Binding FlashDelayCommand}"
                                                              AgentSource="{Binding ItemMessages}"/>
+                                                <!--<components:AgentListBoxItem Header="{Binding ItemName}"
+                                                             Delay="{Binding Delay}"
+                                                             Margin="3 0 3 0"
+                                                             Height="54"
+                                                             IsTesting="{Binding IsTesting}"
+                                                             SingleDelayTest="{Binding FlashDelayCommand}"
+                                                             AgentSource="{Binding ItemMessages}"/>-->
                                             </ItemContainerTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>

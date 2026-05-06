@@ -123,6 +123,7 @@ namespace Clash.UI.Suppot.UI.Componentes
         {
             if (d is AgentListBoxItem agentListBoxItem)
             {
+
                 if (e.NewValue is string str)
                 {
                     var btn = agentListBoxItem.delayButton;

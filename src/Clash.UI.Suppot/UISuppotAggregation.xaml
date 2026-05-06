@@ -20,7 +20,6 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CustomRadioButton.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ThumbButtonStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/LabelStatuBoard.xaml"/>
-        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/HeaderTextBox.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonContextMenuStyle.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/ButtonGroupItemStyle.xaml"/>
@@ -32,5 +31,7 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TextUnderLine.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/CommonButton.xaml"/>
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TooltipTextBox.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/AgentContentControlStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
