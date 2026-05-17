@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Windows.Themes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Clash.UI.Suppot.UI.Helpers
 {
@@ -25,15 +27,53 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(AttachPropertyHelper), new PropertyMetadata(new CornerRadius(0),OnCornerRadiusChanged));
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(AttachPropertyHelper), new PropertyMetadata(new CornerRadius(0), OnCornerRadiusChanged));
 
         private static void OnCornerRadiusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            
+
         }
 
 
 
+
+        public static CornerRadius GetAutoCornerRadius(DependencyObject obj)
+        {
+            return (CornerRadius)obj.GetValue(AutoCornerRadiusProperty);
+        }
+
+        public static void SetAutoCornerRadius(DependencyObject obj, CornerRadius value)
+        {
+            obj.SetValue(AutoCornerRadiusProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AutoCornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AutoCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("AutoCornerRadius", typeof(CornerRadius), typeof(AttachPropertyHelper), new PropertyMetadata(OnAutoCornerRadiusChanged));
+
+        private static void OnAutoCornerRadiusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is not Control control)
+                return;
+
+            if (!control.IsLoaded)
+            {
+                control.Loaded += loaded;
+                void loaded(object sender, RoutedEventArgs args)
+                {
+                    control.Loaded -= loaded;
+                    if (VisualTreeHelper.GetChild(control, 0) is Border border)
+                    {
+                        border.CornerRadius = (CornerRadius)e.NewValue;
+                    }
+                }
+
+            }
+            else if (VisualTreeHelper.GetChild(control, 0) is Border border)
+            {
+                border.CornerRadius = (CornerRadius)e.NewValue;
+            }
+        }
 
         public static double GetVerticalScrollTo(DependencyObject obj)
         {
@@ -47,7 +87,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         // Using a DependencyProperty as the backing store for VerticalScrollTo.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty VerticalScrollToProperty =
-            DependencyProperty.RegisterAttached("VerticalScrollTo", typeof(double), typeof(AttachPropertyHelper), new PropertyMetadata(0d, (s, e) => 
+            DependencyProperty.RegisterAttached("VerticalScrollTo", typeof(double), typeof(AttachPropertyHelper), new PropertyMetadata(0d, (s, e) =>
             {
                 if (s is ScrollViewer scrollViewer && e.NewValue is double newValue)
                 {
@@ -70,7 +110,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         // Using a DependencyProperty as the backing store for HorizontalScrollTo.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HorizontalScrollToProperty =
-            DependencyProperty.RegisterAttached("HorizontalScrollTo", typeof(double), typeof(AttachPropertyHelper), new PropertyMetadata(0d, (s, e) => 
+            DependencyProperty.RegisterAttached("HorizontalScrollTo", typeof(double), typeof(AttachPropertyHelper), new PropertyMetadata(0d, (s, e) =>
             {
                 if (s is ScrollViewer scrollViewer && e.NewValue is double newValue)
                 {
