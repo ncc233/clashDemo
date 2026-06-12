@@ -100,9 +100,9 @@ namespace Clash.UI.Suppot.UI.Adorners
             var opacityAni = new DoubleAnimation();
             var kfOpacity = new DoubleAnimationUsingKeyFrames();
             kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
-            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.4 * 0.7, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
-            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.4 * 0.9, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.8))));
-            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.4, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.35 * 0.7, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
+            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.35 * 0.9, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.8))));
+            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.35, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
 
 
@@ -129,6 +129,10 @@ namespace Clash.UI.Suppot.UI.Adorners
                     path.BeginAnimation(System.Windows.Shapes.Path.OpacityProperty, new DoubleAnimation
                     {
                         To = 0,
+                        EasingFunction=new CircleEase
+                        {
+                            EasingMode = EasingMode.EaseIn,
+                        },
                         Duration = TimeSpan.FromSeconds(time),
                     });
                 }

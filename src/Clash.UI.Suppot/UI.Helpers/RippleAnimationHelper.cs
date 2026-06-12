@@ -47,7 +47,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         // Using a DependencyProperty as the backing store for IsEnable.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnableProperty =
-            DependencyProperty.RegisterAttached("IsEnable", typeof(bool), typeof(RippleAnimationHelper), new PropertyMetadata(false,OnIsEnable));
+            DependencyProperty.RegisterAttached("IsEnable", typeof(bool), typeof(RippleAnimationHelper), new PropertyMetadata(false, OnIsEnable));
 
 
         public static double GetRippleParentRadius(DependencyObject obj)
@@ -80,7 +80,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         // Using a DependencyProperty as the backing store for RippleTime.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RippleTimeProperty =
-            DependencyProperty.RegisterAttached("RippleTime", typeof(double), typeof(RippleAnimationHelper), new PropertyMetadata(0.5));
+            DependencyProperty.RegisterAttached("RippleTime", typeof(double), typeof(RippleAnimationHelper), new PropertyMetadata(0.7));
 
 
 
@@ -100,7 +100,7 @@ namespace Clash.UI.Suppot.UI.Helpers
 
         private static void OnIsEnable(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var isenable=(bool)e.NewValue;
+            var isenable = (bool)e.NewValue;
             if (!isenable) return;
             var control = d as FrameworkElement;
             if (control != null)
@@ -113,6 +113,20 @@ namespace Clash.UI.Suppot.UI.Helpers
                 control.PreviewMouseUp += Control_MouseUp;
                 control.MouseLeave += Control_MouseLeave;
                 control.Loaded += Control_Loaded;
+                control.Unloaded += Control_Unloaded;
+            }
+        }
+
+        private static void Control_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var control = sender as FrameworkElement;
+            if (control != null)
+            {
+                control.PreviewMouseDown -= Control_MouseDown;
+                control.PreviewMouseUp -= Control_MouseUp;
+                control.MouseLeave -= Control_MouseLeave;
+                control.Loaded -= Control_Loaded;
+                control.Unloaded -= Control_Unloaded;
             }
         }
 
@@ -149,7 +163,7 @@ namespace Clash.UI.Suppot.UI.Helpers
             RippleAnimationAdorner adorner = null;
             adorner = GetRippleAnimationAdorner(element);
             SetRippleAnimationAdorner(element, adorner);
-            adorner.AddAnimation(element, GetRippleBrush(element),GetRippleParentRadius(element), GetRippleTime(element),GetIsControlCenter(element));
+            adorner.AddAnimation(element, GetRippleBrush(element), GetRippleParentRadius(element), GetRippleTime(element), GetIsControlCenter(element));
         }
         private static void RemovePulseAdorner(UIElement element)
         {
@@ -162,20 +176,31 @@ namespace Clash.UI.Suppot.UI.Helpers
         }
         private static void Control_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            if (sender is FrameworkElement fe)
+            bool flowControl = RippleOpacityToZero(sender);
+            if (!flowControl)
             {
-                var adorner = GetRippleAnimationAdorner(fe);
-                if (adorner == null) return;
-                adorner.OpacitiesAnimation(GetRippleTime(fe)*0.7);
+                return;
             }
         }
 
-        private static void Control_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private static bool RippleOpacityToZero(object sender)
         {
             if (sender is FrameworkElement fe)
             {
                 var adorner = GetRippleAnimationAdorner(fe);
-                adorner.OpacitiesAnimation(GetRippleTime(fe) * 0.7);
+                if (adorner == null) return false;
+                adorner.OpacitiesAnimation(GetRippleTime(fe) * 0.5);
+            }
+
+            return true;
+        }
+
+        private static void Control_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            bool flowControl = RippleOpacityToZero(sender);
+            if (!flowControl)
+            {
+                return;
             }
         }
 
