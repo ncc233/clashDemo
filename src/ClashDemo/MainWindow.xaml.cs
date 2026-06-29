@@ -30,7 +30,7 @@ namespace ClashDemo
             var vm = new MainWindowViewModel();
 
             this.DataContext = vm;
-            navigationBar.SelectedIndex = 0;
+            navigationBar.SelectedIndex = 7;
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
@@ -39,6 +39,14 @@ namespace ClashDemo
             var backStack = frame.BackStack?.Cast<object>() ?? new List<object>();
             if (backStack.Count() >= 1)
                 while (frame.RemoveBackEntry() != null) { }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape) 
+            {
+                this.Close();
+            }
         }
     }
 }
