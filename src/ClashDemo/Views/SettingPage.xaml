@@ -122,6 +122,34 @@
 
             </TextBlock>-->
 
+
+            <Rectangle
+                Height="100" 
+                Width="100" 
+                Fill="Transparent"
+                Margin="0 0 0 250"
+                StrokeDashArray="4 1 4 3"
+                StrokeThickness="2"
+                Stroke="Black"
+                StrokeDashOffset="0"
+                >
+                <Rectangle.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                   Storyboard.TargetProperty="StrokeDashOffset" 
+                                   From="0" 
+                                   To="12"
+                                   Duration="0:0:0.5" 
+                                   RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+                 
+            </Rectangle>
+
             <TextBlock Text="LinearGradientBrush" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.75" FontSize="60">
                 <TextBlock.Foreground>
                     <LinearGradientBrush SpreadMethod="Repeat">
