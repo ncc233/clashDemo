@@ -123,16 +123,58 @@
             </TextBlock>-->
 
 
-            <Rectangle
-                Height="100" 
-                Width="100" 
-                Fill="Transparent"
-                Margin="0 0 0 250"
-                StrokeDashArray="4 1 4 3"
-                StrokeThickness="2"
-                Stroke="Black"
-                StrokeDashOffset="0"
-                >
+            <Ellipse Height="100" Width="100" Margin="0 0 210 250" Stroke="Red" StrokeThickness="5"
+                     StrokeDashArray="55 60" StrokeDashCap="Round">
+                <Ellipse.RenderTransform>
+                    <RotateTransform Angle="-89" CenterX="50" CenterY="50" />
+                </Ellipse.RenderTransform>
+                <!--<Ellipse.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                Storyboard.TargetProperty="StrokeDashOffset" 
+                                From="12" 
+                                To="0"
+                                Duration="0:0:0.5" 
+                                RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Ellipse.Triggers>-->
+                <Ellipse.Fill>
+                    <DrawingBrush Viewport="0,0,0.2,0.2" TileMode="Tile">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <GeometryDrawing Brush="White">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry Rect="0,0,100,100" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <GeometryGroup>
+                                            <RectangleGeometry Rect="0,0,50,50" />
+                                            <RectangleGeometry Rect="50,50,50,50" />
+                                        </GeometryGroup>
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <LinearGradientBrush>
+                                            <GradientStop Offset="0.0" Color="Black" />
+                                            <GradientStop Offset="0.5" Color="Blue" />
+                                            <GradientStop Offset="1.0" Color="Gray" />
+                                        </LinearGradientBrush>
+                                    </GeometryDrawing.Brush>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Rectangle Width="100" Height="100" Margin="210 0 0 250"
+                       StrokeDashArray="4 1 4 3" StrokeThickness="2"
+                       >
                 <Rectangle.Triggers>
                     <EventTrigger RoutedEvent="TextBlock.Loaded">
                         <BeginStoryboard>
@@ -147,7 +189,95 @@
                         </BeginStoryboard>
                     </EventTrigger>
                 </Rectangle.Triggers>
-                 
+                <Rectangle.Stroke>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="Red" Offset="0.0" />
+                        <GradientStop Color="Yellow" Offset="0.5" />
+                        <GradientStop Color="Green" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Rectangle.Stroke>
+                <Rectangle.Fill>
+                    <VisualBrush TileMode="Tile">
+                        <VisualBrush.Visual>
+                            <StackPanel>
+                                <StackPanel.Background>
+                                    <DrawingBrush>
+                                        <DrawingBrush.Drawing>
+                                            <GeometryDrawing>
+                                                <GeometryDrawing.Brush>
+                                                    <RadialGradientBrush>
+                                                        <GradientStop Color="MediumBlue" Offset="0.0" />
+                                                        <GradientStop Color="White" Offset="1.0" />
+                                                    </RadialGradientBrush>
+                                                </GeometryDrawing.Brush>
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <RectangleGeometry Rect="0,0,50,50" />
+                                                        <RectangleGeometry Rect="50,50,50,50" />
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </StackPanel.Background>
+                                <TextBlock FontSize="10pt" Margin="10">Hello, World!</TextBlock>
+                            </StackPanel>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle
+                Height="100" 
+                Width="100" 
+                Margin="0 0 0 250"
+                StrokeDashArray="10 5 5 2"
+                StrokeThickness="2"
+                Stroke="Black"
+                StrokeDashOffset="0"
+                >
+                <Rectangle.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                   Storyboard.TargetProperty="StrokeDashOffset" 
+                                   From="22" 
+                                   To="0"
+                                   Duration="0:0:0.5" 
+                                   RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+                <Rectangle.Fill>
+                    <DrawingBrush Viewport="0,0,0.25,0.25" TileMode="Tile">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <GeometryDrawing Brush="White">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry Rect="0,0,100,100" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+
+                                <GeometryDrawing>
+                                    <GeometryDrawing.Geometry>
+                                        <GeometryGroup>
+                                            <RectangleGeometry Rect="0,0,50,50" />
+                                            <RectangleGeometry Rect="50,50,50,50" />
+                                        </GeometryGroup>
+                                    </GeometryDrawing.Geometry>
+                                    <GeometryDrawing.Brush>
+                                        <LinearGradientBrush>
+                                            <GradientStop Offset="0.0" Color="Black" />
+                                            <GradientStop Offset="0.5" Color="Blue" />
+                                            <GradientStop Offset="1.0" Color="Gray" />
+                                        </LinearGradientBrush>
+                                    </GeometryDrawing.Brush>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Rectangle.Fill>
             </Rectangle>
 
             <TextBlock Text="LinearGradientBrush" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.75" FontSize="60">
