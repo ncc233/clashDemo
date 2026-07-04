@@ -47,5 +47,11 @@ namespace ClashDemo.Views
             img.Source = BitmapSource.Create(w, h, 0, 0,
                 PixelFormats.Indexed8, BitmapPalettes.Gray256, pixels, stride);
         }
+
+        private void btnReCover_Click(object sender, RoutedEventArgs e)
+        {
+
+            img.Source = new BitmapImage(new Uri(@"E:\vsCode\Learning\wpf\ClashvergeUI\src\ClashDemo\Icons\128x128@2x.png", UriKind.RelativeOrAbsolute));
+        }
     }
 }

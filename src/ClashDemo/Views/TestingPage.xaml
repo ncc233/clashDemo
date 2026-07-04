@@ -39,6 +39,12 @@
                             Click="btnPixel_Click" 
                             Margin="10"
                             athelpers:AttachPropertyHelper.AutoCornerRadius="8"/>
+                    <Button
+                    Height="50"
+                    Content="重置" 
+                    Click="btnReCover_Click" 
+                    Margin="10"
+                    athelpers:AttachPropertyHelper.AutoCornerRadius="8"/>
                 </StackPanel>
                 <Image Margin="10"
                 x:Name="img" Source="/Icons/128x128@2x.png"/>
