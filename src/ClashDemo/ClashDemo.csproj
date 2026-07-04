@@ -13,6 +13,7 @@
     <None Remove="Icons\128x128.png" />
     <None Remove="Icons\icon.ico" />
     <None Remove="Icons\tray-icon-mono.ico" />
+    <None Remove="Icons\tray-icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,9 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icons\128x128@2x.png">
+    <Content Include="Icons\128x128@2x.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
+    <Content Include="Icons\tray-icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Icons\tray-icon-mono.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -95,21 +99,20 @@
     <None Update="Icons\tray-icon-tun.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Icons\tray-icon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="9.0.0" />
     <PackageReference Include="Autofac.Configuration" Version="7.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.9" />
   </ItemGroup>
 
 </Project>

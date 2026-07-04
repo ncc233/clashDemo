@@ -1,6 +1,7 @@
 ﻿using Clash.UI.Suppot.UI.Controls;
 using Clash.UI.Suppot.UI.Helpers;
 using ClashDemo.ViewModels;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -47,6 +48,28 @@ namespace ClashDemo
             {
                 this.Close();
             }
+        }
+
+        private bool _isReallyClosing;
+
+
+        // 拦截关闭事件 — 最小化到托盘
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (!_isReallyClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+
+            base.OnClosing(e);
+        }
+
+        // 真正关闭应用
+        public void ReallyClose()
+        {
+            _isReallyClosing = true;
+            Close();
         }
     }
 }

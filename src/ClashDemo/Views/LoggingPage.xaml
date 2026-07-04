@@ -62,7 +62,6 @@
                 </ComboBox>
                 <controls:TooltipTextBoxWithFilter Grid.Column="1"  Margin="10 0 0 0" BottomTipText="过滤条件"  />
             </Grid>
-
         </Grid>
     </Grid>
 </Page>

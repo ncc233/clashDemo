@@ -3,13 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:ClashDemo.Converters"
              xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+             xmlns:tb="http://www.hardcodet.net/taskbar"
              xmlns:local="clr-namespace:ClashDemo">
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Clash.UI.Suppot;component/UISuppotAggregation.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <converters:PageNaviagtionConverter x:Key="navigateConvert"/>
+            <!-- 托盘图标定义 -->
+            <tb:TaskbarIcon x:Key="TrayIcon"
+                        IconSource="E:\vsCode\Learning\wpf\ClashvergeUI\src\ClashDemo\Icons\tray-icon.ico"
+                        ToolTipText="ClashDemo"
+                        TrayMouseDoubleClick="TrayIcon_DoubleClick">
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="显示主窗口" Click="ShowWindow_Click"/>
+                        <MenuItem Header="设置" Click="Settings_Click"/>
+                        <Separator/>
+                        <MenuItem Header="关于" Click="About_Click"/>
+                        <Separator/>
+                        <MenuItem Header="退出" Click="Exit_Click"/>
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
 
             <Style TargetType="{x:Type controls:CustomRadioButton}">
                 <Setter Property="Height"  Value="40"/>

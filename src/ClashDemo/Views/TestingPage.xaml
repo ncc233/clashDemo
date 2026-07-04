@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ClashDemo.Views"
+      xmlns:athelpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
       mc:Ignorable="d" 
       Name="测试"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -24,6 +25,24 @@
 
         <Grid Grid.Row="1" Background="{DynamicResource contentBackgroundBrush}">
 
+            <DockPanel LastChildFill="True" >
+                <StackPanel DockPanel.Dock="Right" Width="150" Background="#EEEEEE">
+                    <Button
+                        Height="50"
+                        Content="灰度化" 
+                        Click="btnGray_Click" 
+                        Margin="10"
+                        athelpers:AttachPropertyHelper.AutoCornerRadius="8"/>
+                    <Button
+                        Height="50"
+                        Content="像素处理" 
+                            Click="btnPixel_Click" 
+                            Margin="10"
+                            athelpers:AttachPropertyHelper.AutoCornerRadius="8"/>
+                </StackPanel>
+                <Image Margin="10"
+                x:Name="img" Source="/Icons/128x128@2x.png"/>
+            </DockPanel>
 
         </Grid>
     </Grid>
