@@ -31,7 +31,7 @@ namespace ClashDemo
             var vm = new MainWindowViewModel();
 
             this.DataContext = vm;
-            navigationBar.SelectedIndex = 7;
+            navigationBar.SelectedIndex = 4;
         }
 
         private void Frame_Navigated(object sender, NavigationEventArgs e)
