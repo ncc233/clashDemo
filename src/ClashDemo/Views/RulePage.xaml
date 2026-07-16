@@ -9,6 +9,8 @@
       xmlns:uiHelpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
       xmlns:validations="clr-namespace:Clash.UI.Suppot.UI.Validation;assembly=Clash.UI.Suppot"
       xmlns:componets="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:charComponents="clr-namespace:ClashDemo.Views.ChartComponentes"
       mc:Ignorable="d" 
       Name="规则"
       d:DataContext="{d:DesignInstance Type=vm:RulePageViewModel}"
@@ -83,6 +85,19 @@
                     </TextBox.Text>
 
                 </TextBox>
+
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" Height="350"  Background="White" Margin="10" LegendLocation="Top">
+                    <lvc:CartesianChart.DataTooltip>
+                        <charComponents:CustomTooltip  SelectionMode="SharedXValues"/>
+                    </lvc:CartesianChart.DataTooltip>
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="TOP" Labels="{Binding XAxis }" />
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis Title="次数" LabelFormatter="{Binding FormatterCount}" />
+                        <lvc:Axis Title="时长/分钟" LabelFormatter="{Binding FormatterDuring}" Position="RightTop" />
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
             </StackPanel>
         </Grid>
     </Grid>

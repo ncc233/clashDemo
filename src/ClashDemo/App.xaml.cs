@@ -50,12 +50,12 @@ namespace ClashDemo
             //    .Where(x => x.Name.EndsWith("Page") && x.Name.Contains("AgentPage"))
             //    .PublicOnly()
             //    .Where(xx => xx.IsClass).As<Page>().SingleInstance();
+            //serviceCollection.RegisterAssemblyTypes(assembly)
+            //    .Where(x => x.Name.EndsWith("ViewModel")&&!x.Name.Contains("SubPageViewModels"))
+            //    .PublicOnly()
+            //    .Where(xx => xx.IsClass).SingleInstance();
             serviceCollection.RegisterAssemblyTypes(assembly)
-                .Where(x => x.Name.EndsWith("ViewModel")&&!x.Name.Contains("SubPageViewModels"))
-                .PublicOnly()
-                .Where(xx => xx.IsClass).SingleInstance();
-            serviceCollection.RegisterAssemblyTypes(assembly)
-                .Where(x => x.Name.EndsWith("ViewModel")&&x.Name.Contains("SubPageViewModels"))
+                .Where(x => x.Name.EndsWith("ViewModel"))
                 .PublicOnly()
                 .Where(xx => xx.IsClass);
 
@@ -70,11 +70,11 @@ namespace ClashDemo
             {
                 Current.Shutdown();
             }
-            // 从资源获取托盘图标
-            _notifyIcon = (TaskbarIcon)FindResource("TrayIcon");
+            //// 从资源获取托盘图标
+            //_notifyIcon = (TaskbarIcon)FindResource("TrayIcon");
 
-            // 显示气泡通知
-            _notifyIcon?.ShowBalloonTip("提示", "应用已启动，最小化到托盘", BalloonIcon.Info);
+            //// 显示气泡通知
+            //_notifyIcon?.ShowBalloonTip("提示", "应用已启动，最小化到托盘", BalloonIcon.Info);
             var mainWindow = Container.Resolve<MainWindow>();
             MainWindow = mainWindow;
             mainWindow.Show();
