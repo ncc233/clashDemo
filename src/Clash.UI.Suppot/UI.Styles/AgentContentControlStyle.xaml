@@ -1,8 +1,9 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml"/>
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type controls:AgentContentControl}">
         <Setter Property="Template">
@@ -10,54 +11,79 @@
                 <ControlTemplate TargetType="{x:Type controls:AgentContentControl}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="8*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="8*" />
+                            <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
-                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0">
-                            <TextBlock Text="{TemplateBinding Header}"   Margin="0 2 0 1" FontSize="14"/>
-                            <StackPanel Orientation="Horizontal"   >
-                                <TextBlock Foreground="#8a8a8e" Margin="0 2 0 0" Text="{TemplateBinding SubHeader}" FontSize="14"/>
-                                <ItemsControl Margin="2 0 0 0" ItemsSource="{TemplateBinding AgentSource}">
+                        <StackPanel Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock Margin="0,2,0,1" Text="{TemplateBinding Header}" FontSize="14" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,2,0,0"
+                                    Foreground="#8a8a8e"
+                                    Text="{TemplateBinding SubHeader}"
+                                    FontSize="14" />
+                                <ItemsControl Margin="2,0,0,0" ItemsSource="{TemplateBinding AgentSource}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"/>
+                                            <StackPanel Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Background="Transparent" 
-                                    BorderBrush="#8a8a8e" 
-                                    BorderThickness="1" 
-                                    CornerRadius="2"
-                                    Margin="2">
-                                                <TextBlock FontSize="10" Foreground="#8a8a8e" Text="{Binding}" Margin="2"/>
+                                            <Border
+                                                Margin="2"
+                                                Background="Transparent"
+                                                BorderBrush="#8a8a8e"
+                                                BorderThickness="1"
+                                                CornerRadius="2">
+                                                <TextBlock
+                                                    Margin="2"
+                                                    FontSize="10"
+                                                    Foreground="#8a8a8e"
+                                                    Text="{Binding}" />
                                             </Border>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             </StackPanel>
                         </StackPanel>
-                        <Control VerticalAlignment="Center"  Grid.Column="1" Margin="0 3.5 0 0"  Style="{StaticResource delayCirclGroup}" IsEnabled="{TemplateBinding IsTesting}" Background="#8e949f"  Height="18" Width="40"   />
-                        <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 8 10 8">
-                            <Border x:Name="delayBorder" Background="#007aff" 
-                        CornerRadius="3" 
-                        Margin="-2 0"
-                        Opacity="0.4"
-                        Visibility="Hidden"/>
-                            <Button x:Name="delayButton" Background="Transparent" 
-                                    FontSize="15" 
-                                    BorderThickness="0" 
-                                    Content="{TemplateBinding Delay}" 
-                                    Command="{TemplateBinding SingleDelayTest}" 
-                                    Visibility="Visible"
-                                    Foreground="#007aff">
+                        <Control
+                            Grid.Column="1"
+                            Width="40"
+                            Height="18"
+                            Margin="0,3.5,0,0"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource delayCirclGroup}"
+                            IsEnabled="{TemplateBinding IsTesting}"
+                            Background="#8e949f" />
+                        <Grid
+                            Grid.Column="1"
+                            Margin="0,8,10,8"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                            <Border
+                                x:Name="delayBorder"
+                                Margin="-2,0"
+                                Background="#007aff"
+                                CornerRadius="3"
+                                Opacity="0.4"
+                                Visibility="Hidden" />
+                            <Button
+                                x:Name="delayButton"
+                                Background="Transparent"
+                                FontSize="15"
+                                BorderThickness="0"
+                                Content="{TemplateBinding Delay}"
+                                Command="{TemplateBinding SingleDelayTest}"
+                                Visibility="Visible"
+                                Foreground="#007aff">
                                 <Button.Style>
                                     <Style TargetType="Button">
-                                        <Setter Property="Template" >
+                                        <Setter Property="Template">
                                             <Setter.Value>
-                                                <ControlTemplate  TargetType="Button">
+                                                <ControlTemplate TargetType="Button">
                                                     <Grid>
-                                                        <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                                     </Grid>
                                                 </ControlTemplate>
                                             </Setter.Value>
@@ -70,17 +96,17 @@
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition  Property="IsMouseOver" Value="True"/>
-                                <Condition Property="IsTesting" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsTesting" Value="False" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="delayBorder" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="delayBorder" Property="Visibility" Value="Visible" />
                         </MultiTrigger>
                         <Trigger Property="IsTesting" Value="True">
-                            <Setter TargetName="delayButton" Property="Visibility" Value="Hidden"/>
+                            <Setter TargetName="delayButton" Property="Visibility" Value="Hidden" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-                
+
             </Setter.Value>
         </Setter>
     </Style>

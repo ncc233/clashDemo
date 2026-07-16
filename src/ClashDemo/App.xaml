@@ -14,7 +14,7 @@
             <converters:PageNaviagtionConverter x:Key="navigateConvert"/>
             <!-- 托盘图标定义 -->
             <tb:TaskbarIcon x:Key="TrayIcon"
-                        IconSource="E:\vsCode\Learning\wpf\ClashvergeUI\src\ClashDemo\Icons\tray-icon.ico"
+                        IconSource="/Icons/tray-icon.ico"
                         ToolTipText="ClashDemo"
                         TrayMouseDoubleClick="TrayIcon_DoubleClick">
                 <tb:TaskbarIcon.ContextMenu>

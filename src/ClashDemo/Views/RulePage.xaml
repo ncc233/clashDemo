@@ -11,6 +11,7 @@
       xmlns:componets="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:charComponents="clr-namespace:ClashDemo.Views.ChartComponentes"
+      xmlns:athelpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
       mc:Ignorable="d" 
       Name="规则"
       d:DataContext="{d:DesignInstance Type=vm:RulePageViewModel}"
@@ -85,8 +86,16 @@
                     </TextBox.Text>
 
                 </TextBox>
-
-                <lvc:CartesianChart Series="{Binding SeriesCollection}" Height="350"  Background="White" Margin="10" LegendLocation="Top">
+                <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                    <Button  Height="40" Width="80" Content="Clear" athelpers:AttachPropertyHelper.AutoCornerRadius="8"  Command="{Binding ClearDataCommand}"/>
+                    <Button  Height="40" Width="80" Content="Add" athelpers:AttachPropertyHelper.AutoCornerRadius="8"  Command="{Binding AddDataCommand}"/>
+                </StackPanel>
+                <Border CornerRadius="4" Background="#ffffff" >
+                    <DataGrid ItemsSource="{Binding AlarmCount}" Background="#ffffff"/>
+                </Border>
+                <lvc:CartesianChart Series="{Binding SeriesCollection}" Height="350" Foreground="Black" Background="Transparent" Margin="10" LegendLocation="Top"
+                                     DataClickCommand="{Binding AddDataCommand}"
+                                   >
                     <lvc:CartesianChart.DataTooltip>
                         <charComponents:CustomTooltip  SelectionMode="SharedXValues"/>
                     </lvc:CartesianChart.DataTooltip>

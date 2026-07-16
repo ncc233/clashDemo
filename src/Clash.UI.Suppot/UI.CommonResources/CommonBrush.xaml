@@ -1,41 +1,42 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="commonForegroundDarkBrush" Color="#000000"/>
-    <SolidColorBrush x:Key="commonForegroundLiaghtBrush" Color="#ffffff"/>
-    <SolidColorBrush x:Key="commonBarBrush" Color="#f5f5f5"/>
-    <SolidColorBrush x:Key="contentBackgroundBrush" Color="#ececec"/>
-    <SolidColorBrush x:Key="circlRippleDarkBrush" Color="#a4a4a4"/>
-    <SolidColorBrush x:Key="circlRippleLightBrush" Color="#d3d3d3"/>
-    <SolidColorBrush x:Key="navigationItemIsMouseOverBrush" Color="#d3d3d3"/>
-    <SolidColorBrush x:Key="navigationItemSelectedBrush" Color="#d0e2f6"/>
-    <SolidColorBrush x:Key="navigationItemSelectedDarkBrush" Color="#214d81"/>
-    <SolidColorBrush x:Key="dashboardBackgroundBrush" Color="#ffffff"/>
-    <SolidColorBrush x:Key="jumpButtonForegroundBrush" Color="#007aff"/>
-    <SolidColorBrush x:Key="jumpButtonborderBrush" Color="#7fbcff"/>
-    <SolidColorBrush x:Key="jumpButtonMouseOverBrush" Color="#f5faff"/>
-    <SolidColorBrush x:Key="groupHeaderBorderBackgroundBrush" Color="#e0efff"/>
-    <SolidColorBrush x:Key="commonCheckBoxBorderBrush" Color="#8a8a8e"/>
-    <SolidColorBrush x:Key="commonSubPageBackgroundBrush" Color="#ffffff"/>
-    <SolidColorBrush x:Key="commonSubPageForegroundBrush" Color="#8a8a8e"/>
-    <SolidColorBrush x:Key="commonSubPagePathfillBrush" Color="#757575"/>
-    <SolidColorBrush x:Key="hComboxBoxBorderBrush" Color="#c4c4c4"/>
-    <SolidColorBrush x:Key="hComboxBoxMouseOverBorderBrush" Color="#000000"/>
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="commonForegroundDarkBrush" Color="#000000" />
+    <SolidColorBrush x:Key="commonForegroundLiaghtBrush" Color="#ffffff" />
+    <SolidColorBrush x:Key="commonBarBrush" Color="#f5f5f5" />
+    <SolidColorBrush x:Key="contentBackgroundBrush" Color="#ececec" />
+    <SolidColorBrush x:Key="circlRippleDarkBrush" Color="#a4a4a4" />
+    <SolidColorBrush x:Key="circlRippleLightBrush" Color="#d3d3d3" />
+    <SolidColorBrush x:Key="navigationItemIsMouseOverBrush" Color="#d3d3d3" />
+    <SolidColorBrush x:Key="navigationItemSelectedBrush" Color="#d0e2f6" />
+    <SolidColorBrush x:Key="navigationItemSelectedDarkBrush" Color="#214d81" />
+    <SolidColorBrush x:Key="dashboardBackgroundBrush" Color="#ffffff" />
+    <SolidColorBrush x:Key="jumpButtonForegroundBrush" Color="#007aff" />
+    <SolidColorBrush x:Key="jumpButtonborderBrush" Color="#7fbcff" />
+    <SolidColorBrush x:Key="jumpButtonMouseOverBrush" Color="#f5faff" />
+    <SolidColorBrush x:Key="groupHeaderBorderBackgroundBrush" Color="#e0efff" />
+    <SolidColorBrush x:Key="commonCheckBoxBorderBrush" Color="#8a8a8e" />
+    <SolidColorBrush x:Key="commonSubPageBackgroundBrush" Color="#ffffff" />
+    <SolidColorBrush x:Key="commonSubPageForegroundBrush" Color="#8a8a8e" />
+    <SolidColorBrush x:Key="commonSubPagePathfillBrush" Color="#757575" />
+    <SolidColorBrush x:Key="hComboxBoxBorderBrush" Color="#c4c4c4" />
+    <SolidColorBrush x:Key="hComboxBoxMouseOverBorderBrush" Color="#000000" />
     <Color x:Key="customRadioButtonCommonBackgroundColor">#f5f5f5</Color>
     <Color x:Key="customRadioButtonCheckBackgroundColor">#007aff</Color>
-    <SolidColorBrush x:Key="customRadioButtonCommonBackground" Color="{StaticResource customRadioButtonCommonBackgroundColor }"/>
-    <SolidColorBrush x:Key="customRadioButtonCheckBackground" Color="{StaticResource customRadioButtonCheckBackgroundColor}"/>
+    <SolidColorBrush x:Key="customRadioButtonCommonBackground" Color="{StaticResource customRadioButtonCommonBackgroundColor}" />
+    <SolidColorBrush x:Key="customRadioButtonCheckBackground" Color="{StaticResource customRadioButtonCheckBackgroundColor}" />
 
     <Color x:Key="thumbButtonCommonBackground">#bbbbbb</Color>
     <Color x:Key="thumbButtonCheckBackground">#007aff</Color>
 
-    <SolidColorBrush x:Key="thumbButtonCommonBackgroundBrush" Color="{StaticResource thumbButtonCommonBackground}"/>
-    <SolidColorBrush x:Key="labelBordrBrush" Color="#cccccc"/>
-    <SolidColorBrush x:Key="trafficStatisticsHeaderBrush" Color="#fc9b76"/>
+    <SolidColorBrush x:Key="thumbButtonCommonBackgroundBrush" Color="{StaticResource thumbButtonCommonBackground}" />
+    <SolidColorBrush x:Key="labelBordrBrush" Color="#cccccc" />
+    <SolidColorBrush x:Key="trafficStatisticsHeaderBrush" Color="#fc9b76" />
 
-    <SolidColorBrush x:Key="commonContextMenuBackgroundBrush" Color="#f5f5f5"/>
+    <SolidColorBrush x:Key="commonContextMenuBackgroundBrush" Color="#f5f5f5" />
 
-    <SolidColorBrush x:Key="subscribBoardItemForegroundBrush" Color="#8a8a8e"/>
-    <SolidColorBrush x:Key="commonButtonBackground" Color="#007aff"/>
-    <SolidColorBrush x:Key="commonButtonDisenableBackground" Color="#cfcfcf"/>
+    <SolidColorBrush x:Key="subscribBoardItemForegroundBrush" Color="#8a8a8e" />
+    <SolidColorBrush x:Key="commonButtonBackground" Color="#007aff" />
+    <SolidColorBrush x:Key="commonButtonDisenableBackground" Color="#cfcfcf" />
 
 </ResourceDictionary>
