@@ -74,6 +74,29 @@ namespace Clash.UI.Suppot.UI.Componentes
         public static readonly DependencyProperty DateTimeRangeEndProperty =
             DependencyProperty.Register(nameof(DateTimeRangeEnd), typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(null));
 
+        private void ImageButton_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void startHours_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void clearBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void yesBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

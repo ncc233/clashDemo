@@ -56,11 +56,11 @@ namespace ClashDemo
         // 拦截关闭事件 — 最小化到托盘
         protected override void OnClosing(CancelEventArgs e)
         {
-            if (!_isReallyClosing)
-            {
-                e.Cancel = true;
-                Hide();
-            }
+            //if (!_isReallyClosing)
+            //{
+            //    e.Cancel = true;
+            //    Hide();
+            //}
 
             base.OnClosing(e);
         }
