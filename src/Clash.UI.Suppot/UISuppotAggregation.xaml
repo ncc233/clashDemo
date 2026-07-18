@@ -34,5 +34,6 @@
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TooltipTextBox.xaml" />
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/DelayTestButtonStyle.xaml" />
         <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/AgentContentControlStyle.xaml" />
+        <ResourceDictionary Source="/Clash.UI.Suppot;component/UI.Styles/TestDatePicker.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

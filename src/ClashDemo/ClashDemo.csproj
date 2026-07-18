@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\iconfont.ttf" />
     <None Remove="Icons\128x128%402x.png" />
     <None Remove="Icons\128x128.png" />
     <None Remove="Icons\icon.ico" />
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\iconfont.ttf" />
     <Resource Include="Icons\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

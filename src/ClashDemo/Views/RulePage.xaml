@@ -99,9 +99,9 @@
                     <lvc:CartesianChart.DataTooltip>
                         <charComponents:CustomTooltip  SelectionMode="SharedXValues"/>
                     </lvc:CartesianChart.DataTooltip>
-                    <lvc:CartesianChart.AxisX>
+                    <!--<lvc:CartesianChart.AxisX>
                         <lvc:Axis Title="TOP" Labels="{Binding XAxis }" />
-                    </lvc:CartesianChart.AxisX>
+                    </lvc:CartesianChart.AxisX>-->
                     <lvc:CartesianChart.AxisY>
                         <lvc:Axis Title="次数" LabelFormatter="{Binding FormatterCount}" />
                         <lvc:Axis Title="时长/分钟" LabelFormatter="{Binding FormatterDuring}" Position="RightTop" />

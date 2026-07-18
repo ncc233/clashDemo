@@ -29,23 +29,23 @@ namespace ClashDemo.ViewModels
         public ColumnSeries AlarmCountSeries { get; set; } = new ColumnSeries();
         public ColumnSeries AlarmDuringSeries { get; set; } = new ColumnSeries();
         public string[] XAxis { get; set; }
-        public ChartValues<AlarmCountData> AlarmCount { get; set; }
+        public ChartValues<AlarmData> AlarmCount { get; set; }
 
-        public ChartValues<AlarmDuringData> AlarmDuring { get; set; }
+        public ChartValues<AlarmData> AlarmDuring { get; set; }
 
         public RulePageViewModel()
         {
             Time = DateTime.Now;
-            var mapperCount = Mappers.Xy<AlarmCountData>()
+            var mapperCount = Mappers.Xy<AlarmData>()
                 .X(model => model.Top)
                 .Y(model => model.Value);
 
-            var mapperDuring = Mappers.Xy<AlarmDuringData>()
+            var mapperDuring = Mappers.Xy<AlarmData>()
                 .X(model => model.Top)
                 .Y(model => model.Value);
 
-            Charting.For<AlarmDuringData>(mapperDuring);
-            Charting.For<AlarmCountData>(mapperCount);
+            Charting.For<AlarmData>(mapperDuring);
+            //Charting.For<AlarmData>(mapperCount);
 
             XAxis = new string[] { "TOP1", "TOP2", "TOP3", "TOP4", "TOP5", "TOP6", "TOP7" };
             FormatterCount = value => value.ToString();
@@ -61,20 +61,20 @@ namespace ClashDemo.ViewModels
                 AlarmDuringSeries
             };
             AlarmCount =
-                [new AlarmCountData { Top = 1, Value = 8 ,AlarmMsg="Alarm0"},
-                new AlarmCountData { Top = 2, Value = 20 ,AlarmMsg="Alarm1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" },
-                new AlarmCountData { Top = 3, Value = 22 ,AlarmMsg="Alarm2" },
-                new AlarmCountData { Top = 4, Value = 32 ,AlarmMsg="Alarm3" },
-                new AlarmCountData { Top = 5, Value = 43 ,AlarmMsg="Alarm4" },
-                new AlarmCountData { Top = 6, Value = 54 ,AlarmMsg="Alarm5" },
-                new AlarmCountData { Top = 7, Value = 68 ,AlarmMsg="Alarm6" }];
-            AlarmDuring = [new AlarmDuringData { Top = 7, Value = 100 ,AlarmMsg="Alarm0"},
-                new AlarmDuringData { Top = 6, Value = 200 , AlarmMsg="Alarm1"},
-                new AlarmDuringData { Top = 5, Value = 300 , AlarmMsg="Alarm2"},
-                new AlarmDuringData { Top = 4, Value = 400 , AlarmMsg="Alarm3"},
-                new AlarmDuringData { Top = 3, Value = 500 , AlarmMsg="Alarm4"},
-                new AlarmDuringData { Top = 2, Value = 600 , AlarmMsg="Alarm5"},
-                new AlarmDuringData { Top = 1, Value = 700 , AlarmMsg="Alarm6"}];
+                [new AlarmData { Top = 1, Value = 8 ,AlarmMsg="Alarm0"},
+                new AlarmData { Top = 2, Value = 20 ,AlarmMsg="Alarm1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" },
+                new AlarmData { Top = 3, Value = 22 ,AlarmMsg="Alarm2" },
+                new AlarmData { Top = 4, Value = 32 ,AlarmMsg="Alarm3" },
+                new AlarmData { Top = 5, Value = 43 ,AlarmMsg="Alarm4" },
+                new AlarmData { Top = 6, Value = 54 ,AlarmMsg="Alarm5" },
+                new AlarmData { Top = 7, Value = 68 ,AlarmMsg="Alarm6" }];
+            AlarmDuring = [new AlarmData { Top = 7, Value = 100 ,AlarmMsg="Alarm0"},
+                new AlarmData { Top = 6, Value = 200 , AlarmMsg="Alarm1"},
+                new AlarmData { Top = 5, Value = 300 , AlarmMsg="Alarm2"},
+                new AlarmData { Top = 4, Value = 400 , AlarmMsg="Alarm3"},
+                new AlarmData { Top = 3, Value = 500 , AlarmMsg="Alarm4"},
+                new AlarmData { Top = 2, Value = 600 , AlarmMsg="Alarm5"},
+                new AlarmData { Top = 1, Value = 700 , AlarmMsg="Alarm6"}];
             //AlarmDuring.Reverse();
             AlarmCountSeries.Values = AlarmCount;
             AlarmDuringSeries.Values =AlarmDuring;
@@ -85,8 +85,8 @@ namespace ClashDemo.ViewModels
         {
             AlarmCount.Clear();
             AlarmDuring.Clear();
-            AlarmCountSeries.Values.Clear();
-            AlarmDuringSeries.Values.Clear();
+            //AlarmCountSeries.Values.Clear();
+            //AlarmDuringSeries.Values.Clear();
         }
         [RelayCommand]
         private void AddData()
@@ -99,14 +99,7 @@ namespace ClashDemo.ViewModels
 
     }
     [AddINotifyPropertyChangedInterface]
-    public class AlarmCountData
-    {
-        public int Top { get; set; }
-        public int Value { get; set; }
-
-        public string AlarmMsg { get; set; }
-    }
-    public class AlarmDuringData()
+    public class AlarmData()
     {
         public int Top { get; set; }
         public double Value { get; set; }

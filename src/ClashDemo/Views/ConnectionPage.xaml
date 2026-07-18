@@ -80,6 +80,8 @@
                            Foreground="#68686d"
                            FontFamily="DengXian"
                            FontWeight="Regular"/>
+
+                <Calendar  SelectionMode="SingleRange" Style="{StaticResource NormalCalendarStyle}"/>
             </Grid>
         </Grid>
     </Grid>

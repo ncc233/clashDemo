@@ -38,5 +38,36 @@
     <SolidColorBrush x:Key="subscribBoardItemForegroundBrush" Color="#8a8a8e" />
     <SolidColorBrush x:Key="commonButtonBackground" Color="#007aff" />
     <SolidColorBrush x:Key="commonButtonDisenableBackground" Color="#cfcfcf" />
+    <!--字体颜色-->
+    <SolidColorBrush Color="#303133" x:Key="DefaultFontBrush"/>
+    <SolidColorBrush Color="#909399" x:Key="BackgroundFontBrush"/>
+    <SolidColorBrush Color="#326CF3" x:Key="MouseOverFontBrush"/>
+    <SolidColorBrush Color="#409EFF" x:Key="FocusFontBrush"/>
+    <SolidColorBrush Color="#FFFFFF" x:Key="SelectedFontBrush"/>
+    <SolidColorBrush Color="#C0C4CC" x:Key="IsEnalbledFontBrush"/>
+    <SolidColorBrush Color="#606266" x:Key="CellFontBrush"/>
+    <SolidColorBrush Color="#606266" x:Key="ColumnHeaderFontBrush"/>
+
+    <SolidColorBrush Color="#FFFFFF" x:Key="InfoButtonFontBrush"/>
+    <SolidColorBrush Color="#333333" x:Key="WindowButtonFontBrush"/>
+    <!--边框-->
+    <SolidColorBrush Color="#DCDFE6" x:Key="DefautBorderBrush"/>
+    <SolidColorBrush Color="#409EFF" x:Key="MouseOverBorderBrush"/>
+    <SolidColorBrush Color="#409EFF" x:Key="SelectedBorderBrush"/>
+    <SolidColorBrush Color="#326CF3" x:Key="FocusBorderBrush"/>
+    <SolidColorBrush Color="#F2F6FC" x:Key="IsEnalbledBorderBrush"/>
+
+    <SolidColorBrush Color="#326CF3" x:Key="InfoButtonBorderBrush"/>
+    <!--背景-->
+    <SolidColorBrush Color="#FFFFFF" x:Key="DefaultBackgroundBrush"/>
+    <SolidColorBrush Color="#F0F0F0" x:Key="MouseOverBackgroundBrush"/>
+    <SolidColorBrush Color="#326CF3" x:Key="SelectedBackgroundBrush"/>
+    <SolidColorBrush Color="#326CF3" x:Key="MenuBackgroundBrush"/>
+
+    <SolidColorBrush Color="#326CF3" x:Key="InfoButtonBackgroundBrush"/>
+    <!--线-->
+    <SolidColorBrush Color="#EEEEEE" x:Key="DefaultWireBrush"/>
+    <!--日历-->
+    <SolidColorBrush Color="#DB3340" x:Key="CalendarToDayBrush"/>
 
 </ResourceDictionary>
