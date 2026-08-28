@@ -5,11 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClashDemo.Views.SubPages"
              xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:ClashDemo.ViewModels.SubPageViewModels"
              d:DataContext="{d:DesignInstance Type=vm:NetAgentBoardViewModel}"
+             xmlns:enums="clr-namespace:ClashDemo.Enums"
              Height="255"
              d:DesignHeight="250" d:DesignWidth="330">
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="testEnums" MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="{x:Type enums:TestEnum}"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+                            
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -90,56 +101,9 @@
                                Foreground="#FFFFFF"/>
                     </Grid>
                 </Border>
-                <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="代理组" >
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
-                    <ComboBoxItem Content="魔法喵"/>
+                <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="代理组" ItemsSource="{Binding Source={StaticResource testEnums}}" >
                 </controls:HeaderComboBox>
-                <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="节点" >
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
-                    <ComboBoxItem Content="自动选择"/>
+                <controls:HeaderComboBox  SelectedIndex="0"  VerticalAlignment="Center" Header="节点"  ItemsSource="{Binding Source={StaticResource testEnums}}">
                 </controls:HeaderComboBox>
             </StackPanel>
         </Border>
