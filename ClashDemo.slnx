@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="src/Clash.Services/Clash.Services.csproj" Id="b2bb882d-a886-4ffa-bc05-4ed0783f402a" />
   <Project Path="src/Clash.UI.Suppot/Clash.UI.Suppot.csproj" />
   <Project Path="src/ClashDemo/ClashDemo.csproj" />
 </Solution>
