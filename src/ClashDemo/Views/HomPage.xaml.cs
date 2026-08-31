@@ -46,7 +46,7 @@ namespace ClashDemo.Views
             var window=App.Current.Container.Resolve<MainWindow>();
             UserControl common = App.Current.Container.Resolve<CommonSettingDialog>();
             common.DataContext = this.DataContext;
-            ShadowdialogHelper.RunDialog(window.gridMain.Children,new ShadowDialog(),common);
+            ShadowdialogHelper.RunDialog(window,common);
         }
 
     }

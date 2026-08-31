@@ -21,9 +21,9 @@
                        VerticalAlignment="Center"   
                        FontSize="25"
                        Margin="20"/>
-            <controls:HeaderTextBox Grid.Row="1" x:Name="testName" Style="{StaticResource headerTextBoxStyle}" Margin="0 -120 0 0" Header="名称" Text="{Binding CurrentModel.BlockName}" />
-            <controls:HeaderTextBox Grid.Row="1" x:Name="testIcon" Style="{StaticResource headerTextBoxStyle}"  Header="图标"/>
-            <controls:HeaderTextBox Grid.Row="1" x:Name="testAddress" Style="{StaticResource headerTextBoxStyle}" Margin="0 120 0 0" Header="测试地址" Text="{Binding CurrentModel.BlockURL}"/>
+            <controls:HeaderTextBox Grid.Row="1" x:Name="testName" Style="{StaticResource headerTextBoxStyle}" Margin="8 -120 8 0" Header="名称" Text="{Binding CurrentModel.BlockName}" />
+            <controls:HeaderTextBox Grid.Row="1" x:Name="testIcon" Style="{StaticResource headerTextBoxStyle}" Margin="8 0 8 0" Header="图标"/>
+            <controls:HeaderTextBox Grid.Row="1" x:Name="testAddress" Style="{StaticResource headerTextBoxStyle}" Margin="8 120 8 0" Header="测试地址" Text="{Binding CurrentModel.BlockURL}"/>
             <Canvas Grid.Row="2">
                 <Button Canvas.Right="110" 
                                                Style="{StaticResource settingOperateButtonStyle}" 

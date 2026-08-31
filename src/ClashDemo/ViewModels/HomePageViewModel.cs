@@ -24,7 +24,6 @@ namespace ClashDemo.ViewModels
     [INotifyPropertyChanged]
     public partial class HomePageViewModel
     {
-        private ShadowDialog _shadowDialog;
         public List<HomePageDaskBoardModelBase> DaskBoardItems { get; set; }
 
         public SubscrubBoardViewModel SubscrubBoardViewModel { get; set; }
@@ -62,8 +61,7 @@ namespace ClashDemo.ViewModels
             var window = App.Current.Container.Resolve<MainWindow>();
             UserControl common = App.Current.Container.Resolve<CommonSettingDialog>();
             common.DataContext = this;
-            _shadowDialog = new ShadowDialog();
-            ShadowdialogHelper.RunDialog(window.gridMain.Children, _shadowDialog, common);
+            ShadowdialogHelper.RunDialog(window, common);
             
         }
         [RelayCommand]

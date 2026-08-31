@@ -127,7 +127,7 @@
                 <Popup
                     x:Name="PART_Popup"
                     Grid.ColumnSpan="2"
-                    MaxHeight="300"
+                    MaxHeight="200"
                     Margin="1"
                     AllowsTransparency="true"
                     IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource Mode=TemplatedParent}}"

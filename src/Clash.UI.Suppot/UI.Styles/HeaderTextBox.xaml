@@ -9,8 +9,8 @@
 
     <Style x:Key="headerTextBoxStyle" TargetType="{x:Type controls:HeaderTextBox}">
         <Setter Property="Height" Value="40" />
-        <Setter Property="Width" Value="400" />
         <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="8"/>
         <Setter Property="BorderThickness" Value="1,1,1,1" />
         <Setter Property="BorderBrush" Value="{DynamicResource hComboxBoxBorderBrush}" />
         <Setter Property="Background" Value="Transparent" />

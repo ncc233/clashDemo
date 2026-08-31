@@ -30,21 +30,24 @@ namespace Clash.UI.Suppot.UI.Controls
 
         private TextBlock txt;
         private Border border;
+        private double _height = 0;
+        private double _width = 0;
         public HeaderTextBox()
         {
             this.Loaded += (s, e) =>
             {
                 txt = this.Template.FindName("moveText", this) as TextBlock;
                 border = this.Template.FindName("Header", this) as Border;
-                IniTextBox(s);
+                if (txt is not null || border is not null)
+                    IniTextBox(s);
                 TextChanged += HeaderTextBox_TextChanged;
             };
             this.GotFocus += (sender, e) =>
             {
                 //28.3132
                 if (!string.IsNullOrWhiteSpace(this.Text)) return;
-                var hei = txt.ActualHeight;
-                var wid = txt.ActualWidth;
+                var hei = _height;
+                var wid = _width;
                 var minWidth = wid * 0.67;
                 var padding = minWidth / 0.8209;
                 var margin = new Thickness(0, 0, padding, 0);
@@ -65,17 +68,17 @@ namespace Clash.UI.Suppot.UI.Controls
         private void HeaderTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.IsFocused == true) return;
-            var trasn=txt.RenderTransform as TranslateTransform;
-            if (!string.IsNullOrWhiteSpace(this.Text)&&trasn.Y==0)
+            var trasn = txt.RenderTransform as TranslateTransform;
+            if (!string.IsNullOrWhiteSpace(this.Text) && trasn.Y == 0)
             {
-                var hei = txt.ActualHeight;
-                var wid = txt.ActualWidth;
+                var hei = _height;
+                var wid = _width;
                 var minWidth = wid * 0.67;
                 var padding = minWidth / 0.8209;
                 var margin = new Thickness(0, 0, padding, 0);
                 CreateAnimation(margin, 12, -20, (padding - minWidth) / 2 - 2 / 0.8209).Begin();
             }
-            else 
+            else
             {
                 if (!string.IsNullOrWhiteSpace(this.Text)) return;
                 var margin = new Thickness(0, 0, 0, 0);
@@ -85,10 +88,17 @@ namespace Clash.UI.Suppot.UI.Controls
 
         public void IniTextBox(object sender)
         {
+            bool isuppdate = _height == 0 && _width == 0;
+            if (_height == 0 && _width == 0)
+            {
+                _height = txt.ActualHeight;
+                _width = txt.ActualWidth;
+            }
             if (!string.IsNullOrWhiteSpace(this.Text))
             {
-                var hei = txt.ActualHeight;
-                var wid = txt.ActualWidth;
+                var data = txt.Text;
+                var hei = _height;
+                var wid = _width;
                 var minWidth = wid * 0.67;
                 var padding = minWidth / 0.8209;
                 var margin = new Thickness(0, 0, padding, 0);

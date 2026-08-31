@@ -33,6 +33,8 @@ namespace Clash.UI.Suppot.UI.Controls
         {
             var control=sender as HeaderComboBox;
             var border=control.Template.FindName("dropDownBorder", control) as Border;
+            if( border == null)
+                return;
             var hei=border.Height;
             var wid=border.Width;
             var radius=border.CornerRadius;

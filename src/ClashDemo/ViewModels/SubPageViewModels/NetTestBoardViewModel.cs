@@ -44,7 +44,7 @@ namespace ClashDemo.ViewModels.SubPageViewModels
             dataContext.Ini("新建测试",TestItems);
             common.DataContext = dataContext;
             _shadowDialog = new ShadowDialog();
-            ShadowdialogHelper.RunDialog(window.gridMain.Children, _shadowDialog, common);
+            ShadowdialogHelper.RunDialog(window,common);
 
         }
 
@@ -66,7 +66,7 @@ namespace ClashDemo.ViewModels.SubPageViewModels
             dataContext.Ini("编辑测试", TestItems,netTestBlock);
             common.DataContext= dataContext;
             _shadowDialog = new ShadowDialog();
-            ShadowdialogHelper.RunDialog(window.gridMain.Children, _shadowDialog, common);
+            ShadowdialogHelper.RunDialog(window, common);
         }
         [RelayCommand]
         private void DeleteNetTestBoard(NetTestBlockModel netTestBlock)
