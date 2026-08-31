@@ -18,7 +18,7 @@ namespace ClashDemo.Converters
         {
             string pageName = string.Empty;
             if (value is ListBoxItem item)
-                pageName = item.Content.ToString().Replace(" ","");
+                pageName = item.Tag.ToString();
             Page page = null;
             if (string.IsNullOrEmpty(pageName))
             {
@@ -26,11 +26,7 @@ namespace ClashDemo.Converters
                 page.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ececec"));
                 return page;
             }
-            page = App.Current.Container.Resolve<IEnumerable<Page>>().FirstOrDefault(x =>
-            {
-
-               return x.Name.Contains(pageName);
-            });
+            page = App.Current.Container.ResolveKeyed<Page>(pageName) as Page;
             if (page == null)
             {
                 page = new Page();

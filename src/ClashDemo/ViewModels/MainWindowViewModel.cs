@@ -1,5 +1,6 @@
 ﻿using Clash.UI.Suppot.UI.Controls;
 using ClashDemo.Args;
+using ClashDemo.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
 using System;
@@ -32,24 +33,25 @@ namespace ClashDemo.ViewModels
             {
                 Source = new Uri("pack://Application:,,,/Clash.UI.Suppot;component/UI.CommonResources/NavigationGeometry.xaml")
             };
-            Dictionary<string, string> keyValuePairs = [];
-            keyValuePairs.Add("首 页", "homeGeometry");
-            keyValuePairs.Add("代 理", "netAgentGeometry");
-            keyValuePairs.Add("订 阅", "subscribeGeometry");
-            keyValuePairs.Add("连 接", "connectionGeometry");
-            keyValuePairs.Add("规 则", "ruleGeometry");
-            keyValuePairs.Add("日 志", "logGeometry");
-            keyValuePairs.Add("测 试", "testGeometry");
-            keyValuePairs.Add("设 置", "settingGeometry");
+            Dictionary<string,(string tag,string icon)> keyValuePairs = [];
+            keyValuePairs.Add("首 页",(nameof(HomPage), "homeGeometry"));
+            keyValuePairs.Add("代 理", (nameof(AgentPage), "netAgentGeometry"));
+            keyValuePairs.Add("订 阅", (nameof(SubscribePage), "subscribeGeometry"));
+            keyValuePairs.Add("连 接", (nameof(ConnectionPage), "connectionGeometry"));
+            keyValuePairs.Add("规 则", (nameof(RulePage), "ruleGeometry"));
+            keyValuePairs.Add("日 志", (nameof(LoggingPage), "logGeometry"));
+            keyValuePairs.Add("测 试", (nameof(TestingPage), "testGeometry"));
+            keyValuePairs.Add("设 置", (nameof(SettingPage), "settingGeometry"));
 
             NavigationItems = [];
             foreach (var item in keyValuePairs)
             {
-                var geometry = rsdic[item.Value];
+                var geometry = rsdic[item.Value.icon];
                 if (geometry is null) continue;
                 NavigationItems.Add(new NavigationButton()
                 {
                     Content = item.Key,
+                    Tag=item.Value.tag,
                     HeaderIcon = geometry as Geometry,
                 });
             }

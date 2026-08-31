@@ -41,7 +41,9 @@ namespace ClashDemo
             serviceCollection.RegisterAssemblyTypes(assembly)
                 .Where(x => x.Name.EndsWith("Page"))
                 .PublicOnly()
-                .Where(xx => xx.IsClass).As<Page>();
+                .Where(xx => xx.IsClass).As<Page>()
+                .Keyed<Page>(page=>
+                page.Name);
             //serviceCollection.RegisterAssemblyTypes(assembly)
             //    .Where(x => x.Name.EndsWith("Page") && !x.Name.Contains("AgentPage"))
             //    .PublicOnly()

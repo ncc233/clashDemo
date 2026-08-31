@@ -64,6 +64,13 @@ namespace ClashDemo.ViewModels
                 },
 
             };
+
+        }
+
+        private async Task TestWaite() 
+        {
+            while (true) { }
+            await Task.Delay(100);
         }
     }
 }
