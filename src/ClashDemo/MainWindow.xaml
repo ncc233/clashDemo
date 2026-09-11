@@ -57,6 +57,7 @@
                            FontWeight="Bold"/>
             </StackPanel>
             <ListBox Grid.Row="1" x:Name="navigationBar"
+                     SelectedIndex="0"
                      Style="{StaticResource navigationBar}"  
                      ItemsSource="{Binding NavigationItems}"
                      >

@@ -18,7 +18,11 @@ namespace Clash.UI.Suppot.UI.Helpers.TemplateSelecters
             ["RadioGroupItemSingle"] = GetResourceDictionary()["RadioGroupItemSingle"] as Style,
             ["RadioGroupItemHorizontalFirst"] = GetResourceDictionary()["RadioGroupItemHorizontalFirst"] as Style,
             ["RadioGroupItemHorizontalLast"] = GetResourceDictionary()["RadioGroupItemHorizontalLast"] as Style,
-            ["toggleButtonGroupItemSingle"] = GetResourceDictionary()["toggleButtonGroupItemSingle"] as Style,
+            ["groupItemDefalut"] = GetResourceDictionary()["groupItemDefalut"] as Style,
+            ["groupItemToggleDefalut"] = GetResourceDictionary()["groupItemToggleDefalut"] as Style,
+            ["toggleButtonGroupItemHorizontalFirst"] = GetResourceDictionary()["toggleButtonGroupItemHorizontalFirst"] as Style,
+            ["toggleButtonGroupItemHorizontalLast"] = GetResourceDictionary()["toggleButtonGroupItemHorizontalLast"] as Style,
+            ["toggleButtonGroupItemSingle"] = GetResourceDictionary()["toggleButtonGroupItemSingle"] as Style
         };
 
 
@@ -73,7 +77,7 @@ namespace Clash.UI.Suppot.UI.Helpers.TemplateSelecters
         {
             if (count == 1)
             {
-                return StyleDict["RadioGroupItemSingle"];
+                return StyleDict["groupItemDefalut"];
             }
 
             var index = buttonGroup.Items.IndexOf(button);
@@ -87,14 +91,14 @@ namespace Clash.UI.Suppot.UI.Helpers.TemplateSelecters
         {
             if (count == 1)
             {
-                return StyleDict["toggleButtonGroupItemSingle"];
+                return StyleDict["groupItemToggleDefalut"];
             }
 
             var index = buttonGroup.Items.IndexOf(button);
             return index == 0
-                    ? StyleDict["toggleButtonGroupItemSingle"]
+                    ? StyleDict["toggleButtonGroupItemHorizontalFirst"]
                     : StyleDict[index == count - 1
-                        ? "toggleButtonGroupItemSingle"
+                        ? "toggleButtonGroupItemHorizontalLast"
                         : "toggleButtonGroupItemSingle"];
         }
     }

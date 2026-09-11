@@ -24,10 +24,13 @@
                 <DropShadowEffect Direction="0" ShadowDepth="2" Opacity="0.6"/>
             </Canvas.Effect>
             <TextBlock Canvas.Top="18" Canvas.Left="20" FontSize="20" Text="代 理" FontWeight="Bold" VerticalAlignment="Center"/>
-            <controls:ButtonGroup Style="{StaticResource buttonGroup}"  Width="150" Height="30" Canvas.Top="17" Canvas.Right="150" >
-                <RadioButton Content="规则"  IsChecked="True"/>
-                <RadioButton Content="全局" />
-                <RadioButton Content="直连" />
+            <controls:ButtonGroup Style="{StaticResource buttonGroup}" Width="150" Height="30" Canvas.Top="17" Canvas.Right="150" >
+                <!--<RadioButton Content="规则"  IsChecked="True"/>-->
+                <!--<RadioButton Content="全局" />
+                <RadioButton Content="直连"/>-->
+                <ToggleButton Content="规则"/>
+                <ToggleButton Content="全局"/>
+                <ToggleButton Content="直连"/>
             </controls:ButtonGroup>
 
             <controls:ButtonGroup Style="{StaticResource buttonGroup}"  Width="110" Height="30" Canvas.Top="17" Canvas.Right="20" >

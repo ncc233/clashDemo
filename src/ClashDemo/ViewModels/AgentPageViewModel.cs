@@ -16,6 +16,7 @@ namespace ClashDemo.ViewModels
     {
         public List<AgentGroupModel> AgentGroups { get; set; }
 
+        public object SelectItem { get; set; }
         public AgentPageViewModel() 
         {
             List<string> countries = ["香港", "美国", "日本", "英国", "新加坡", "韩国", "马来西亚", "乌克兰"];

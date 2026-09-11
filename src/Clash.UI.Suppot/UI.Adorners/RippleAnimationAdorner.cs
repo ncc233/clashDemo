@@ -70,7 +70,7 @@ namespace Clash.UI.Suppot.UI.Adorners
             };
             // x动画
             DoubleAnimation aniX = new DoubleAnimation();
-            aniX.Duration = TimeSpan.FromSeconds(time);
+            aniX.Duration = TimeSpan.FromSeconds(time*0.8);
             aniX.From = 0;
             aniX.To = animationSize;
             aniX.EasingFunction = func;
@@ -83,7 +83,7 @@ namespace Clash.UI.Suppot.UI.Adorners
 
             // y动画
             DoubleAnimation aniY = new DoubleAnimation();
-            aniY.Duration = TimeSpan.FromSeconds(time);
+            aniY.Duration = TimeSpan.FromSeconds(time*0.8);
             aniY.From = 0;
             aniY.To = animationSize;
             aniY.EasingFunction = func;
@@ -100,9 +100,9 @@ namespace Clash.UI.Suppot.UI.Adorners
             var opacityAni = new DoubleAnimation();
             var kfOpacity = new DoubleAnimationUsingKeyFrames();
             kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0, KeyTime.FromTimeSpan(TimeSpan.Zero)));
-            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.35 * 0.7, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
-            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.35 * 0.9, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.8))));
-            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.35, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
+            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.45 * 0.9, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.3))));
+            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.45 * 0.95, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time * 0.5))));
+            kfOpacity.KeyFrames.Add(new LinearDoubleKeyFrame(0.45, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(time))));
 
 
 

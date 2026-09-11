@@ -40,6 +40,8 @@ namespace Clash.UI.Suppot.UI.Controls
             DependencyProperty.Register(nameof(Layout), typeof(LinearLayout), typeof(ButtonGroup), new PropertyMetadata(LinearLayout.Uniform));
 
 
+
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             var count = Items.Count;
