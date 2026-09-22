@@ -17,6 +17,9 @@ namespace ClashDemo.ViewModels
     [INotifyPropertyChanged]
     public partial class MainWindowViewModel
     {
+
+        public CancellationTokenSource TestCancel { get; set; }
+
         public List<NavigationButton> NavigationItems { get; set; }
 
         public MainWindowViewModel()
@@ -29,6 +32,7 @@ namespace ClashDemo.ViewModels
 
         private void IniNavigationBar()
         {
+            var data=TestCancel;
             var rsdic = new ResourceDictionary()
             {
                 Source = new Uri("pack://Application:,,,/Clash.UI.Suppot;component/UI.CommonResources/NavigationGeometry.xaml")
@@ -55,6 +59,7 @@ namespace ClashDemo.ViewModels
                     HeaderIcon = geometry as Geometry,
                 });
             }
+
         }
 
         private void ExternNavigationTask(object recipient,NavigationInfo info) 
