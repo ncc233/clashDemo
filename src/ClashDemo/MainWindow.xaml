@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClashDemo"
         xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
-        xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
+        xmlns:helpers="clr-namespace:ClashDemo.Helpers"
         xmlns:vm="clr-namespace:ClashDemo.ViewModels"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -30,7 +30,7 @@
         <Frame x:Name="frame" 
             Grid.Column="1" Background="{DynamicResource contentBackgroundBrush}" 
                helpers:PageNavigationHelper.NavigateTarget="{Binding ElementName=navigationBar,
-            Path=SelectedItem,Converter={StaticResource navigateConvert},Mode=TwoWay}"
+            Path=SelectedItem.Tag,Mode=TwoWay}"
                Navigated="Frame_Navigated"
                NavigationUIVisibility="Hidden">
             <Frame.Effect>

@@ -13,7 +13,6 @@
                 <ResourceDictionary Source="/Clash.UI.Suppot;component/UISuppotAggregation.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="iconfont">pack://application:,,,/ClashDemo;component/Fonts/#iconfont</FontFamily>
-            <converters:PageNaviagtionConverter x:Key="navigateConvert" />
             <!-- 托盘图标定义 -->
             <tb:TaskbarIcon
                 x:Key="TrayIcon"

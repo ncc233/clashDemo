@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
-namespace ClashDemo.Args
+namespace ClashDemo.Interfaces
 {
-    public class NavigationInfo
+    public interface INavigationViewModel
     {
-        public string PageName { get; set; }
-
+        Task<bool> NavigaedTo();
     }
 }

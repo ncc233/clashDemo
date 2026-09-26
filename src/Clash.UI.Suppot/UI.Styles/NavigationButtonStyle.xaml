@@ -37,6 +37,8 @@
         <Setter Property="Margin" Value="5,4,5,4" />
         <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True" />
         <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="8" />
+        <!--<Setter Property="helpers:Ripple.IsEnabled" Value="True"/>
+        <Setter Property="helpers:Ripple.CornerRadius" Value="8"/>-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:NavigationButton}">

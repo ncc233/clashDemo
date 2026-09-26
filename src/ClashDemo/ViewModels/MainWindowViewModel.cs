@@ -55,7 +55,10 @@ namespace ClashDemo.ViewModels
                 NavigationItems.Add(new NavigationButton()
                 {
                     Content = item.Key,
-                    Tag=item.Value.tag,
+                    Tag=new NavigationInfo 
+                    {
+                        PageName= item.Value.tag
+                    } ,
                     HeaderIcon = geometry as Geometry,
                 });
             }

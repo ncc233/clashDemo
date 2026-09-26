@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using ClashDemo.Interfaces;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LiveCharts;
 using LiveCharts.Configurations;
@@ -10,11 +11,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClashDemo.ViewModels
 {
     [INotifyPropertyChanged]
-    public partial class RulePageViewModel
+    public partial class RulePageViewModel : INavigationViewModel
     {
         public DateTime Time { get; set; }
 
@@ -29,9 +31,9 @@ namespace ClashDemo.ViewModels
         public ColumnSeries AlarmCountSeries { get; set; } = new ColumnSeries();
         public ColumnSeries AlarmDuringSeries { get; set; } = new ColumnSeries();
         public string[] XAxis { get; set; }
-        public ChartValues<AlarmData> AlarmCount { get; set; }
+        public ChartValues<AlarmData> AlarmCount { get; set; } = [];
 
-        public ChartValues<AlarmData> AlarmDuring { get; set; }
+        public ChartValues<AlarmData> AlarmDuring { get; set; } = [];
 
         public RulePageViewModel()
         {
@@ -60,8 +62,16 @@ namespace ClashDemo.ViewModels
                 AlarmCountSeries,
                 AlarmDuringSeries
             };
+
+            //AlarmDuring.Reverse();
+
+
+        }
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
             AlarmCount =
-                [new AlarmData { Top = 1, Value = 8 ,AlarmMsg="Alarm0"},
+    [new AlarmData { Top = 1, Value = 8 ,AlarmMsg="Alarm0"},
                 new AlarmData { Top = 2, Value = 20 ,AlarmMsg="Alarm1eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" },
                 new AlarmData { Top = 3, Value = 22 ,AlarmMsg="Alarm2" },
                 new AlarmData { Top = 4, Value = 32 ,AlarmMsg="Alarm3" },
@@ -75,10 +85,12 @@ namespace ClashDemo.ViewModels
                 new AlarmData { Top = 3, Value = 500 , AlarmMsg="Alarm4"},
                 new AlarmData { Top = 2, Value = 600 , AlarmMsg="Alarm5"},
                 new AlarmData { Top = 1, Value = 700 , AlarmMsg="Alarm6"}];
-            //AlarmDuring.Reverse();
-            AlarmCountSeries.Values = AlarmCount;
-            AlarmDuringSeries.Values =AlarmDuring;
-
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                AlarmCountSeries.Values = AlarmCount;
+                AlarmDuringSeries.Values = AlarmDuring;
+            });
+            return true;
         }
         [RelayCommand]
         private void ClearData()
@@ -96,6 +108,7 @@ namespace ClashDemo.ViewModels
                 item.Value += 8;
             }
         }
+
 
     }
     [AddINotifyPropertyChangedInterface]

@@ -19,11 +19,12 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using Clash.UI.Suppot.UI.CommonResources.DefaultDefinition;
 using System.Windows;
+using ClashDemo.Interfaces;
 
 namespace ClashDemo.ViewModels
 {
     [INotifyPropertyChanged]
-    public partial class HomePageViewModel
+    public partial class HomePageViewModel : INavigationViewModel
     {
         private CancellationTokenSource _automaticDowngradeFlag;
         public List<HomePageDaskBoardModelBase> DaskBoardItems { get; set; }
@@ -39,9 +40,19 @@ namespace ClashDemo.ViewModels
             IPMessagBoardViewModel iPMessagBoard,
             NetTestBoardViewModel netTestBoardViewModel)
         {
+
+            SubscrubBoardViewModel = subscrubBoardViewModel;
+            NetAgentBoardViewModel = netAgentBoardViewModel;
+            IPMessagBoardViewModel = iPMessagBoard;
+            NetTestBoardViewModel = netTestBoardViewModel;
+
+        }
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
             DaskBoardItems =
-                [
-                new(){Name="订阅卡"},
+    [
+    new(){Name="订阅卡"},
                 new(){Name="当前代理卡" },
                 new(){Name="网络设置卡" },
                 new(){Name="代理模式卡" },
@@ -50,11 +61,13 @@ namespace ClashDemo.ViewModels
                 new(){Name="Clash 信息卡" },
                 new(){Name="系统信息卡" },
                 ];
-            SubscrubBoardViewModel = subscrubBoardViewModel;
-            NetAgentBoardViewModel = netAgentBoardViewModel;
-            IPMessagBoardViewModel = iPMessagBoard;
-            NetTestBoardViewModel = netTestBoardViewModel;
 
+            var task1 = SubscrubBoardViewModel.NavigaedTo();
+            var task2 = NetAgentBoardViewModel.NavigaedTo();
+            var task3 = IPMessagBoardViewModel.NavigaedTo();
+            var task4 = NetTestBoardViewModel.NavigaedTo();
+            await Task.WhenAll([task1, task2, task3, task4]);
+            return true;
         }
 
         [RelayCommand]
@@ -76,7 +89,7 @@ namespace ClashDemo.ViewModels
             //    UseShellExecute = true
             //});
 
-            AutomaticDowngrade(DateTimeOffset.Now + TimeSpan.FromSeconds(10), async (cts) =>
+            AutomaticDowngrade(DateTimeOffset.Now + TimeSpan.FromSeconds(5), async (cts) =>
             {
                 MessageBox.Show("10");
             });
@@ -113,45 +126,37 @@ namespace ClashDemo.ViewModels
         /// <summary>
         /// 自动降级任务，返回 CancellationTokenSource 以便外部取消任务
         /// </summary>
-        public async Task AutomaticDowngrade(
+        public void AutomaticDowngrade(
             DateTimeOffset executeAt,
             Func<CancellationToken, Task> callback)
         {
             if (callback is null) throw new ArgumentNullException(nameof(callback));
-            if (_automaticDowngradeFlag != null)
-            {
-                _automaticDowngradeFlag.Cancel();
-                await Task.Delay(200);
-                _automaticDowngradeFlag.Dispose();
-                _automaticDowngradeFlag = null;
-            }
-            _automaticDowngradeFlag = new CancellationTokenSource();
+            _automaticDowngradeFlag?.Cancel();
+            _automaticDowngradeFlag?.Dispose();
+            _automaticDowngradeFlag = CancellationTokenSource.CreateLinkedTokenSource(new CancellationToken());
             // 使用 Task.Run 确保 Schedule 立即返回，不阻塞调用线程
-            _ = Task.Run(async () =>
+            _ = WaitTime(executeAt, _automaticDowngradeFlag.Token, callback);
+        }
+        private async Task WaitTime(DateTimeOffset executeAt, CancellationToken ct, Func<CancellationToken, Task> callback)
+        {
+            try
             {
-                try
-                {
-                    await DelayUntilAsync(executeAt, _automaticDowngradeFlag.Token).ConfigureAwait(false);
+                await DelayUntilAsync(executeAt, ct).ConfigureAwait(false);
 
-                    // 到点后执行回调，传入 token，便于回调内部协作取消
-                    await callback(_automaticDowngradeFlag.Token).ConfigureAwait(false);
-                }
-                catch (OperationCanceledException) when (_automaticDowngradeFlag.IsCancellationRequested)
-                {
-                    // 任务被取消，属于正常流程
-                    MessageBox.Show("任务取消");
-                }
-                catch (Exception ex)
-                {
-                    // 实际项目中建议使用 ILogger 记录
-                    //ShowMsg($"权限自动降级任务执行异常: {ex}");
-                }
-                finally
-                {
-                    _automaticDowngradeFlag.Dispose();
-                    _automaticDowngradeFlag = null;
-                }
-            });
+                // 到点后执行回调，传入 token，便于回调内部协作取消
+                await callback(ct).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException) when (ct.IsCancellationRequested)
+            {
+
+                // 任务被取消，属于正常流程
+                MessageBox.Show("任务取消");
+            }
+            catch (Exception ex)
+            {
+                // 实际项目中建议使用 ILogger 记录
+                //ShowMsg($"权限自动降级任务执行异常: {ex}");
+            }
         }
         /// <summary>
         /// 延迟点
@@ -164,5 +169,6 @@ namespace ClashDemo.ViewModels
                 return;
             await Task.Delay(delay, token).ConfigureAwait(false);
         }
+
     }
 }

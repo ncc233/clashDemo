@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Clash.UI.Suppot.UI.Componentes;
 using Clash.UI.Suppot.UI.Helpers;
+using ClashDemo.Interfaces;
 using ClashDemo.Models;
 using ClashDemo.Views.Dialogs;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -11,12 +12,13 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ClashDemo.ViewModels.SubPageViewModels
 {
     [INotifyPropertyChanged]
-    public partial class NetTestBoardViewModel
+    public partial class NetTestBoardViewModel:INavigationViewModel
     {
         private ShadowDialog _shadowDialog;
         public ObservableCollection<NetTestBlockModel> TestItems { get; set; }
@@ -24,16 +26,25 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         public NetTestBoardViewModel() 
         {
             TestItems = new ObservableCollection<NetTestBlockModel>();
-
-            for (int i = 0; i < 4; i++) 
+        }
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
+            await Application.Current.Dispatcher.InvokeAsync(() => 
             {
-                TestItems.Add(new NetTestBlockModel() 
-                {
-                    BlockName=$"Bili Bili{i}",
-                    NetDelay=333,
 
-                });
-            }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    TestItems.Add(new NetTestBlockModel()
+                    {
+                        BlockName = $"Bili Bili{i}",
+                        NetDelay = 333,
+
+                    });
+                }
+            });
+            return true;
         }
         [RelayCommand]
         private void ShowAddDialog()
@@ -73,5 +84,7 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         {
             TestItems.Remove(netTestBlock);
         }
+
+
     }
 }

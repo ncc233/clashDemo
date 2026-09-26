@@ -1,5 +1,6 @@
 ﻿using Clash.UI.Suppot.UI.Models;
 using ClashDemo.Args;
+using ClashDemo.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace ClashDemo.ViewModels.SubPageViewModels
 {
     [INotifyPropertyChanged]
-    public partial class NetAgentBoardViewModel
+    public partial class NetAgentBoardViewModel:INavigationViewModel
     {
         public ObservableCollection<NetAgentComboBoxItemModel> Items { get; } =
         new()
@@ -35,6 +36,12 @@ namespace ClashDemo.ViewModels.SubPageViewModels
         private void TargetPageNavigation(string name) 
         {
             WeakReferenceMessenger.Default.Send(new NavigationInfo { PageName=name});
+        }
+
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
+            return true;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClashDemo.Args;
+using ClashDemo.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace ClashDemo.ViewModels.SubPageViewModels
 {
     [INotifyPropertyChanged]
-    public partial class SubscrubBoardViewModel
+    public partial class SubscrubBoardViewModel : INavigationViewModel
     {
         public string OriginAddress { get; set; }
         public string UpdateTime { get; set; }
@@ -26,13 +27,7 @@ namespace ClashDemo.ViewModels.SubPageViewModels
 
         public SubscrubBoardViewModel() 
         {
-            OriginAddress = "来自:www.bilibili.com";
-            UpdateTime = "更新时间:"+DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-            CurrentCapacity = @"已使用 / 总量: 18.8GB / 768GB";
-            FinishTime = DateTime.Now.AddMonths(6).ToString("yyyy-MM-dd");
-            MaxCapacity = 100;
-            MinCapacity = 0;
-            UsedCapacity=18.8;
+
         }
 
         [RelayCommand]
@@ -41,7 +36,17 @@ namespace ClashDemo.ViewModels.SubPageViewModels
             WeakReferenceMessenger.Default.Send(new NavigationInfo { PageName = name });
         }
 
-
-
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
+            OriginAddress = "来自:www.bilibili.com";
+            UpdateTime = "更新时间:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+            CurrentCapacity = @"已使用 / 总量: 18.8GB / 768GB";
+            FinishTime = DateTime.Now.AddMonths(6).ToString("yyyy-MM-dd");
+            MaxCapacity = 100;
+            MinCapacity = 0;
+            UsedCapacity = 18.8;
+            return true;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ClashDemo.Models;
+﻿using ClashDemo.Interfaces;
+using ClashDemo.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace ClashDemo.ViewModels.SubPageViewModels
 {
     [INotifyPropertyChanged]
-    public partial class IPMessagBoardViewModel
+    public partial class IPMessagBoardViewModel:INavigationViewModel
     {
         public string BoardStatu { get; set; } = "Flashed";
 
@@ -24,6 +25,12 @@ namespace ClashDemo.ViewModels.SubPageViewModels
             BoardStatu = "Flash";
             await Task.Delay(1000*5);
             BoardStatu = "Flashed";
+        }
+
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
+            return true;
         }
     }
 }

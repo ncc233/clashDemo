@@ -25,6 +25,8 @@
                                 <Style TargetType="ToggleButton">
                                     <Setter Property="helpers:RippleAnimationHelper.IsEnable" Value="True" />
                                     <Setter Property="helpers:RippleAnimationHelper.RippleParentRadius" Value="10" />
+                                    <!--<Setter Property="helpers:Ripple.IsEnabled" Value="True"/>
+                                    <Setter Property="helpers:Ripple.CornerRadius" Value="10"/>-->
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="ToggleButton">

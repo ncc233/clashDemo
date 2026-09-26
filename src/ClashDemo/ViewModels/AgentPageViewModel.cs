@@ -1,4 +1,5 @@
-﻿using ClashDemo.Models;
+﻿using ClashDemo.Interfaces;
+using ClashDemo.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections;
@@ -7,40 +8,51 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace ClashDemo.ViewModels
 {
     [INotifyPropertyChanged]
-    public partial class AgentPageViewModel
+    public partial class AgentPageViewModel :INavigationViewModel
     {
         public List<AgentGroupModel> AgentGroups { get; set; }
 
         public object SelectItem { get; set; }
         public AgentPageViewModel() 
         {
+
+
+
+
+        }
+        public async Task<bool> NavigaedTo()
+        {
+            await Task.Delay(200);
             List<string> countries = ["香港", "美国", "日本", "英国", "新加坡", "韩国", "马来西亚", "乌克兰"];
             var listCountries = new Dictionary<string, int>();
-            countries.ForEach(item => 
+            countries.ForEach(item =>
             {
                 listCountries[item] = 0;
             });
-
             var collecton = new ObservableCollection<AgentGroupItemModel>();
             var countryRandom = new Random();
-            Enumerable.Range(0, 37).ToList().ForEach(item => 
+            Enumerable.Range(0, 37).ToList().ForEach(item =>
             {
-                var country=countries[countryRandom.Next(0, countries.Count)];
+                var country = countries[countryRandom.Next(0, countries.Count)];
                 listCountries[country] = ++listCountries[country];
                 string res = country + listCountries[country];
-                collecton.Add(new AgentGroupItemModel 
+                collecton.Add(new AgentGroupItemModel
                 {
-                    ItemName=res,
-                    Delay="Check",
-                    ItemMessages = ["Vless","UDP"]
+                    ItemName = res,
+                    Delay = "Check",
+                    ItemMessages = ["Vless", "UDP"]
                 });
             });
-            AgentGroups = new List<AgentGroupModel>()
+
+            await Application.Current.Dispatcher.InvokeAsync(() => 
+            {
+                AgentGroups = new List<AgentGroupModel>()
             {
                 new AgentGroupModel()
                 {
@@ -65,13 +77,15 @@ namespace ClashDemo.ViewModels
                 },
 
             };
-
+            });
+            return true;
         }
-
         private async Task TestWaite() 
         {
             while (true) { }
             await Task.Delay(100);
         }
+
+
     }
 }
