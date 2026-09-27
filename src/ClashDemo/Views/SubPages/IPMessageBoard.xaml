@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:ClashDemo.Views.SubPages"
              xmlns:vm="clr-namespace:ClashDemo.ViewModels.SubPageViewModels"
              xmlns:components="clr-namespace:Clash.UI.Suppot.UI.Componentes;assembly=Clash.UI.Suppot"
+             xmlns:helpers="clr-namespace:Clash.UI.Suppot.UI.Helpers;assembly=Clash.UI.Suppot"
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:Clash.UI.Suppot.UI.Controls;assembly=Clash.UI.Suppot"
              d:DataContext="{d:DesignInstance Type=vm:IPMessagBoardViewModel}"
@@ -27,6 +28,7 @@
                        Tag="{StaticResource locationGeometry}"/>
                 <Button Name="flashButton" 
                     Style="{StaticResource circlButton}"
+                        helpers:RotationBehaviorHelper.IsRotationEnabled="True"
                         Width="30"
                                       Foreground="#757575"
                         Content="{StaticResource flashBoardGeometry}"

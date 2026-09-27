@@ -30,7 +30,7 @@ namespace Clash.UI.Suppot.UI.Helpers
         {
             if (d is not FrameworkElement element)
                 return;
-
+            element.RenderTransformOrigin=new Point(0.5,0.5);
             bool oldValue = (bool)e.OldValue;
             bool newValue = (bool)e.NewValue;
 

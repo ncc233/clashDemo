@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Builder;
 using Autofac.Configuration;
 using Clash.UI.Suppot.UI.Componentes;
 using Clash.UI.Suppot.UI.Helpers;

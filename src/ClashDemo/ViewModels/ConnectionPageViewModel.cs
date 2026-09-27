@@ -52,6 +52,7 @@ namespace ClashDemo.ViewModels
                .RuleFor(u => u.Age, f => GetAge(f.Random.Number()) + 18)
                .RuleFor(u => u.Part, f => f.Part())
                .RuleFor(u => u.Salary, f => f.Random.Double(12000, 24000));
+            var collection = randomDatas.Generate(50);
             foreach (var item in randomDatas.Generate(50))
             {
                 await Application.Current.Dispatcher.InvokeAsync(() =>
