@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -38,13 +39,19 @@ namespace ClashDemo
         {
             var frame = sender as Frame;
             var backStack = frame.BackStack?.Cast<object>() ?? new List<object>();
-            if (backStack.Count() >= 1)
+            var summaryStack = backStack.Concat(frame.ForwardStack?.Cast<object>() ?? new List<object>());
+            if (summaryStack.Count() >= 1)
                 while (frame.RemoveBackEntry() != null) { }
+
+            var src = frame.Source;
+            var content = frame.Content;
+            var baseUrl = frame as IUriContext;
+            var bbs = baseUrl.BaseUri;
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape) 
+            if (e.Key == Key.Escape)
             {
                 this.Close();
             }

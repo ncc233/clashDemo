@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Builder;
 using Autofac.Configuration;
+using Clash.Services;
 using Clash.UI.Suppot.UI.Componentes;
 using Clash.UI.Suppot.UI.Helpers;
 using ClashDemo.Views.Dialogs;
@@ -61,7 +62,7 @@ namespace ClashDemo
                 .Where(x => x.Name.EndsWith("ViewModel"))
                 .PublicOnly()
                 .Where(xx => xx.IsClass);
-
+            serviceCollection.RegisterServices();
             Container = serviceCollection.Build();
         }
 

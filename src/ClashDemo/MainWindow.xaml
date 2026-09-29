@@ -32,6 +32,7 @@
                helpers:PageNavigationHelper.NavigateTarget="{Binding ElementName=navigationBar,
             Path=SelectedItem.Tag,Mode=TwoWay}"
                Navigated="Frame_Navigated"
+               
                NavigationUIVisibility="Hidden">
             <Frame.Effect>
                 <DropShadowEffect Direction="0" ShadowDepth="0" Opacity="1"/>

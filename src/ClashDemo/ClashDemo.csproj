@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Clash.Services\Clash.Services.csproj" />
     <ProjectReference Include="..\Clash.UI.Suppot\Clash.UI.Suppot.csproj" />
   </ItemGroup>
 
@@ -104,7 +105,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="9.0.0" />
+    <PackageReference Include="Autofac" Version="9.3.4" />
     <PackageReference Include="Autofac.Configuration" Version="7.0.0" />
     <PackageReference Include="Bogus" Version="35.6.5" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />

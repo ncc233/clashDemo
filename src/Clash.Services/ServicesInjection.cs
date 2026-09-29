@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Clash.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace Clash.Services
         public static void RegisterServices(this ContainerBuilder container)
         {
             // Register your services here
+            container.RegisterType<DeviceServer>().As<IDevicesServer>();
         }
     }
 }

@@ -20,6 +20,7 @@ using System.Windows.Input;
 using Clash.UI.Suppot.UI.CommonResources.DefaultDefinition;
 using System.Windows;
 using ClashDemo.Interfaces;
+using Clash.Services.Interfaces;
 
 namespace ClashDemo.ViewModels
 {
@@ -35,16 +36,20 @@ namespace ClashDemo.ViewModels
 
         public IPMessagBoardViewModel IPMessagBoardViewModel { get; set; }
         public NetTestBoardViewModel NetTestBoardViewModel { get; set; }
+
+        private IDevicesServer _devicesServer;
         public HomePageViewModel(SubscrubBoardViewModel subscrubBoardViewModel,
             NetAgentBoardViewModel netAgentBoardViewModel,
             IPMessagBoardViewModel iPMessagBoard,
-            NetTestBoardViewModel netTestBoardViewModel)
+            NetTestBoardViewModel netTestBoardViewModel,
+            IDevicesServer devicesServer)
         {
 
             SubscrubBoardViewModel = subscrubBoardViewModel;
             NetAgentBoardViewModel = netAgentBoardViewModel;
             IPMessagBoardViewModel = iPMessagBoard;
             NetTestBoardViewModel = netTestBoardViewModel;
+            _devicesServer= devicesServer;
 
         }
         public async Task<bool> NavigaedTo()
